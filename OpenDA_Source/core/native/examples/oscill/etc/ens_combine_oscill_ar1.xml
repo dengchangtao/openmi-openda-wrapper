@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<costa xmlns:xi="http://www.w3.org/2001/XInclude">
+<!--$URL: https://repos.deltares.nl/repos/openda/openda_1/public/trunk/core/native/examples/oscill/etc/ens_combine_oscill_ar1.xml $-->
+<!--$Revision: 710 $, $Date: 2008-10-30 15:09:38 +0100 (do, 30 okt 2008) $-->
+
+  <!-- Observations used for assimilation -->
+  <CTA_SOBS id="obs_assim" database="../obs/obs_oscill.sql"/>
+
+  <!-- Used model class -->
+  <CTA_MODELCLASS id="modelclass"  name="CTA_MODELCOMBINER" />
+
+  <!-- Filter configuration -->
+  <method name="ensemble">
+    <ensemble_filter>
+      <!-- Simulatie timespan en stapgrootte via CTA_Time -->
+      <CTA_TIME id="simulation_span" start="0" stop="0.51" step=".1"/>
+      <output>
+         <filename>results_oscill.m</filename>
+         <CTA_TIME id="times_mean" start="0" stop="50.0" step="1"/>
+      </output>
+      <modes max_id="3">
+      <model>
+
+        <modelbuilder model="stochastic model" tagstate="a" tagforc="b" tagparam="c">
+           <submodels>
+
+             <submodel>
+               <name> oscill model </name>
+               <modelclass>CTA_MODBUILD_SP</modelclass>
+               <create_input>sm_oscill_model.xml</create_input>
+             </submodel>
+
+             <submodel>
+               <name> ar1 model </name>
+               <modelclass>CTA_MODBUILD_SP</modelclass>
+               <create_input>sm_ar1_model.xml</create_input>
+             </submodel>
+
+           </submodels>
+
+           <propagation>
+             <deterministic>
+               <action type="x=axpy">
+                 <var_y var="state"> ar1 model </var_y>
+                 <const_a> 1.0 </const_a>
+                 <var_x var="parameters"> oscill model </var_x>
+               </action>
+
+               <action type="propagate"> oscill model
+               </action>
+
+               <action type="y=axpy">
+                 <var_x var="state"> ar1 model </var_x>
+                 <const_a> 1.0 </const_a>
+                 <var_y var="state"> oscill model </var_y>
+               </action>
+
+             </deterministic>
+
+             <stochastic>
+
+               <action type="propagate"> ar1 model </action>
+             </stochastic>
+
+           </propagation>
+
+
+        </modelbuilder>
+
+   
+      </model>
+      </modes>
+    </ensemble_filter>
+  </method>
+</costa>
+

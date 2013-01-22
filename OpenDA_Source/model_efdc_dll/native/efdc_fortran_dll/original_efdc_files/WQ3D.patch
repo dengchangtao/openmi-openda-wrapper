@@ -1,0 +1,20 @@
+Index: WQ3D.for
+===================================================================
+--- WQ3D.for	(revision 3544)
++++ WQ3D.for	(working copy)
+@@ -9,10 +9,10 @@
+       USE GLOBAL  
+ 
+       REAL TTMP
+-      REAL, STATIC :: DAYNEXT
+-      REAL, STATIC :: SUNDAY1, SUNDAY2, SUNSOL1, SUNSOL2
+-      REAL, STATIC :: SUNFRC1, SUNFRC2
+-      INTEGER*4, STATIC :: M
++      REAL, SAVE :: DAYNEXT
++      REAL, SAVE :: SUNDAY1, SUNDAY2, SUNSOL1, SUNSOL2
++      REAL, SAVE :: SUNFRC1, SUNFRC2
++      INTEGER*4, SAVE :: M
+       
+       DATA IWQTICI,IWQTAGR,IWQTSTL,IWQTSUN,IWQTBEN,IWQTPSL,IWQTNPL/7*0/  
+       DATA ISMTICI/0/  
+

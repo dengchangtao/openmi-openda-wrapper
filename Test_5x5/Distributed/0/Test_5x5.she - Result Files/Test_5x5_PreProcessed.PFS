@@ -1,0 +1,331 @@
+// Created     : 2013-01-22 13:41:5
+// DLL id      : C:\Program Files (x86)\DHI\2013\bin\pfs2004.dll
+// PFS version : Nov 11 2012 20:41:46
+
+[PreProcessed_Data]
+   [PAGE]
+      TITLE = 'Processed data'
+      Abbrev = ''
+      [PAGE]
+         TITLE = 'Model domain and grid'
+         Abbrev = 'Model domain and grid'
+         [DFS2_PLOT]
+            Filename = |.\Test_5x5_PreProcessed.DFS2|
+            ItemNo = 1
+         EndSect  // DFS2_PLOT
+
+      EndSect  // PAGE
+
+      [PAGE]
+         TITLE = 'Surface topography'
+         Abbrev = 'Surface topography'
+         [DFS2_PLOT]
+            Filename = |.\Test_5x5_PreProcessed.DFS2|
+            ItemNo = 2
+         EndSect  // DFS2_PLOT
+
+      EndSect  // PAGE
+
+      [PAGE]
+         TITLE = 'Climate'
+         Abbrev = 'Climate'
+         [PAGE]
+            TITLE = 'Precipitation rate (Uniform)'
+            Abbrev = 'Precipitation rate'
+            [DFS0_PLOT]
+               Filename = |..\Model\Precipitation.dfs0|
+               ItemNo = 1
+               StartDate = 1973, 1, 1, 0, 0
+               EndDate = 1974, 1, 1, 0, 0
+            EndSect  // DFS0_PLOT
+
+         EndSect  // PAGE
+
+         [PAGE]
+            TITLE = 'Reference Evapotranspiration (Uniform)'
+            Abbrev = 'Reference Evapotranspiration'
+            [DFS0_PLOT]
+               Filename = |..\Model\PotentialEvap.dfs0|
+               ItemNo = 1
+               StartDate = 1973, 1, 1, 0, 0
+               EndDate = 1974, 1, 1, 0, 0
+            EndSect  // DFS0_PLOT
+
+         EndSect  // PAGE
+
+      EndSect  // PAGE
+
+      [PAGE]
+         TITLE = 'Land Use'
+         Abbrev = 'Land Use'
+         [PAGE]
+            TITLE = 'Vegetation'
+            Abbrev = 'Vegetation'
+            [PAGE]
+               TITLE = 'Leaf Area Index (Uniform)'
+               Abbrev = 'LAI'
+               [TEXT]
+                  Text = 'Constant Value = 1.000000 ()'
+               EndSect  // TEXT
+
+            EndSect  // PAGE
+
+            [PAGE]
+               TITLE = 'Root Depth (Uniform)'
+               Abbrev = 'Root Depth'
+               [TEXT]
+                  Text = 'Constant Value = 20.00000 millimeter'
+               EndSect  // TEXT
+
+            EndSect  // PAGE
+
+         EndSect  // PAGE
+
+      EndSect  // PAGE
+
+      [PAGE]
+         TITLE = 'Unsaturated Flow'
+         Abbrev = 'Unsaturated Flow'
+         [PAGE]
+            TITLE = 'Two-Layer UZ Soil Properties'
+            Abbrev = '2-Layer UZ Soil Properties'
+            [TXT_FILE]
+               Filename = |.\Test_5x5_PreProcessed_2LayerUZSoilProp.txt|
+            EndSect  // TXT_FILE
+
+         EndSect  // PAGE
+
+         [PAGE]
+            TITLE = 'ET Surface Depth'
+            Abbrev = 'ET Surface Depth'
+            [DFS2_PLOT]
+               Filename = |.\Test_5x5_PreProcessed.DFS2|
+               ItemNo = 3
+            EndSect  // DFS2_PLOT
+
+         EndSect  // PAGE
+
+      EndSect  // PAGE
+
+      [PAGE]
+         TITLE = 'Saturated Zone'
+         Abbrev = 'Saturated Zone'
+         [PAGE]
+            TITLE = 'Boundary conditions for the saturated zone'
+            Abbrev = 'Boundary conditions'
+            [DFS3_PLOT]
+               Filename = |.\Test_5x5_PreProcessed_3DSZ.DFS3|
+               ItemNo = 1
+            EndSect  // DFS3_PLOT
+
+         EndSect  // PAGE
+
+         [PAGE]
+            TITLE = 'Lower level of computational layers in the saturated zone'
+            Abbrev = 'Lower level'
+            [DFS3_PLOT]
+               Filename = |.\Test_5x5_PreProcessed_3DSZ.DFS3|
+               ItemNo = 2
+            EndSect  // DFS3_PLOT
+
+         EndSect  // PAGE
+
+         [PAGE]
+            TITLE = 'Depth to bottom of computational layers in the saturated zone'
+            Abbrev = 'Depth to bottom'
+            [DFS3_PLOT]
+               Filename = |.\Test_5x5_PreProcessed_3DSZ.DFS3|
+               ItemNo = 3
+            EndSect  // DFS3_PLOT
+
+         EndSect  // PAGE
+
+         [PAGE]
+            TITLE = 'Thickness of computational layers in the saturated zone'
+            Abbrev = 'Layer thickness'
+            [DFS3_PLOT]
+               Filename = |.\Test_5x5_PreProcessed_3DSZ.DFS3|
+               ItemNo = 4
+            EndSect  // DFS3_PLOT
+
+         EndSect  // PAGE
+
+         [PAGE]
+            TITLE = 'Horizontal conductivity in the saturated zone'
+            Abbrev = 'Horizontal conductivity'
+            [DFS3_PLOT]
+               Filename = |.\Test_5x5_PreProcessed_3DSZ.DFS3|
+               ItemNo = 5
+            EndSect  // DFS3_PLOT
+
+         EndSect  // PAGE
+
+         [PAGE]
+            TITLE = 'Vertical conductivity in the saturated zone'
+            Abbrev = 'Vertical conductivity'
+            [DFS3_PLOT]
+               Filename = |.\Test_5x5_PreProcessed_3DSZ.DFS3|
+               ItemNo = 6
+            EndSect  // DFS3_PLOT
+
+         EndSect  // PAGE
+
+         [PAGE]
+            TITLE = 'Transmissivity in the saturated zone'
+            Abbrev = 'Transmissivity'
+            [DFS3_PLOT]
+               Filename = |.\Test_5x5_PreProcessed_3DSZ.DFS3|
+               ItemNo = 7
+            EndSect  // DFS3_PLOT
+
+         EndSect  // PAGE
+
+         [PAGE]
+            TITLE = 'Specific yield in the saturated zone'
+            Abbrev = 'Specific yield'
+            [DFS3_PLOT]
+               Filename = |.\Test_5x5_PreProcessed_3DSZ.DFS3|
+               ItemNo = 8
+            EndSect  // DFS3_PLOT
+
+         EndSect  // PAGE
+
+         [PAGE]
+            TITLE = 'Specific storage in the saturated zone'
+            Abbrev = 'Specific storage'
+            [DFS3_PLOT]
+               Filename = |.\Test_5x5_PreProcessed_3DSZ.DFS3|
+               ItemNo = 9
+            EndSect  // DFS3_PLOT
+
+         EndSect  // PAGE
+
+         [PAGE]
+            TITLE = 'Initial potential head in the saturated zone'
+            Abbrev = 'Initial potential head'
+            [DFS3_PLOT]
+               Filename = |.\Test_5x5_PreProcessed_3DSZ.DFS3|
+               ItemNo = 10
+            EndSect  // DFS3_PLOT
+
+         EndSect  // PAGE
+
+      EndSect  // PAGE
+
+   EndSect  // PAGE
+
+EndSect  // PreProcessed_Data
+
+[Extra_Data]
+   [Topography]
+      Filename = |.\Test_5x5_PreProcessed.DFS2|
+      ItemNo = 2
+   EndSect  // Topography
+
+   [LowerLevel]
+      SZ_Included = 1
+      NumberOfLayers = 1
+      Filename = |.\Test_5x5_PreProcessed_3DSZ.DFS3|
+      ItemNo = 2
+   EndSect  // LowerLevel
+
+   [River]
+      River_Included = 0
+   EndSect  // River
+
+   [DetailedTimeseriesOutput]
+      NumberOfItems = 6
+      [Item_1]
+         Name = 'LL'
+         DataTypeName = 'head elevation in saturated zone'
+         X = 150
+         Y = 150
+         iX = 2
+         iY = 2
+         iLay = 1
+         SimDataFileName = |.\Test_5x5DetailedTS_SZ.dfs0|
+         SimDataFileItemNo = 1
+         InclObsData = 0
+         ObsDataFileName = ||
+         ObsDataFileItemNo = 0
+      EndSect  // Item_1
+
+      [Item_2]
+         Name = 'UL'
+         DataTypeName = 'head elevation in saturated zone'
+         X = 150
+         Y = 350
+         iX = 2
+         iY = 4
+         iLay = 1
+         SimDataFileName = |.\Test_5x5DetailedTS_SZ.dfs0|
+         SimDataFileItemNo = 2
+         InclObsData = 0
+         ObsDataFileName = ||
+         ObsDataFileItemNo = 0
+      EndSect  // Item_2
+
+      [Item_3]
+         Name = 'UR'
+         DataTypeName = 'head elevation in saturated zone'
+         X = 350
+         Y = 350
+         iX = 4
+         iY = 4
+         iLay = 1
+         SimDataFileName = |.\Test_5x5DetailedTS_SZ.dfs0|
+         SimDataFileItemNo = 3
+         InclObsData = 0
+         ObsDataFileName = ||
+         ObsDataFileItemNo = 0
+      EndSect  // Item_3
+
+      [Item_4]
+         Name = 'LR'
+         DataTypeName = 'head elevation in saturated zone'
+         X = 350
+         Y = 150
+         iX = 4
+         iY = 2
+         iLay = 1
+         SimDataFileName = |.\Test_5x5DetailedTS_SZ.dfs0|
+         SimDataFileItemNo = 4
+         InclObsData = 0
+         ObsDataFileName = ||
+         ObsDataFileItemNo = 0
+      EndSect  // Item_4
+
+      [Item_5]
+         Name = 'Center'
+         DataTypeName = 'head elevation in saturated zone'
+         X = 250
+         Y = 250
+         iX = 3
+         iY = 3
+         iLay = 1
+         SimDataFileName = |.\Test_5x5DetailedTS_SZ.dfs0|
+         SimDataFileItemNo = 5
+         InclObsData = 0
+         ObsDataFileName = ||
+         ObsDataFileItemNo = 0
+      EndSect  // Item_5
+
+      [Item_6]
+         Name = 'Center'
+         DataTypeName = 'SZ vertical conductivity (for DA-OpenMI)'
+         X = 250
+         Y = 250
+         iX = 3
+         iY = 3
+         iLay = 1
+         SimDataFileName = |.\Test_5x5DetailedTS_SZ.dfs0|
+         SimDataFileItemNo = 6
+         InclObsData = 0
+         ObsDataFileName = ||
+         ObsDataFileItemNo = 0
+      EndSect  // Item_6
+
+   EndSect  // DetailedTimeseriesOutput
+
+EndSect  // Extra_Data
+

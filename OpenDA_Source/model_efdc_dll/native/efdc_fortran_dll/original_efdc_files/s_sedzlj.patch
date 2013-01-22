@@ -1,0 +1,34 @@
+Index: s_sedzlj.f90
+===================================================================
+--- s_sedzlj.f90	(revision 3631)
++++ s_sedzlj.f90	(working copy)
+@@ -4,7 +4,7 @@
+   INTEGER::KK,LL,K,L
+   INTEGER::NSC0,NSC1,NTAU0,NTAU1
+   REAL::T1TMP
+-  DOUBLE PRECISION::WDTDZ,SURFACE
++  DOUBLE PRECISION::WDTDZ
+   DOUBLE PRECISION::SN00
+   DOUBLE PRECISION::SN01
+   DOUBLE PRECISION::SN10
+@@ -14,6 +14,7 @@
+   DOUBLE PRECISION::ESED
+   
+   INTEGER CRAIG
++  INTEGER SURFACE
+ 
+   IF(IS_TIMING)THEN  
+     T1TMP=SECNDS(0.0)  
+@@ -300,7 +301,11 @@
+         SN10=(TAUDD(1)-TAU(L))/(TAUDD(1)-TAUDD(2)) !weigthing factor 2
+         SN01=D50TMPP/NSCTOT                        !weighting factor 3
+         SN11=(NSCTOT-D50TMPP)/NSCTOT               !weighting factor 4
+-        ERATEMOD(L)=(SN00*EXP(SN11*LOG(ERATEND(NSC0,NTAU0))+SN01*LOG(ERATEND(NSC1,NTAU0)))+SN10*EXP(SN11*LOG(ERATEND(NSC0,NTAU1))+SN01*LOG(ERATEND(NSC1,NTAU1))))*BULKDENS(LL,L) !log-linear interpolation
++        ERATEMOD(L)= (   SN00*EXP(SN11*LOG(ERATEND(NSC0,NTAU0)) &
++                       + SN01*LOG(ERATEND(NSC1,NTAU0)))         &
++                       + SN10*EXP(SN11*LOG(ERATEND(NSC0,NTAU1)) &
++                       + SN01*LOG(ERATEND(NSC1,NTAU1)))         &
++                     ) * BULKDENS(LL,L)            !log-linear interpolation
+      ENDIF
+ 
+      ! Sort out Thicknesses and Erosion Rates

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<costa xmlns:xi="http://www.w3.org/2001/XInclude">
+<!--$URL: https://repos.deltares.nl/repos/openda/openda_1/public/trunk/core/native/examples/pollute2d/etc/ensrf_pollute2d_ww.xml $-->
+<!--$Revision: 671 $, $Date: 2008-10-07 14:49:42 +0200 (di, 07 okt 2008) $-->
+
+  <parallel>
+    <process_groups>
+      <group name="pollute_group" nproc="4" use_for_model="pollute2d"
+             parallel_type="Worker-Worker" ntimes="*"/>
+    </process_groups>
+  </parallel>
+
+
+  <!-- Observations used for assimilation -->
+  <CTA_SOBS id="obs_assim" database="obs_pollute2d.sql"/>
+
+  <!-- Used model class -->
+  <CTA_MODELCLASS id="modelclass"  implements="pollute2d" name="CTA_MODBUILD_SP" />
+
+  <!-- Filter configuration -->
+  <method name="ensrf">
+     <ensrf_filter>
+     <CTA_TIME id="simulation_span" start="0" stop="10.0" step="1"/>
+     <output>
+        <filename>results_oscill.m</filename>
+        <CTA_TIME id="times_mean" start="-10.0" stop="-1.0" step="1"/>
+     </output>
+     <modes max_id="10" model="models/pollute2d_sp_ww.xml">
+    </modes>
+     </ensrf_filter>
+  </method>
+</costa>
+

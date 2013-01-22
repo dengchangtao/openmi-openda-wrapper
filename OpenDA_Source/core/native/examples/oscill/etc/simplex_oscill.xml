@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<costa xmlns:xi="http://www.w3.org/2001/XInclude">
+<!--$URL: https://repos.deltares.nl/repos/openda/openda_1/public/trunk/core/native/examples/oscill/etc/simplex_oscill.xml $-->
+<!--$Revision: 710 $, $Date: 2008-10-30 15:09:38 +0100 (do, 30 okt 2008) $-->
+
+  <!-- Observations used for assimilation -->
+  <CTA_SOBS id="obs_assim" database="../obs/obs_oscill.sql"/>
+
+  <!-- Used model class -->
+  <CTA_MODELCLASS id="modelclass"  name="CTA_MODBUILD_SP" />
+  
+  <!-- De invoer m.b.t. het filter.  -->
+  <!-- Dit filter maakt zelf de model-instantiaties aan -->
+  <method name="simplex">
+  <parameter_calibration>
+    <!-- Simulatie timespan en stapgrootte via CTA_Time -->
+    <CTA_TIME id="simulation_span" start="0" stop="50.0" step=".1"/>
+    <output>
+        <filename>results_oscill.m</filename> 
+       <CTA_TIME id="times_mean" start="0" stop="50.0" step="1"/>
+    </output>
+    <iteration maxit="60" tol="0.001">
+    </iteration>
+    <!-- 1st VERTEX:-->
+    <model1>
+       <modelbuild_sp>
+         <xi:include href="functions_oscill.xml"/>
+          <model>  
+             <!-- Original values: avg_t_damp=8.0, avg_omega=2.2*2*pi -->
+             <parameters avg_t_damp="8.95" avg_omega="13.5"> 
+             </parameters> 
+          </model> -->  
+       </modelbuild_sp> 
+    </model1>
+    <!-- 2nd VERTEX:-->
+    <model2>
+       <modelbuild_sp>
+         <xi:include href="models/functions_oscill.xml"/>
+          <model>  
+             <!-- Original values: avg_t_damp=8.0, avg_omega=2.2*2*pi -->
+             <parameters avg_t_damp="6.0" avg_omega="15.9"> 
+             </parameters> 
+          </model> -->  
+       </modelbuild_sp> 
+    </model2>
+    <!-- 3rd VERTEX:-->
+    <model3>
+       <modelbuild_sp>
+         <xi:include href="models/functions_oscill.xml"/>
+          <model>  
+             <!-- Original values: avg_t_damp=8.0, avg_omega=2.2*2*pi -->
+             <parameters avg_t_damp="9.0" avg_omega="12.5"> 
+             </parameters> 
+          </model> -->  
+       </modelbuild_sp> 
+    </model3>
+  </parameter_calibration>
+  </method>
+</costa>
+

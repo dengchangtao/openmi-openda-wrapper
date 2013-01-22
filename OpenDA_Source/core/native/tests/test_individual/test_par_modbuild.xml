@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<costa xmlns:xi="http://www.w3.org/2001/XInclude">
+       <model>
+          <modelbuild_par modelclass="CTA_MODBUILD_SP"> 
+             <model>oscill.xml</model>
+          </modelbuild_par> 
+       </model>
+</costa>
+

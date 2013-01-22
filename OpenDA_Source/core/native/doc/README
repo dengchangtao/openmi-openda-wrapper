@@ -1,0 +1,44 @@
+$URL: https://repos.deltares.nl/repos/openda/openda_1/public/trunk/core/native/doc/README $
+$Revision: 672 $, $Date: 2008-10-07 15:09:20 +0200 (di, 07 okt 2008) $
+
+The main point of entry for the COSTA documentation is the file
+`doc/index.html'. It provides links and descriptions for the user-
+documentation and for the programmers-documentation.
+
+The file `doc/memos.html' provides an overview of all COSTA memos:
+numbers, titles, and link to the memo itself where appropriate.
+
+The sub-directories of this directory contain respectively:
+
+1) getting_started/
+   Introduction to the basic concepts and structure of the COSTA system.
+
+2) costawb/
+   Documentation of the COSTA workbench program that starts a data
+   assimilation or model calibration run. This documentation includes a
+   description of the available methods in COSTA
+
+3) course/
+   Course material of the COSTA programmers course given in 2007. Note
+   that this course material need not be up-to-date, as it is updated
+   infrequently with respect to changes in the code.
+
+4) devel_guide/
+   An overview of the directory structure, installation and compilation
+   procedures, documentation and testing.
+
+5) model_builders/
+   Documentation on the various model builders available in COSTA
+
+6) modelcombiner/
+   Documentation on the model combiner in COSTA
+
+7) parallel/
+   Documentation on the possiblities for parallel computing with COSTA.
+
+8) doxygen/ 
+   Doxygen documentation of the COSTA software. This documentation includes
+   the API-description of all COSTA methods and utility routines.
+
+9) styles/
+   Latex style-files and templates, bibliography database.

@@ -1,0 +1,5 @@
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.AdditionalInterfaces\bin\Debug\OpenDA.DotNet.AdditionalInterfaces.dll
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.AdditionalInterfaces\bin\Debug\OpenDA.DotNet.AdditionalInterfaces.pdb
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.AdditionalInterfaces\obj\Debug\ResolveAssemblyReference.cache
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.AdditionalInterfaces\obj\Debug\OpenDA.DotNet.AdditionalInterfaces.dll
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.AdditionalInterfaces\obj\Debug\OpenDA.DotNet.AdditionalInterfaces.pdb

@@ -1,0 +1,22 @@
+Index: VARZEROReal.f90
+===================================================================
+--- VARZEROReal.f90	(revision 3544)
++++ VARZEROReal.f90	(working copy)
+@@ -1704,8 +1704,8 @@
+       GCCSER=0.0 ! GEOSR JGCHO 2011.10.27
+       GCSER=0.0 ! GEOSR JGCHO 2011.10.27
+       GUPH=0.0 ! GEOSR JGCHO 2011.10.27
+-      GKMUL=0. ! GEOSR JGCHO 2011.10.27
+-      GQPOWER=0. ! GEOSR JGCHO 2011.10.27
++      GKMUL=0.0 ! GEOSR JGCHO 2011.10.27
++!      GQPOWER=0.0 ! GEOSR JGCHO 2011.10.27
+ ! } GEOSR GATE : JGCHO
+ 
+ !{GeoSR, YSSONG, TOXIC, 101102
+@@ -1715,5 +1715,4 @@
+ ! GeoSR}
+ 
+ 
+-
+ END SUBROUTINE VARZEROReal
+

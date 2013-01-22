@@ -1,0 +1,23 @@
+Index: SURFPLT.for
+===================================================================
+--- SURFPLT.for	(revision 3544)
++++ SURFPLT.for	(working copy)
+@@ -96,7 +96,7 @@
+           OPEN(10,FILE='EE_WS.OUT',STATUS='UNKNOWN')
+           CLOSE(10,STATUS='DELETE')  
+           OPEN(10,FILE='EE_WS.OUT',STATUS='UNKNOWN',  
+-     &        ACCESS='SEQUENTIAL',FORM='BINARY')  
++     &        ACCESS='STREAM')  
+           VER=101  
+           WRITE(10)VER,IC,JC,LINES  
+           JSPPH=0  
+@@ -104,7 +104,7 @@
+         ENDIF  
+ 
+         OPEN(10,FILE='EE_WS.OUT',POSITION='APPEND',STATUS='OLD',  
+-     &      FORM='BINARY')  
++     &      ACCESS='STREAM')  
+         IF(ISDYNSTP.EQ.0)THEN  
+           TIME=DT*FLOAT(N)+TCON*TBEGIN  
+         ELSE  
+

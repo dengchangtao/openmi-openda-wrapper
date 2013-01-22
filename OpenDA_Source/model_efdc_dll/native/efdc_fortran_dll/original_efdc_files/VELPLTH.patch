@@ -1,0 +1,23 @@
+Index: VELPLTH.for
+===================================================================
+--- VELPLTH.for	(revision 3544)
++++ VELPLTH.for	(working copy)
+@@ -343,7 +343,7 @@
+         IF(JSVPH.EQ.1)THEN  
+           LINES=LA-1  
+           OPEN(10,FILE='EE_VEL.OUT',STATUS='UNKNOWN',  
+-     &        ACCESS='SEQUENTIAL',FORM='BINARY')  
++     &        ACCESS='STREAM')  
+           VER=103  
+           WRITE(10)VER,IC,JC,KC,LINES  
+           WRITE(10)RSSBCE,RSSBCW,RSSBCS,RSSBCN
+@@ -364,7 +364,7 @@
+         ENDIF  
+ 
+         OPEN(10,FILE='EE_VEL.OUT',POSITION='APPEND',STATUS='OLD',  
+-     &      FORM='BINARY')  
++     &      ACCESS='STREAM')  
+         WRITE (10)N,TIME,DELT  
+ 
+         ! *** Write the UVW Instantaneous Velocity Field (Unrotated)
+

@@ -1,0 +1,40 @@
+\documentclass[a4paper,12pt]{article}
+\newcommand{\styles}{../styles}
+\newcommand{\figs}{.}
+\usepackage[eng]{\styles/costa}
+
+\title{Template for creating COSTA memos}
+\author{My name Here}
+\memonum{CTA memo20yynn}
+\date{\today}
+
+\begin{document}
+\memotitlepage
+
+\begin{vtlogsheet}
+\vtlogentry{0.1}{@@}{date}{Concept}{@@}
+\vtfilelocation{$<$COSTA\_DIR$>$/doc/styles}
+\end{vtlogsheet}
+
+\tableofcontents
+
+\section{Introduction}
+
+My text here, with reference to Figure \ref{fig:my_figure}.
+
+\begin{figure}[bt]
+\centering
+\epsfig{figure=\figs/costa_logo2.\pdfeps,width=3in}
+\caption{\em Include a figure with caption.}
+\label{fig:my_figure}
+\end{figure}
+
+
+\section{Conclusions}
+
+Some more text with citation \cite{CTA-200801}.
+
+\bibliographystyle{plain}
+\bibliography{\styles/costa}
+
+\end{document}

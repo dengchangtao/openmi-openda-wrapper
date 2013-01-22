@@ -1,0 +1,23 @@
+Index: WINDWAVE.f90
+===================================================================
+--- WINDWAVE.f90	(revision 3544)
++++ WINDWAVE.f90	(working copy)
+@@ -231,7 +231,7 @@
+        RL=0
+        IM=IL(L)
+        JM=JL(L)
+-       LOOP1:DO WHILE(1)
++       LOOP1:DO WHILE(.TRUE.)
+          STATUS=0
+          RL=RL+RL0                        !SEARCH FETCH FOR EVERY 10M
+          XM = XCOR(L,5)+RL*COS(AL(NZ))    !UPWIND DISTANCE=FETCH
+@@ -278,7 +278,7 @@
+       WRITE(UWIN,'(3I10,2F15.5)') L,IL(L),JL(L),DLON(L),DLAT(L)
+     ENDDO
+     CLOSE(UWIN)
+-    OPEN(UTAU,FILE='TAUW.OUT',FORM='BINARY')
++    OPEN(UTAU,FILE='TAUW.OUT',ACCESS='STREAM')
+ 
+     JSWRPH=1  
+     DO L=1,LC  
+

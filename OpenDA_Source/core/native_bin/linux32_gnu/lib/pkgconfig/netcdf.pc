@@ -1,0 +1,16 @@
+prefix=/home/test/openda/public/core/native/external/netcdf/linux32_gnu
+exec_prefix=${prefix}
+libdir=/home/test/openda/public/core/native/external/netcdf/linux32_gnu/lib
+includedir=${prefix}/include
+ccompiler=cc
+cppcompiler=c++
+fcompiler=/usr/bin/gfortran
+fflags=-fPIC -m32 -I${includedir}
+flibs=-lnetcdff -lnetcdf
+
+Name: netcdf
+Description: NetCDF Client Library
+Version: 4.1.1
+Libs: -L${libdir} -lnetcdf
+Cflags: -I${includedir}
+
