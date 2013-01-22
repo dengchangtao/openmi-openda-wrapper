@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by ICT (Stichting Deltares) -->
+<xs:schema xmlns:openda="http://www.openda.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.openda.org" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="WflowModelFactoryConfigXML">
+		<xs:sequence>
+			<xs:element name="pythonModuleName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The name of the Python module that contains the model to use, e.g. wflow_hbv.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="timeHorizon" type="openda:WflowTimeHorizonXML" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Optional run period for the model. If the timeHorizon is set from 'outside' (e.g. when running from an operational system), then that timeHorizon overrules the timeHorizon that is configured here (if this is present). For runs with only OpenDA the timeHorizon for the model must be configured here.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="caseDirectory" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Case directory path (relative to this configuration file).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="templateRunId" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Base name of the run id within the current case (relative to the case directory). The number of the instance will be appended to this base name to create the instance run id (instance directory name).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="modelConfigFileName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The name of the model configuration file (relative to the case directory).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cloneMapFileName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The name of the map file that describes the catchment (relative to the staticmaps folder in the case directory).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="inputFile" type="xs:string" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The path and name of one or more input netcdf files (relative to the case directory). Together these input files must contain all input data that is needed for the model to run.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="modelOutputFile" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The path and name of the model output netcdf file (relative to the instance directory). This file will be created during the model run. After each model timestep the model output data will be written to this file.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="analysisOutputFile" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>The path and name of the analysis output netcdf file (relative to the instance directory). This file will be created during the model run. After each analysis time the updated state will be written to this file.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WflowTimeHorizonXML">
+		<xs:sequence>
+			<xs:element name="startDateTime" type="openda:WflowDateTimeXML">
+				<xs:annotation>
+					<xs:documentation>Start of the model run.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endDateTime" type="openda:WflowDateTimeXML">
+				<xs:annotation>
+					<xs:documentation>End of the model run.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="timeZoneOffset">
+				<xs:annotation>
+					<xs:documentation>The time zone in which the startDateTime and endDateTime of the model run are specified. This should be the offset of the timeZone with respect to GMT, in hours between -12 and 12.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:double">
+						<xs:minInclusive value="-12.0"/>
+						<xs:maxInclusive value="12.0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WflowDateTimeXML">
+		<xs:attribute name="date" type="openda:WflowDateXML" use="required"/>
+		<xs:attribute name="time" type="openda:WflowTimeXML" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="WflowDateXML">
+		<xs:restriction base="xs:date">
+			<xs:pattern value="\d\d\d\d-\d\d-\d\d"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="WflowTimeXML">
+		<xs:restriction base="xs:time">
+			<xs:pattern value="\d\d:\d\d:\d\d"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="wflowModelFactoryConfig" type="openda:WflowModelFactoryConfigXML">
+		<xs:annotation>
+			<xs:documentation>Configuration for a WFLOW model factory. It contains information on the Python module that contains the model to use and the input and output files for the model.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

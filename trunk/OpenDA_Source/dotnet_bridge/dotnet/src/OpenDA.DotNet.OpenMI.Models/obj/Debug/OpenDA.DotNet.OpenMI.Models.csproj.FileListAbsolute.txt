@@ -1,0 +1,10 @@
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Models\bin\Debug\OpenDA.DotNet.OpenMI.Models.dll
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Models\bin\Debug\OpenDA.DotNet.OpenMI.Models.pdb
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Models\bin\Debug\Oatc.OpenMI.Sdk.dll
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Models\bin\Debug\OpenDA.DotNet.AdditionalInterfaces.dll
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Models\bin\Debug\OpenDA.DotNet.Interfaces.dll
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Models\bin\Debug\OpenDA.DotNet.AdditionalInterfaces.pdb
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Models\bin\Debug\OpenDA.DotNet.Interfaces.pdb
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Models\obj\Debug\ResolveAssemblyReference.cache
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Models\obj\Debug\OpenDA.DotNet.OpenMI.Models.dll
+c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Models\obj\Debug\OpenDA.DotNet.OpenMI.Models.pdb

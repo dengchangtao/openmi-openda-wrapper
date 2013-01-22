@@ -1,0 +1,106 @@
+ MIKE SHE version : 2013-Development
+
+
+ Name of input file : c:\OpenDA_MI\Test_5x5\Distributed\0\Test_5x5.she
+ Loading Simulation Specifications...
+ Checking Extra Parameters...
+
+ Initializing Fif file : c:\OpenDA_MI\Test_5x5\Distributed\0\Test_5x5.she - Result Files\Test_5x5.Fif...
+ Loading Storing and Output Specifications...
+ Making Simulation Grid...
+ - square grid
+ - nx, ny:            5           5
+ - constant grid size :   100.0000    
+ - no. computational points including catchment boundary :          21
+ - no. internal points     (excluding catchment boundary):           9
+ - Model origin (lower left corner) (m) :  0.000000000000000E+000
+  0.000000000000000E+000
+ - Map Projection : NON-UTM
+ - Rotation (Counterclockwise, deg.) :  0.000000000000000E+000
+ Making Ground Levels...
+ Making Precipitation data...
+
+
+
+ Making SZ setup...
+
+ Making MIKE SHE SZ setup
+ - Extractions included
+
+ Hydro-Geological parameter distribution: Geo-layer based
+ - Computational Layers defined by Geological Layers
+ Geological Layers:
+ - Lower Levels
+ Geological Lenses:
+ - Horizontal Boundary
+ - Upper and Lower Levels
+ Distributed Hydro-geological Parameters of Geological Layers
+ Distributed Hydro-geological Parameters of Geological Lenses
+ Processing Hydro-Geological parameters into computational layers
+ Successful end of geological processing
+ - Reading SZ boundary data from pfs file...
+
+Inner boundary item no.    1 of layer    1 :     1 cells with grid code =         1
+ID     : Grid code = 1
+Type : Fixed Head
+ - SZ Boundary data has been made
+ Making initial Groundwater potentials
+ Groundwater extraction specified
+
+- loading SZ Extraction data from file : c:\OpenDA_MI\Test_5x5\Distributed\0\Model\Well.wel
+- Data of 1 wells with a total of 1 filters has been loaded.
+
+TOTAL  : Filters:    1 defined,    0 excluded,    1 included.
+         Wells  :    1 defined,    0 excluded,    1 included.
+
+
+Groundwater extractions
+=======================
+ 
+ 
+    1 : Well no.    1, ID : Well_LR
+               Well Field : Undefined
+        (x,y) : (   150.0000       150.0000    ) , grid(ix,iy) : (     2     2)
+        Filter    1: Top    =   8.000000    , Storage =   0.000000    
+                     Bottom =   1.000000    , Radius  =  0.2500000    
+                     TS file : c:\OpenDA_MI\Test_5x5\Distributed\0\Model\Pumping Well Timeseries File.dfs0
+                     - ItemNo: 1
+                     Rate factor:   1.000000    
+        - Layer   1, Conductivity =  0.1500000E-02
+
+
+   Compressed print of groundwater extractions
+   ===========================================
+ 
+       X              Y      Layer RateFac FullFac   Well-ID
+   150.0000       150.0000       1 1.000   1.000     Well_LR
+
+File c:\OpenDA_MI\Test_5x5\Distributed\0\Test_5x5.she - Result Files\Test_5x5_GeoLayers.dfs2
+with Topo & Geo layer bottom levels has been created.
+
+File c:\OpenDA_MI\Test_5x5\Distributed\0\Test_5x5.she - Result Files\Test_5x5_CompLayers.dfs2
+with Topo & Computational layer bottom levels has been created.
+
+File c:\OpenDA_MI\Test_5x5\Distributed\0\Test_5x5.she - Result Files\Test_5x5_GeoLenses.dfs2
+with Top & Bottom levels of geological lenses has been created.
+
+ SZ setup has been made.
+ Checking Drain Option
+ - Drainage not included
+
+
+
+ Making UZ setup...
+ Loading Two-layer UZ data...
+ UZ Setup finished.
+
+INFO   : The specific yield of the top SZ layer has been adjusted. The new specific yield is the difference between the
+         water contents at saturation and field capacity, based on the two-layer UZ soil type.
+         This adjustment will provide an optimal stability for the UZ-SZ coupling.
+ Writing Fif file...
+
+Extra-parameter specified:
+make omi file
+value = On
+
+ Normal termination

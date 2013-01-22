@@ -1,0 +1,29 @@
+LIBRARY BLAS_LAPACK
+EXPORTS
+   daxpy=DAXPY @1
+   dgeev=DGEEV @2
+   sgeev=SGEEV @3
+   dgetrs=DGETRS @4
+   dcopy=DCOPY @5
+   sgetrs=SGETRS @6
+   scopy=SCOPY @7
+   dgemv=DGEMV @8
+   sgemv=SGEMV @9
+   dgetsv=DGESV @10
+   sgesv=SGESV @11
+   dgemm=DGEMM @12
+   sgemm=SGEMM @13
+   saxpy=SAXPY @14
+   dlasrt=DLASRT @15
+   dposv=DPOSV @16
+   dger=DGER @17
+   sger=SGER @18
+   dgesv=DGESV @19
+   dscal=DSCAL @20
+   sscal=SSCAL @21
+   ddot=DDOT @22
+   sdot=SDOT @23
+   dnrm2=DNRM2 @24
+   snrm2=SNRM2 @25
+   idamax=IDAMAX @26
+   isamax=ISAMAX @27

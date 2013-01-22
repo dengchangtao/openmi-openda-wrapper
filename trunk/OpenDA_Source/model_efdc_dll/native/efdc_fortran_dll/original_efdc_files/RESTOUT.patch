@@ -1,0 +1,23 @@
+Index: RESTOUT.for
+===================================================================
+--- RESTOUT.for	(revision 3544)
++++ RESTOUT.for	(working copy)
+@@ -499,7 +499,7 @@
+           OPEN(7510,FILE='EE_HYDRO.OUT',STATUS='UNKNOWN')
+           CLOSE(7510,STATUS='DELETE')
+           OPEN(7510,FILE='EE_HYDRO.OUT',STATUS='UNKNOWN',  
+-     &        ACCESS='SEQUENTIAL',FORM='BINARY')  
++     &        ACCESS='STREAM')  
+           WRITE(7510)IC,JC,KC,LA-1,NQCTL
+           WRITE(7510)ISTRAN(1),ISTRAN(2),ISTRAN(3),ISTRAN(4)
+           WRITE(7510)ISTRAN(5),ISTRAN(6),ISTRAN(7)
+@@ -513,7 +513,7 @@
+         ENDIF
+ 
+         OPEN(7510,FILE='EE_HYDRO.OUT',POSITION='APPEND',STATUS='OLD',  
+-     &      FORM='BINARY')
++     &      ACCESS='STREAM')
+         WRITE (7510)N,TIMEDAY,DELT
+ !        WRITE (*,*)N,TIMEDAY,DELT
+ ! TOTAL DEPTH
+

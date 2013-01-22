@@ -1,0 +1,106 @@
+
+
+                                      E
+       EUROPEAN HYDROLOGIC SYSTEM  S  H  E  SYSTEME HYDROLOGIQUE EUROPEEN
+                                      S
+
+                                     / \ 
+                                     \ / 
+
+                          M I K E   S H E   W M   -   a   DHI   Product
+                          =============================================
+ 
+       MIKE SHE version : 2013-Development
+
+
+
+
+
+       Flow input file : c:\OpenDA_MI\Test_5x5\Distributed\6\Test_5x5.she
+       ------------------------------------------------------------------
+
+
+
+ 
+
+SZ Model option :
+- Distributed
+
+SZ Solver option:
+- PCG, transient simulation
+
+UZ option:
+- Two-Layer UZ
+================================================================================
+
+
+
+
+ SIMULATION PERIOD : 1973/ 1/ 1, 0: 0 - 1974/ 1/ 1, 0: 0 
+
+   -  Title        : Test_5x5
+   -  Description  : Test_5x5
+
+
+ COMPONENTS INCLUDED :   ET  UZ(2-layer)  SZ
+
+ Optional components included:
+   SZ wells
+
+
+ MODEL SIZE :
+ 
+   No. of points in x-dir                 :     5
+   No. of points in y-dir                 :     5
+   No. of computational points pr layer   :    21
+   No. of internal points (excl.boundary) :     9
+   No. of SZ layers                       :     1
+   No. of computational points in SZ      :    21
+
+   Grid size (m)                          :   100.00000
+   Model origin (lower left corner) (m)   :    0.0000000000000        0.0000000000000    
+   Map Projection                         : NON-UTM
+   Rotation (Counterclockwise, deg.)      :     0.0000000000000    
+
+
+
+ END OF FRAME INITIALIZATION
+
+
+
+ ENTER  E T  INITIALIZATION
+ --------------------------
+
+End of ET initialization
+
+
+ ENTER DINOC
+
+
+ EXIT DINOC
+
+ INFO   : Using average SZ conductance option.
+
+
+
+Parallelization info
+--------------------
+Number of processors  : 4
+Max. number of threads: 4
+Number of threads allowed by actual license: Unlimited
+Setting number of threads for actual application to 4
+ 
+
+Extra-parameter specified:
+expose da items
+value = On
+
+
+
+
+
+ START OF SIMULATION
+
+ 
+
+Initializing SZ boundary data module ...

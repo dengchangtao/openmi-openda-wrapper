@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+    <swivt>
+        <case>
+            <code>l021triad001</code>
+            <settings>
+                <user>
+                    <WCAP>
+                        <cds2>2.36e-005</cds2>
+                        <stpm>0.00302</stpm>
+                        <powst>2</powst>
+                        <delta>0</delta>
+                        <powk>0</powk>
+                    </WCAP>
+                    <QUAD>
+                        <iquad>2</iquad>
+                        <lambda>0.25</lambda>
+                        <Cnl4>30000000</Cnl4>
+                        <ursell>10</ursell>
+                        <qb>1</qb>
+                    </QUAD>
+                    <FRIC>
+                        <cfjon>0.067</cfjon>
+                    </FRIC>
+                    <BREA>
+                        <alpha>1</alpha>
+                        <gamma>0.73</gamma>
+                    </BREA>
+                    <TRIAD>
+                        <trfac>0.06415802452323843</trfac>
+                        <cutfr>2.6851446129998564</cutfr>
+                    </TRIAD>
+                </user>
+            </settings>
+        </case>
+    </swivt>
+</ROOT>

@@ -1,0 +1,14 @@
+Index: s_shear.f90
+===================================================================
+--- s_shear.f90	(revision 3544)
++++ s_shear.f90	(working copy)
+@@ -184,7 +184,7 @@
+              ELSEIF(UTMP>0.0.AND.VTMP<0.0)THEN
+                 VELANG=2*PI+ATAN(VTMP/UTMP)
+              ELSEIF(UTMP==0.0)THEN
+-                VELANG=SIGN(0.5*PI,VTMP)
++                VELANG=SIGN(0.5d0*PI,VTMP)
+              ENDIF
+              ! Set Orbital velocity in m/s and waveangle and frequency
+              IF(IFWAVE==0)THEN
+

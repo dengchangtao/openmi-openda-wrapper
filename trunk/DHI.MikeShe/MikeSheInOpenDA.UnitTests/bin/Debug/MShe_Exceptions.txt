@@ -1,0 +1,119 @@
+Exception in Update()System.Runtime.Remoting.RemotingException: Failed to read from an IPC Port: The pipe has been ended.
+
+
+Server stack trace: 
+   at System.Runtime.Remoting.Channels.Ipc.IpcPort.Read(Byte[] data, Int32 offset, Int32 length)
+   at System.Runtime.Remoting.Channels.Ipc.PipeStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Runtime.Remoting.Channels.SocketHandler.ReadFromSocket(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Runtime.Remoting.Channels.SocketHandler.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Runtime.Remoting.Channels.SocketHandler.ReadAndMatchFourBytes(Byte[] buffer)
+   at System.Runtime.Remoting.Channels.Tcp.TcpSocketHandler.ReadAndMatchPreamble()
+   at System.Runtime.Remoting.Channels.Tcp.TcpSocketHandler.ReadVersionAndOperation(UInt16& operation)
+   at System.Runtime.Remoting.Channels.Ipc.IpcClientHandler.ReadHeaders()
+   at System.Runtime.Remoting.Channels.Ipc.IpcClientTransportSink.ProcessMessage(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream, ITransportHeaders& responseHeaders, Stream& responseStream)
+   at System.Runtime.Remoting.Channels.BinaryClientFormatterSink.SyncProcessMessage(IMessage msg)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at DHI.MikeShe.Engine.IMSheEngine.GetTimeValues(String quantityID, String elementSetID)
+   at DHI.MikeShe.Engine.MsheWMEngineProcess.GetTimeValues(String quantityID, String elementSetID)
+   at DHI.OpenMI2.MikeShe.EngineAccess.<>c__DisplayClass6.<Initialize>b__4()
+   at DHI.OpenMI2.MikeShe.MSheOutputItem.Update()
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.ProcessActiveOutputItems()
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.UpdatePullVersion(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.Update(IBaseOutput[] requiredOutput)
+   at OpenDA.DotNet.OpenMI.Bridge.ModelInstance.Compute(ITime targetTime) in c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Bridge\ModelInstance.cs:line 112
+Exception in Update()System.Runtime.Remoting.RemotingException: Failed to read from an IPC Port: The pipe has been ended.
+
+
+Server stack trace: 
+   at System.Runtime.Remoting.Channels.Ipc.IpcPort.Read(Byte[] data, Int32 offset, Int32 length)
+   at System.Runtime.Remoting.Channels.Ipc.PipeStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Runtime.Remoting.Channels.SocketHandler.ReadFromSocket(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Runtime.Remoting.Channels.SocketHandler.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Runtime.Remoting.Channels.SocketHandler.ReadAndMatchFourBytes(Byte[] buffer)
+   at System.Runtime.Remoting.Channels.Tcp.TcpSocketHandler.ReadAndMatchPreamble()
+   at System.Runtime.Remoting.Channels.Tcp.TcpSocketHandler.ReadVersionAndOperation(UInt16& operation)
+   at System.Runtime.Remoting.Channels.Ipc.IpcClientHandler.ReadHeaders()
+   at System.Runtime.Remoting.Channels.Ipc.IpcClientTransportSink.ProcessMessage(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream, ITransportHeaders& responseHeaders, Stream& responseStream)
+   at System.Runtime.Remoting.Channels.BinaryClientFormatterSink.SyncProcessMessage(IMessage msg)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at DHI.MikeShe.Engine.IMSheEngine.GetTimeValues(String quantityID, String elementSetID)
+   at DHI.MikeShe.Engine.MsheWMEngineProcess.GetTimeValues(String quantityID, String elementSetID)
+   at DHI.OpenMI2.MikeShe.EngineAccess.<>c__DisplayClass6.<Initialize>b__4()
+   at DHI.OpenMI2.MikeShe.MSheOutputItem.Update()
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.ProcessActiveOutputItems()
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.UpdatePullVersion(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.Update(IBaseOutput[] requiredOutput)
+   at OpenDA.DotNet.OpenMI.Bridge.ModelInstance.Compute(ITime targetTime) in c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Bridge\ModelInstance.cs:line 112
+Exception in Update()System.Runtime.Remoting.RemotingException: Failed to read from an IPC Port: The pipe has been ended.
+
+
+Server stack trace: 
+   at System.Runtime.Remoting.Channels.Ipc.IpcPort.Read(Byte[] data, Int32 offset, Int32 length)
+   at System.Runtime.Remoting.Channels.Ipc.PipeStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Runtime.Remoting.Channels.SocketHandler.ReadFromSocket(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Runtime.Remoting.Channels.SocketHandler.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Runtime.Remoting.Channels.SocketHandler.ReadAndMatchFourBytes(Byte[] buffer)
+   at System.Runtime.Remoting.Channels.Tcp.TcpSocketHandler.ReadAndMatchPreamble()
+   at System.Runtime.Remoting.Channels.Tcp.TcpSocketHandler.ReadVersionAndOperation(UInt16& operation)
+   at System.Runtime.Remoting.Channels.Ipc.IpcClientHandler.ReadHeaders()
+   at System.Runtime.Remoting.Channels.Ipc.IpcClientTransportSink.ProcessMessage(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream, ITransportHeaders& responseHeaders, Stream& responseStream)
+   at System.Runtime.Remoting.Channels.BinaryClientFormatterSink.SyncProcessMessage(IMessage msg)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at DHI.MikeShe.Engine.IMSheEngine.GetEndDate()
+   at DHI.MikeShe.Engine.MsheWMEngineProcess.GetEndDate()
+   at DHI.OpenMI2.MikeShe.EngineAccess.get_EndTime()
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.UpdatePullVersion(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.Update(IBaseOutput[] requiredOutput)
+   at OpenDA.DotNet.OpenMI.Bridge.ModelInstance.Compute(ITime targetTime) in c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Bridge\ModelInstance.cs:line 112
+Exception in Update()System.Runtime.Remoting.RemotingException: Failed to read from an IPC Port: The pipe has been ended.
+
+
+Server stack trace: 
+   at System.Runtime.Remoting.Channels.Ipc.IpcPort.Read(Byte[] data, Int32 offset, Int32 length)
+   at System.Runtime.Remoting.Channels.Ipc.PipeStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Runtime.Remoting.Channels.SocketHandler.ReadFromSocket(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Runtime.Remoting.Channels.SocketHandler.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Runtime.Remoting.Channels.SocketHandler.ReadAndMatchFourBytes(Byte[] buffer)
+   at System.Runtime.Remoting.Channels.Tcp.TcpSocketHandler.ReadAndMatchPreamble()
+   at System.Runtime.Remoting.Channels.Tcp.TcpSocketHandler.ReadVersionAndOperation(UInt16& operation)
+   at System.Runtime.Remoting.Channels.Ipc.IpcClientHandler.ReadHeaders()
+   at System.Runtime.Remoting.Channels.Ipc.IpcClientTransportSink.ProcessMessage(IMessage msg, ITransportHeaders requestHeaders, Stream requestStream, ITransportHeaders& responseHeaders, Stream& responseStream)
+   at System.Runtime.Remoting.Channels.BinaryClientFormatterSink.SyncProcessMessage(IMessage msg)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at DHI.MikeShe.Engine.IMSheEngine.GetTimeValues(String quantityID, String elementSetID)
+   at DHI.MikeShe.Engine.MsheWMEngineProcess.GetTimeValues(String quantityID, String elementSetID)
+   at DHI.OpenMI2.MikeShe.EngineAccess.<>c__DisplayClass6.<Initialize>b__4()
+   at DHI.OpenMI2.MikeShe.MSheOutputItem.Update()
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.ProcessActiveOutputItems()
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.UpdatePullVersion(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.Update(IBaseOutput[] requiredOutput)
+   at OpenDA.DotNet.OpenMI.Bridge.ModelInstance.Compute(ITime targetTime) in c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Bridge\ModelInstance.cs:line 112
+Exception in Update()System.Exception: Error occured in MIKE SHE Fortran engine. Check the Mike She log file in folder: C:\devel_nils\Test_5x5\Distributed\3\Test_5x5.she. Engine wrapper method name: PerformTimeStep number 108. Fortran engine function name: PerformTimeStep
+
+Server stack trace: 
+   at DHI.MikeShe.Engine.MsheWMEngine.0(String dotNetMethodName, String fortranFunctionName)
+   at DHI.MikeShe.Engine.MsheWMEngine.PerformTimeStep()
+   at System.Runtime.Remoting.Messaging.StackBuilderSink._PrivateProcessMessage(IntPtr md, Object[] args, Object server, Int32 methodPtr, Boolean fExecuteInContext, Object[]& outArgs)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at DHI.MikeShe.Engine.IMSheEngine.PerformTimeStep()
+   at DHI.MikeShe.Engine.MsheWMEngineProcess.PerformTimeStep()
+   at DHI.OpenMI2.MikeShe.EngineAccess.PerformTimestep(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.UpdatePullVersion(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.Update(IBaseOutput[] requiredOutput)
+   at OpenDA.DotNet.OpenMI.Bridge.ModelInstance.Compute(ITime targetTime) in c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Bridge\ModelInstance.cs:line 112

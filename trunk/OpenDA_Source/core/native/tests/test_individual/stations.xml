@@ -1,0 +1,34 @@
+<root>
+<stations>
+  <station>
+    <mappingname>Eijsden</mappingname>
+    <location>Channel_,00</location>
+    <filename>"flowmap.his"'</filename>
+    <parameters>
+      <parameter>
+        <name>"Water Level"</name>
+        <initialvalue>40.2</initialvalue>
+      </parameter>
+      <parameter>
+        <name>"Discharge Totall"</name>
+        <initialvalue>100</initialvalue>
+      </parameter>
+    </parameters>
+  </station>
+  <station>
+    <mappingname>Roermond</mappingname>
+    <location>Channel_25000</location>
+    <filename>"flowmap.his"'</filename>
+    <parameters>
+      <parameter>
+        <name>"Water Level"</name>
+        <initialvalue>40.5</initialvalue>
+      </parameter>
+      <parameter>
+        <name>"Discharge Totall"</name>
+        <initialvalue>200</initialvalue>
+      </parameter>
+    </parameters>
+  </station>
+</stations>
+</root>

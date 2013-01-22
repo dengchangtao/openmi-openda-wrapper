@@ -1,0 +1,24 @@
+Index: CALHEAT.for
+===================================================================
+--- CALHEAT.for	(revision 3544)
++++ CALHEAT.for	(working copy)
+@@ -628,12 +628,12 @@
+ 
+ ******* Allocate/Dimension declaration
+ 
+-        Real, STATIC ::  MPS_TO_MPH, W_M2_TO_BTU_FT2_DAY 
+-        Real, STATIC ::  FLUX_BR_TO_FLUX_SI, BTU_FT2_DAY_TO_W_M2 
+-        Real, STATIC ::  REFL 
+-        Real, STATIC ::  AFW,BFW,CFW, BCONV
+-        Real, STATIC ::  TDEW_F, TAIR_F, WIND_2M
+-        Real, STATIC ::  TIMENEXT
++        Real, SAVE ::  MPS_TO_MPH, W_M2_TO_BTU_FT2_DAY 
++        Real, SAVE ::  FLUX_BR_TO_FLUX_SI, BTU_FT2_DAY_TO_W_M2 
++        Real, SAVE ::  REFL 
++        Real, SAVE ::  AFW,BFW,CFW, BCONV
++        Real, SAVE ::  TDEW_F, TAIR_F, WIND_2M
++        Real, SAVE ::  TIMENEXT
+ 
+ 
+ ******* Data declaration
+

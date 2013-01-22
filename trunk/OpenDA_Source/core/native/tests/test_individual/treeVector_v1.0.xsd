@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- File containing a TreeVector -->
+	<xs:element name="treeVectorFile" type="TreeVectorFileXML">
+		<xs:annotation>
+			<xs:documentation>Costa / DATools Tree Vector File</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="TreeVectorFileXML">
+		<xs:sequence>
+			<xs:element name="timeStamp" type="DateTimeXML" minOccurs="0"/>
+			<xs:element name="treeVector" type="TreeVectorXML"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- TreeVector -->
+	<xs:complexType name="TreeVectorXML">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="treeVectorLeaf" type="TreeVectorLeafXML"/>
+				<xs:element name="subTreeVector" type="TreeVectorXML"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="caption" type="xs:string"/>
+		<xs:attribute name="excludeFromVector" type="xs:boolean" use="optional" default="false"/>
+	</xs:complexType>
+	<!-- Known leaf types -->
+	<!-- Vector -->
+	<xs:complexType name="TreeVectorLeafXML">
+		<xs:sequence>
+			<xs:element name="unit" type="xs:string" minOccurs="0"/>
+			<xs:element name="missingValue" type="xs:double" minOccurs="0"/>
+			<xs:choice minOccurs="0">
+				<xs:element name="dimensions" type="DimensionsXML"/>
+				<xs:element name="grid" type="GridXML"/>
+			</xs:choice>
+			<xs:element name="vector" type="VectorXML"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="caption" type="xs:string"/>
+		<xs:attribute name="excludeFromVector" type="xs:boolean" use="optional" default="false"/>
+		<xs:attribute name="className" type="xs:string"/>
+	</xs:complexType>
+	<!-- nD-dimension type (to be elaborated)  -->
+	<xs:complexType name="DimensionsXML"/>
+	<!-- Grid and Computational/Physical dimension types -->
+	<xs:complexType name="GridXML">
+		<xs:sequence>
+			<xs:element name="computationalSpace" type="ComputationalSpaceXML"/>
+			<xs:element name="physicalSpace" type="PhysicalSpaceXML" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ComputationalSpaceXML">
+		<xs:sequence>
+			<xs:element name="dimension" type="ComputationalDimensionXML" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ComputationalDimensionXML">
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="length" type="xs:int" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="PhysicalSpaceXML">
+		<xs:sequence>
+			<xs:element name="dimension" type="PhysicalDimensionXML" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PhysicalDimensionXML">
+		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="axes" type="xs:string" use="required"/>
+		<xs:attribute name="ref" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="MetaInfoXML">
+		<xs:sequence/>
+		<xs:attribute name="id" type="xs:string"/>
+	</xs:complexType>
+	<!-- Date / Time types -->
+	<xs:complexType name="DateTimeXML">
+		<xs:attribute name="date" type="DateXML" use="required">
+			<xs:annotation>
+				<xs:documentation>ISO 8601 (yyyy-mm-dd)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="time" type="TimeXML" use="required">
+			<xs:annotation>
+				<xs:documentation>ISO 8601 (hh:mm:ss[.msec])</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="timeZone" type="TimeZoneXML" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="DateXML">
+		<xs:restriction base="xs:date">
+			<xs:pattern value="\d\d\d\d-\d\d-\d\d"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TimeXML">
+		<xs:restriction base="xs:time">
+			<xs:pattern value="\d\d:\d\d:\d\d"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Values types -->
+	<xs:simpleType name="VectorXML">
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="replace"/>
+			<xs:pattern value="[ ]*([\-]?\d+[.]?\d*)([ ]+[\-]?\d+[.]?\d*)*[ ]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TimeZoneXML">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([\-+ ]?\d{1,2}[:]\d{2})|([A-Z]{3,4})"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

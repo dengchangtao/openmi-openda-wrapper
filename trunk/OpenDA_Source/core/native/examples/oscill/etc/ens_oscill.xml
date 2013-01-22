@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<costa xmlns:xi="http://www.w3.org/2001/XInclude">
+<!--$URL: https://repos.deltares.nl/repos/openda/openda_1/public/trunk/core/native/examples/oscill/etc/ens_oscill.xml $-->
+<!--$Revision: 829 $, $Date: 2009-03-27 09:54:27 +0100 (vr, 27 mrt 2009) $-->
+
+  <!-- Observations used for assimilation -->
+  <CTA_SOBS id="obs_assim" database="../obs/obs_oscill.sql"/>
+  <!--CTA_SOBS id="obs_assim" class="CTA_NETCDF_SOBS" database="omi_no2_EU_20060202.nc"/-->
+<!--
+  <CTA_SOBS  id="obs_assim" class="CTA_COMBINE_SOBS">
+     <subsobs-s>
+
+           <CTA_SOBS id="obs_assim1" database="../obs/obs_oscill1.sql"/>
+           <CTA_SOBS id="obs_assim2" database="../obs/obs_oscill2.sql"/>
+
+
+     </subsobs-s>
+  </CTA_SOBS>
+!-->
+
+
+  <!-- Used model class -->
+  <CTA_MODELCLASS id="modelclass"  name="CTA_MODBUILD_SP" />
+
+  <!-- Filter configuration -->
+  <method name="ensemble">
+     <ensemble_filter>
+     <CTA_TIME id="simulation_span" start="0" stop="50.0" step=".1"/>
+     <output>
+        <filename>results_oscill.m</filename>
+        <CTA_TIME id="times_mean" start="0" stop="50.0" step="1"/>
+     </output>
+     <modes max_id="3">
+       <model>
+          <xi:include href="oscill_sp.xml"/>
+       </model>
+    </modes>
+     </ensemble_filter>
+  </method>
+</costa>
+

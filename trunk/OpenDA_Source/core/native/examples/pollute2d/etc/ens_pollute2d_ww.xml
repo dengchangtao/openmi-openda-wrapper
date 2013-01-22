@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<costa xmlns:xi="http://www.w3.org/2001/XInclude">
+<!--$URL: https://repos.deltares.nl/repos/openda/openda_1/public/trunk/core/native/examples/pollute2d/etc/ens_pollute2d_ww.xml $-->
+<!--$Revision: 849 $, $Date: 2009-04-27 21:57:54 +0200 (ma, 27 apr 2009) $-->
+
+        <!--  <parallel>
+    <process_groups>
+      <group name="pollute_group" nproc="2" use_for_model="pollute2d"
+             parallel_type="Worker-Worker" ntimes="*"/>
+    </process_groups>
+  </parallel>
+  -->
+
+  <!-- Observations used for assimilation -->
+  <CTA_SOBS id="obs_assim" database="../obs/obs_pollute2d.sql"/>
+
+  <!-- Used model class -->
+  <CTA_MODELCLASS id="modelclass"  implements="pollute2d" name="CTA_MODBUILD_SP" nproc="2" parallel_type="Worker-Worker"
+          ntimes="*"/>
+          <!-- <CTA_MODELCLASS id="modelclass"  implements="pollute2d" name="CTA_MODBUILD_SP"/> -->
+
+
+  <!-- Filter configuration -->
+  <method name="ensemble">
+     <ensemble_filter>
+     <CTA_TIME id="simulation_span" start="0" stop="50" step="1"/>
+     <output>
+        <filename>results.nc</filename>
+        <CTA_TIME id="times_mean" start="0" stop="1000.0" step="1"/>
+        <CTA_TIME id="times_ensemble" start="0" stop="10.0" step="10"/>
+     </output>
+     <modes max_id="10" model="pollute2d_sp_ww.xml">
+    </modes>
+     </ensemble_filter>
+  </method>
+</costa>
+

@@ -1,0 +1,20 @@
+Index: GATECTLREAD.for
+===================================================================
+--- GATECTLREAD.for	(revision 3544)
++++ GATECTLREAD.for	(working copy)
+@@ -11,6 +11,7 @@
+       REAL JULDAY,AJULDAY(NGTYPES),YEARTMP
+       INTEGER NTIDE
+       CHARACTER*80 FNTIDE
++      CHARACTER*3 NCARD
+       AJULDAY=0.
+ ! } GEOSR ESTURAY DIKE : JGCHO 2010.11.16
+ 
+@@ -211,4 +212,4 @@
+ 
+       RETURN
+       END
+-! } GEOSR JULIAN DAY : JGCHO 2010.11.16
+\ No newline at end of file
++! } GEOSR JULIAN DAY : JGCHO 2010.11.16
+

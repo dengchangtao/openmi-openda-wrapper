@@ -1,0 +1,14 @@
+Index: SCANEFDC.for
+===================================================================
+--- SCANEFDC.for	(revision 3544)
++++ SCANEFDC.for	(working copy)
+@@ -2,6 +2,8 @@
+ 
+       USE GLOBAL
+   
++      CHARACTER*3 :: NCARD  
++
+       WRITE(*,'(A)')'SCANNING INPUT FILE: EFDC.INP'  
+       OPEN(1,FILE='EFDC.INP',STATUS='OLD')  
+ 
+

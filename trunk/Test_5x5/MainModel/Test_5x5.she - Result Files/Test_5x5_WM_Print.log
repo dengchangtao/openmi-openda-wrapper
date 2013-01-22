@@ -1,0 +1,153 @@
+
+
+                                      E
+       EUROPEAN HYDROLOGIC SYSTEM  S  H  E  SYSTEME HYDROLOGIQUE EUROPEEN
+                                      S
+
+                                     / \ 
+                                     \ / 
+
+                          M I K E   S H E   W M   -   a   DHI   Product
+                          =============================================
+ 
+       MIKE SHE version : 2012
+
+
+
+
+
+       Flow input file : C:\devel_nils\Test_5x5\MainModel\Test_5x5.she
+       ---------------------------------------------------------------
+
+
+
+ 
+
+SZ Model option :
+- Distributed
+
+SZ Solver option:
+- PCG, transient simulation
+
+UZ option:
+- Two-Layer UZ
+================================================================================
+
+
+
+
+ SIMULATION PERIOD : 1973/ 1/ 1, 0: 0 - 1978/ 1/ 1, 0: 0 
+
+   -  Title        : Test_5x5
+   -  Description  : Test_5x5
+
+
+ COMPONENTS INCLUDED :   ET  UZ(2-layer)  SZ
+
+ Optional components included:
+   SZ wells
+
+
+ MODEL SIZE :
+ 
+   No. of points in x-dir                 :     5
+   No. of points in y-dir                 :     5
+   No. of computational points pr layer   :    21
+   No. of internal points (excl.boundary) :     9
+   No. of SZ layers                       :     1
+   No. of computational points in SZ      :    21
+
+   Grid size (m)                          :   100.000
+   Model origin (X,Y) (km)                :     0.000     0.000
+   Map Projection                         : NON-UTM
+   Rotation (Counterclockwise, deg.)      :     0.0000
+
+
+
+ END OF FRAME INITIALIZATION
+
+
+
+ ENTER  E T  INITIALIZATION
+ --------------------------
+
+End of ET initialization
+
+
+ ENTER DINOC
+
+
+ EXIT DINOC
+
+ INFO   : Using average SZ conductance option.
+
+
+
+Parallelization info
+--------------------
+Number of processors  : 4
+Max. number of threads: 4
+Number of threads allowed by actual license: Undefined!
+Setting number of threads for actual application to 1
+- Parallel code will not be utilized.
+
+WARNING: Undefined maximum number of threads (MaxNode_2).
+         Please contact DHI for an updated license file.
+ 
+
+
+
+
+
+ START OF SIMULATION
+
+ 
+
+Initializing SZ boundary data module ...
+
+
+
+ NORMAL COMPLETION OF MShe_WaterMovement RUN
+
+
+Simulation ended after    43824.00     hrs ,               21912 time steps.
+ 
+
+No. of SZ time steps             :      1826
+Average time step length         :  24.000   hrs.
+Total no. of iterations          :      3872
+- Average / step                 :      2.12
+- Max. iter exceeded in          :         0   steps.
+
+
+Groundwater Extraction Statistics
+=================================
+
+Total Extraction Volume
+- Specified (time series) :   434170.8     (m3)
+- applied to model        :   434170.8     (m3)
+- applied % of specified  :   100.0000     %
+
+
+List of extractions sorted by total specified volume (m3).
+
+Well,Filter  Specified<EXTRACTION>Applied         % Well ID
+--------------------------------------------------------------
+    1    1      434170.8       434170.8     100.0 % Well_LR
+
+    TOTAL:      434170.8       434170.8     100.00%
+
+ELAPSED TIME USAGE
+==================
+Function                                Elapsed seconds
+-------------------------------------------------------
+ Initialization phase                      0.5600000E-01
+ Simulation phase (includes others below)   3.078000    
+ SZ                                        0.5600000E-01
+ UZ + ET                                   0.1450000    
+ Met. input                                0.6240000    
+ Veg. input                                0.2900000E-01
+ Grid series output                        0.6080000    
+ Detailed TS output                        0.2650000    
+
+Normal termination.

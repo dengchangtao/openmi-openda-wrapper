@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <modelbuild_sp> 
+    <functions>
+       <create>my_create</create>
+       <compute>my_compute</compute>
+       <covariance>my_covar</covariance>
+       <getobsvals>my_obs</getobsvals>
+    </functions>
+    <model>model.xml</model>
+ </modelbuild_sp> 
+  

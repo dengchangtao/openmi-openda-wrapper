@@ -1,0 +1,119 @@
+Exception in Update()System.Exception: Error occured in MIKE SHE Fortran engine. Check the Mike She log file in folder: C:\devel_nils\Test_5x5\Distributed\2\Test_5x5.she. Engine wrapper method name: PerformTimeStep number 24. Fortran engine function name: PerformTimeStep
+
+Server stack trace: 
+   at DHI.MikeShe.Engine.MsheWMEngine.0(String dotNetMethodName, String fortranFunctionName)
+   at DHI.MikeShe.Engine.MsheWMEngine.PerformTimeStep()
+   at System.Runtime.Remoting.Messaging.StackBuilderSink._PrivateProcessMessage(IntPtr md, Object[] args, Object server, Int32 methodPtr, Boolean fExecuteInContext, Object[]& outArgs)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at DHI.MikeShe.Engine.IMSheEngine.PerformTimeStep()
+   at DHI.MikeShe.Engine.MsheWMEngineProcess.PerformTimeStep()
+   at DHI.OpenMI2.MikeShe.EngineAccess.PerformTimestep(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.UpdatePullVersion(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.Update(IBaseOutput[] requiredOutput)
+   at OpenDA.DotNet.OpenMI.Bridge.ModelInstance.Compute(ITime targetTime) in c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Bridge\ModelInstance.cs:line 112
+Exception in Update()System.Exception: Error occured in MIKE SHE Fortran engine. Check the Mike She log file in folder: C:\devel_nils\Test_5x5\Distributed\0\Test_5x5.she. Engine wrapper method name: PerformTimeStep number 228. Fortran engine function name: PerformTimeStep
+
+Server stack trace: 
+   at DHI.MikeShe.Engine.MsheWMEngine.0(String dotNetMethodName, String fortranFunctionName)
+   at DHI.MikeShe.Engine.MsheWMEngine.PerformTimeStep()
+   at System.Runtime.Remoting.Messaging.StackBuilderSink._PrivateProcessMessage(IntPtr md, Object[] args, Object server, Int32 methodPtr, Boolean fExecuteInContext, Object[]& outArgs)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at DHI.MikeShe.Engine.IMSheEngine.PerformTimeStep()
+   at DHI.MikeShe.Engine.MsheWMEngineProcess.PerformTimeStep()
+   at DHI.OpenMI2.MikeShe.EngineAccess.PerformTimestep(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.UpdatePullVersion(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.Update(IBaseOutput[] requiredOutput)
+   at OpenDA.DotNet.OpenMI.Bridge.ModelInstance.Compute(ITime targetTime) in c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Bridge\ModelInstance.cs:line 112
+Exception in Update()System.Exception: Error occured in MIKE SHE Fortran engine. Check the Mike She log file in folder: C:\devel_nils\Test_5x5\Distributed\3\Test_5x5.she. Engine wrapper method name: PerformTimeStep number 516. Fortran engine function name: PerformTimeStep
+
+Server stack trace: 
+   at DHI.MikeShe.Engine.MsheWMEngine.0(String dotNetMethodName, String fortranFunctionName)
+   at DHI.MikeShe.Engine.MsheWMEngine.PerformTimeStep()
+   at System.Runtime.Remoting.Messaging.StackBuilderSink._PrivateProcessMessage(IntPtr md, Object[] args, Object server, Int32 methodPtr, Boolean fExecuteInContext, Object[]& outArgs)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at DHI.MikeShe.Engine.IMSheEngine.PerformTimeStep()
+   at DHI.MikeShe.Engine.MsheWMEngineProcess.PerformTimeStep()
+   at DHI.OpenMI2.MikeShe.EngineAccess.PerformTimestep(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.UpdatePullVersion(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.Update(IBaseOutput[] requiredOutput)
+   at OpenDA.DotNet.OpenMI.Bridge.ModelInstance.Compute(ITime targetTime) in c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Bridge\ModelInstance.cs:line 112
+Exception in Update()System.Exception: Error occured in MIKE SHE Fortran engine. Check the Mike She log file in folder: C:\devel_nils\Test_5x5\Distributed\4\Test_5x5.she. Engine wrapper method name: PerformTimeStep number 156. Fortran engine function name: PerformTimeStep
+
+Server stack trace: 
+   at DHI.MikeShe.Engine.MsheWMEngine.0(String dotNetMethodName, String fortranFunctionName)
+   at DHI.MikeShe.Engine.MsheWMEngine.PerformTimeStep()
+   at System.Runtime.Remoting.Messaging.StackBuilderSink._PrivateProcessMessage(IntPtr md, Object[] args, Object server, Int32 methodPtr, Boolean fExecuteInContext, Object[]& outArgs)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at DHI.MikeShe.Engine.IMSheEngine.PerformTimeStep()
+   at DHI.MikeShe.Engine.MsheWMEngineProcess.PerformTimeStep()
+   at DHI.OpenMI2.MikeShe.EngineAccess.PerformTimestep(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.UpdatePullVersion(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.Update(IBaseOutput[] requiredOutput)
+   at OpenDA.DotNet.OpenMI.Bridge.ModelInstance.Compute(ITime targetTime) in c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Bridge\ModelInstance.cs:line 117
+Exception in Update()System.Exception: Error occured in MIKE SHE Fortran engine. Check the Mike She log file in folder: C:\devel_nils\Test_5x5\Distributed\4\Test_5x5.she. Engine wrapper method name: PerformTimeStep number 27. Fortran engine function name: PerformTimeStep
+
+Server stack trace: 
+   at DHI.MikeShe.Engine.MsheWMEngine.0(String dotNetMethodName, String fortranFunctionName)
+   at DHI.MikeShe.Engine.MsheWMEngine.PerformTimeStep()
+   at System.Runtime.Remoting.Messaging.StackBuilderSink._PrivateProcessMessage(IntPtr md, Object[] args, Object server, Int32 methodPtr, Boolean fExecuteInContext, Object[]& outArgs)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at DHI.MikeShe.Engine.IMSheEngine.PerformTimeStep()
+   at DHI.MikeShe.Engine.MsheWMEngineProcess.PerformTimeStep()
+   at DHI.OpenMI2.MikeShe.EngineAccess.PerformTimestep(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.UpdatePullVersion(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.Update(IBaseOutput[] requiredOutput)
+   at OpenDA.DotNet.OpenMI.Bridge.ModelInstance.Compute(ITime targetTime) in c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Bridge\ModelInstance.cs:line 117
+Exception in Update()System.Exception: Error occured in MIKE SHE Fortran engine. Check the Mike She log file in folder: c:\devel_nils\Test_5x5\Distributed\3\Test_5x5.she. Engine wrapper method name: PerformTimeStep number 1860. Fortran engine function name: PerformTimeStep
+
+Server stack trace: 
+   at DHI.MikeShe.Engine.MsheWMEngine.0(String dotNetMethodName, String fortranFunctionName)
+   at DHI.MikeShe.Engine.MsheWMEngine.PerformTimeStep()
+   at System.Runtime.Remoting.Messaging.StackBuilderSink._PrivateProcessMessage(IntPtr md, Object[] args, Object server, Int32 methodPtr, Boolean fExecuteInContext, Object[]& outArgs)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at DHI.MikeShe.Engine.IMSheEngine.PerformTimeStep()
+   at DHI.MikeShe.Engine.MsheWMEngineProcess.PerformTimeStep()
+   at DHI.OpenMI2.MikeShe.EngineAccess.PerformTimestep(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.UpdatePullVersion(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.Update(IBaseOutput[] requiredOutput)
+   at OpenDA.DotNet.OpenMI.Bridge.ModelInstance.Compute(ITime targetTime) in c:\devel_nils\openDAMI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Bridge\ModelInstance.cs:line 120
+Exception in Update()System.Exception: Error occured in MIKE SHE Fortran engine. Check the Mike She log file in folder: c:\OpenDA_MI\Test_5x5\Distributed\9\Test_5x5.she. Engine wrapper method name: PerformTimeStep number 492. Fortran engine function name: PerformTimeStep
+
+Server stack trace: 
+   at DHI.MikeShe.Engine.MsheWMEngine.0(String dotNetMethodName, String fortranFunctionName)
+   at DHI.MikeShe.Engine.MsheWMEngine.PerformTimeStep()
+   at System.Runtime.Remoting.Messaging.StackBuilderSink._PrivateProcessMessage(IntPtr md, Object[] args, Object server, Int32 methodPtr, Boolean fExecuteInContext, Object[]& outArgs)
+   at System.Runtime.Remoting.Messaging.StackBuilderSink.SyncProcessMessage(IMessage msg, Int32 methodPtr, Boolean fExecuteInContext)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at DHI.MikeShe.Engine.IMSheEngine.PerformTimeStep()
+   at DHI.MikeShe.Engine.MsheWMEngineProcess.PerformTimeStep()
+   at DHI.OpenMI2.MikeShe.EngineAccess.PerformTimestep(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.UpdatePullVersion(ICollection`1 requiredOutputItems)
+   at DHI.OpenMI2.Wrappers.EngineWrapper.LinkableEngine.Update(IBaseOutput[] requiredOutput)
+   at OpenDA.DotNet.OpenMI.Bridge.ModelInstance.Compute(ITime targetTime) in C:\OpenDA_MI\OpenDA_Source\dotnet_bridge\dotnet\src\OpenDA.DotNet.OpenMI.Bridge\ModelInstance.cs:line 119
