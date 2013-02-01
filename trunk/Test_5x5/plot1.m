@@ -1,3 +1,4 @@
+% Script to plot some of the results
 clear all
 results
 %index of interest where the obs are.
