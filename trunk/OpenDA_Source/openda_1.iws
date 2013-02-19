@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="b54af18e-8bdf-4886-ae42-f6950e6c33fc" name="Default" comment="" />
+    <list default="true" readonly="true" id="b54af18e-8bdf-4886-ae42-f6950e6c33fc" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/dotnet/OpenDA.DotNet_OpenMI_vs2010.suo" afterPath="$PROJECT_DIR$/dotnet_bridge/dotnet/OpenDA.DotNet_OpenMI_vs2010.suo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/algorithms.jar" afterPath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/algorithms.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/application.jar" afterPath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/application.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/dotnet_bridge.jar" afterPath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/dotnet_bridge.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/dotnet/src/external/OpenDA_j2net/fullOpenDa.dll" afterPath="$PROJECT_DIR$/dotnet_bridge/dotnet/src/external/OpenDA_j2net/fullOpenDa.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/dotnet/src/external/OpenDA_j2net/fullOpenDa.pdb" afterPath="$PROJECT_DIR$/dotnet_bridge/dotnet/src/external/OpenDA_j2net/fullOpenDa.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/models.jar" afterPath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/models.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/observers.jar" afterPath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/observers.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/openda_core.jar" afterPath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/openda_core.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/java/src/org/openda/blackbox/wrapper/BBStochModelInstance.java" afterPath="$PROJECT_DIR$/core/java/src/org/openda/blackbox/wrapper/BBStochModelInstance.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/src/org/openda/blackbox/wrapper/BBStochModelInstance.java" afterPath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/src/org/openda/blackbox/wrapper/BBStochModelInstance.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/dotnet/src/OpenDA.DotNet.OpenMI.Bridge/ExchangeItem.cs" afterPath="$PROJECT_DIR$/dotnet_bridge/dotnet/src/OpenDA.DotNet.OpenMI.Bridge/ExchangeItem.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/dotnet/src/OpenDA.DotNet.OpenMI.Bridge/ITimeSpaceComponentExtensions.cs" afterPath="$PROJECT_DIR$/dotnet_bridge/dotnet/src/OpenDA.DotNet.OpenMI.Bridge/ITimeSpaceComponentExtensions.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/dotnet/src/OpenDA.DotNet.OpenMI.Bridge/ModelInstance.cs" afterPath="$PROJECT_DIR$/dotnet_bridge/dotnet/src/OpenDA.DotNet.OpenMI.Bridge/ModelInstance.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/java/src/org/openda/dotnet/ModelInstanceN2J.java" afterPath="$PROJECT_DIR$/dotnet_bridge/java/src/org/openda/dotnet/ModelInstanceN2J.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/src/org/openda/dotnet/ModelInstanceN2J.java" afterPath="$PROJECT_DIR$/dotnet_bridge/translate/j2net/src/org/openda/dotnet/ModelInstanceN2J.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/dotnet/src/OpenDA.DotNet.Bridge/ObservationDescriptions.cs" afterPath="$PROJECT_DIR$/dotnet_bridge/dotnet/src/OpenDA.DotNet.Bridge/ObservationDescriptions.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openda_1.ipr" afterPath="$PROJECT_DIR$/openda_1.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/openda_1.iws" afterPath="$PROJECT_DIR$/openda_1.iws" />
+    </list>
     <ignored path="openda_1.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/EnKF_test1.oda" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1358508724603" ignored="false" />
-    <file path="/ModelInstanceN2J.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1358504655452" ignored="false" />
+    <file path="/ModelInstanceN2J.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1360339160695" ignored="false" />
+    <file path="/BBStochModelInstance.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1361285015969" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +41,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <breakpoint_any default_suspend_policy="SuspendAll">
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
         <option name="NOTIFY_UNCAUGHT" value="true" />
@@ -28,6 +49,7 @@
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
         <option name="CONDITION_ENABLED" value="true" />
@@ -43,6 +65,7 @@
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
         <option name="CONDITION_ENABLED" value="true" />
@@ -52,7 +75,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" />
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -62,10 +85,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MapsNoiseModelInstance.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MapsNoiseModelInstance.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/noiseModels/MapsNoiseModelInstance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="67" selection-start="4017" selection-end="4017" vertical-scroll-proportion="0.4506024">
+            <state line="107" column="33" selection-start="4534" selection-end="4534" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExchangeItemN2J.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dotnet_bridge/java/src/org/openda/dotnet/ExchangeItemN2J.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="18" selection-start="1166" selection-end="1166" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ModelInstanceN2J.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dotnet_bridge/java/src/org/openda/dotnet/ModelInstanceN2J.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="83" column="78" selection-start="2920" selection-end="2920" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BBStochModelInstance.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/blackbox/wrapper/BBStochModelInstance.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="625" column="47" selection-start="26147" selection-end="26147" vertical-scroll-proportion="0.11147541">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IPrevExchangeItem.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/interfaces/IPrevExchangeItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="99" column="61" selection-start="3459" selection-end="3459" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Array.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/utils/Array.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="246" column="38" selection-start="7276" selection-end="7294" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -90,16 +158,17 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/dotnet_bridge/java/src/org/openda/dotnet/ModelInstanceN2J.java" />
         <option value="C:/Test_5x5/EnKF_test1.oda" />
+        <option value="$PROJECT_DIR$/dotnet_bridge/java/src/org/openda/dotnet/ModelInstanceN2J.java" />
+        <option value="$PROJECT_DIR$/core/java/src/org/openda/blackbox/wrapper/BBStochModelInstance.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1696" />
-    <option name="height" value="1036" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1278" />
+    <option name="height" value="758" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -145,6 +214,90 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openda_1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openda_1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openda_1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openda_1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openda_1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="openda_1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -164,12 +317,7 @@
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
       <option name="PROGRAM_PARAMETERS" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -177,11 +325,7 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
@@ -208,12 +352,7 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
@@ -226,12 +365,7 @@
       <option name="VM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" />
@@ -245,12 +379,7 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <module name="" />
@@ -270,12 +399,7 @@
       </option>
       <envs />
       <patterns />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <method />
     </configuration>
     <list size="0" />
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -309,6 +433,24 @@
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
   </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="C:\OpenDA_MI\OpenDA_Source" />
+          <option name="myCopyRoot" value="C:\OpenDA_MI\OpenDA_Source" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="C:\OpenDA_MI\OpenDA_Source" />
+          <option name="myCopyRoot" value="C:\OpenDA_MI\OpenDA_Source" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b54af18e-8bdf-4886-ae42-f6950e6c33fc" name="Default" comment="" />
@@ -318,23 +460,23 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
+    <frame x="1" y="1" width="1278" height="758" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3782955" sideWeight="0.5194064" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38240132" sideWeight="0.67720467" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48059362" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32279533" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2801962" sideWeight="0.5194064" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28289473" sideWeight="0.67720467" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -365,7 +507,6 @@
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
-    <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
@@ -375,9 +516,11 @@
     <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <option name="CREATE_PATCH_EXPAND_DETAILS_DEFAULT" value="true" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
     <option name="LAST_COMMIT_MESSAGE" />
@@ -474,6 +617,27 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/resultwriters/NetcdfResultWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="31" selection-start="1066" selection-end="1084" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/noiseModels/MapsNoiseModelInstance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="67" selection-start="4017" selection-end="4017" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/resultwriters/NetcdfResultWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="31" selection-start="1066" selection-end="1084" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model_efdc/java/test/org/openda/model_efdc/EfdcRestartFileTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="22" selection-start="927" selection-end="927" vertical-scroll-proportion="0.0" />
@@ -494,16 +658,6 @@
         <state line="34" column="26" selection-start="1103" selection-end="1120" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/interfaces/IPrevExchangeItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="13" selection-start="3810" selection-end="3810" vertical-scroll-proportion="0.5269565" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dotnet_bridge/java/src/org/openda/dotnet/ModelInstanceN2J.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="890" selection-end="890" vertical-scroll-proportion="0.20695652" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model_efdc/java/test/org/openda/model_efdc/EfdcRestartFileTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="24" selection-start="1064" selection-end="1064" vertical-scroll-proportion="0.20695652" />
@@ -511,12 +665,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/resultwriters/NetcdfResultWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="31" selection-start="1066" selection-end="1084" vertical-scroll-proportion="0.0" />
+        <state line="33" column="31" selection-start="1066" selection-end="1084" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/noiseModels/MapsNoiseModelInstance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="67" selection-start="4017" selection-end="4017" vertical-scroll-proportion="0.4506024">
+        <state line="107" column="33" selection-start="4534" selection-end="4534" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/utils/Array.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="246" column="38" selection-start="7276" selection-end="7294" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/interfaces/IPrevExchangeItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="61" selection-start="3459" selection-end="3459" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dotnet_bridge/java/src/org/openda/dotnet/ExchangeItemN2J.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="18" selection-start="1166" selection-end="1166" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dotnet_bridge/java/src/org/openda/dotnet/ModelInstanceN2J.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="78" selection-start="2920" selection-end="2920" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/utils/TreeVector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="202" column="25" selection-start="6370" selection-end="6370" vertical-scroll-proportion="0.36887607">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/blackbox/wrapper/BBStochModelInstance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="625" column="47" selection-start="26147" selection-end="26147" vertical-scroll-proportion="0.11147541">
           <folding />
         </state>
       </provider>

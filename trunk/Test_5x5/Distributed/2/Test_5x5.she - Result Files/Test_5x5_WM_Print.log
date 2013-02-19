@@ -10,7 +10,7 @@
                           M I K E   S H E   W M   -   a   DHI   Product
                           =============================================
  
-       MIKE SHE version : 2013-Development
+       MIKE SHE version : 2012
 
 
 
@@ -57,10 +57,10 @@ UZ option:
    No. of SZ layers                       :     1
    No. of computational points in SZ      :    21
 
-   Grid size (m)                          :   100.00000
-   Model origin (lower left corner) (m)   :    0.0000000000000        0.0000000000000    
+   Grid size (m)                          :   100.000
+   Model origin (X,Y) (km)                :     0.000     0.000
    Map Projection                         : NON-UTM
-   Rotation (Counterclockwise, deg.)      :     0.0000000000000    
+   Rotation (Counterclockwise, deg.)      :     0.0000
 
 
 
@@ -87,8 +87,12 @@ Parallelization info
 --------------------
 Number of processors  : 4
 Max. number of threads: 4
-Number of threads allowed by actual license: Unlimited
-Setting number of threads for actual application to 4
+Number of threads allowed by actual license: Undefined!
+Setting number of threads for actual application to 1
+- Parallel code will not be utilized.
+
+WARNING: Undefined maximum number of threads (MaxNode_2).
+         Please contact DHI for an updated license file.
  
 
 Extra-parameter specified:
@@ -104,3 +108,46 @@ value = On
  
 
 Initializing SZ boundary data module ...
+
+
+Simulation ended after    8760.000     hrs ,                4380 time steps.
+ 
+
+No. of SZ time steps             :       365
+Average time step length         :  24.000   hrs.
+Total no. of iterations          :      1644
+- Average / step                 :      4.50
+- Max. iter exceeded in          :         0   steps.
+
+
+Groundwater Extraction Statistics
+=================================
+
+Total Extraction Volume
+- Specified (time series) :   55237.66     (m3)
+- applied to model        :   55237.66     (m3)
+- applied % of specified  :   100.0000     %
+
+
+List of extractions sorted by total specified volume (m3).
+
+Well,Filter  Specified<EXTRACTION>Applied         % Well ID
+--------------------------------------------------------------
+    1    1      55237.66       55237.66     100.0 % Well_LR
+
+    TOTAL:      55237.66       55237.66     100.00%
+
+ELAPSED TIME USAGE
+==================
+Function                                Elapsed seconds
+-------------------------------------------------------
+ Initialization phase                      0.2030000    
+ Simulation phase (includes others below)   61.15700    
+ SZ                                        0.2200000E-01
+ UZ + ET                                   0.5300000E-01
+ Met. input                                0.8870000    
+ Veg. input                                0.6000000E-02
+ Grid series output                        0.1160000    
+ Detailed TS output                        0.6100000E-01
+
+Normal termination.

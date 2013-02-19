@@ -284,7 +284,48 @@ namespace OpenDA.DotNet.OpenMI.Bridge
 
         public IVector[] GetObservedLocalization(IObservationDescriptions observationDescriptions, double distance)
 		{
-            throw new NotImplementedException();
+            if (_openMIComponent is ITimeSpaceComponentExtensions)
+            {
+                ITimeSpaceComponentExtensions extendedComponent = (ITimeSpaceComponentExtensions)_openMIComponent;
+                //Determine the number of observations (=number of columns)
+                int nObs = observationDescriptions.ObservationCount;
+                org.openda.utils.TreeVector[] retVectorsTree = new org.openda.utils.TreeVector[nObs];
+                for (int iObs = 0; iObs < nObs; iObs++)
+                {
+                    retVectorsTree[iObs] = new org.openda.utils.TreeVector("localizationMask");
+                }
+
+                // Loop over all active echangeItems
+                // Note interface of this method must be improved to fix and answer the question which echangeItems are inwhat order in the state vector
+                foreach (KeyValuePair<string, ExchangeItem> inout in _inout)
+                {
+                    string exchangeItemID = inout.Key;
+                    double[][] mask = extendedComponent.getLocalization(exchangeItemID, observationDescriptions, distance);
+                    if (mask != null)
+                    {
+                        for (int iObs = 0; iObs < nObs; iObs++)
+                        {
+                            org.openda.utils.Vector vec = new org.openda.utils.Vector(mask[iObs]);
+                            org.openda.utils.TreeVector subVec = new org.openda.utils.TreeVector(exchangeItemID, vec);
+                            retVectorsTree[iObs].addChild(subVec);
+                        }
+                    }
+                }
+                // Cast fancy treevectors to vectors
+                IVector[] retVectors = new IVector[nObs];
+                for (int iObs = 0; iObs < nObs; iObs++)
+                {
+                    double[] values = retVectorsTree[iObs].getValues();
+                    retVectors[iObs] = new OpenDA.DotNet.Bridge.Vector(values);
+                }
+                return retVectors;
+            }
+            else
+            {
+                throw new NotImplementedException();
+                return null;
+            }
+
         }
 
         public string ModelRunDirPath

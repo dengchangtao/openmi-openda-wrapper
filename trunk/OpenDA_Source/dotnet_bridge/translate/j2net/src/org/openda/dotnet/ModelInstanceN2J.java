@@ -79,7 +79,9 @@ public class ModelInstanceN2J implements org.openda.interfaces.IModelInstance
 								javaExchangeItem.getDescription(),
 								javaExchangeItem.getRole().ordinal(), 0d);
 				dotnetExchangeItem.set_Times(javaExchangeItem.getTimes());
-				dotnetExchangeItem.set_Values(javaExchangeItem.getValues());
+				System.out.println("debug1");
+				dotnetExchangeItem.set_Values(javaExchangeItem.getValuesAsDoubles());
+				System.out.println("debug2");
 				dotnetExchangeItems[i] = dotnetExchangeItem;
 			}
 			cli.OpenDA.DotNet.Interfaces.IObservationDescriptions dotNetObservationDescriptions =

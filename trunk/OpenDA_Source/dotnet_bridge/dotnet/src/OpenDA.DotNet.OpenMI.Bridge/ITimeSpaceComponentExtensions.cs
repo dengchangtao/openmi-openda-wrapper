@@ -51,6 +51,6 @@ namespace OpenDA.DotNet.OpenMI.Bridge
         /// <param name="observationDescriptions"></param>
         /// <param name="distance"></param>
         /// <returns></returns>
-        double[] getLocalization(string ExchangeItemID, OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions, double distance);
+        double [][] getLocalization(string ExchangeItemID, OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions, double distance);
     }
 }

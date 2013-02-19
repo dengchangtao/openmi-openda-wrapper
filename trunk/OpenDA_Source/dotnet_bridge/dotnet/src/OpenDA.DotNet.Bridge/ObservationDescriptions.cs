@@ -61,7 +61,7 @@ namespace OpenDA.DotNet.Bridge
 
 		public int ObservationCount
 		{
-			get { throw new NotImplementedException(); }
+            get { return _exchangeItems.Count; }
 		}
 
 		public ITime[] Times
