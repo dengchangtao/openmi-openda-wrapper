@@ -1,4 +1,4 @@
- MIKE SHE version : 2013-Development
+ MIKE SHE version : 2012
 
 
  Name of input file : c:\OpenDA_MI\Test_5x5\Distributed\3\Test_5x5.she
@@ -13,8 +13,7 @@
  - constant grid size :   100.0000    
  - no. computational points including catchment boundary :          21
  - no. internal points     (excluding catchment boundary):           9
- - Model origin (lower left corner) (m) :  0.000000000000000E+000
-  0.000000000000000E+000
+ - Model origin (X,Y) (km) :  0.000000000000000E+000  0.000000000000000E+000
  - Map Projection : NON-UTM
  - Rotation (Counterclockwise, deg.) :  0.000000000000000E+000
  Making Ground Levels...

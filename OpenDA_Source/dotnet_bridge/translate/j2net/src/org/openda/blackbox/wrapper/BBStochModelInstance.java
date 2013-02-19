@@ -622,6 +622,7 @@ public class BBStochModelInstance extends Instance implements IStochModelInstanc
 		IVector[] stochModelobservedLocalization = new IVector[modelObservedLocalization.length];
 		for (int i = 0; i < stochModelobservedLocalization.length; i++) {
 			double[] obsLocalizationValues = new double[startOfModelState + modelStateSize];
+			for (int j=0; j<startOfModelState; j++){obsLocalizationValues[j]=1.0;}
 			for (int j = 0; j < modelStateSize; j++) {
 				obsLocalizationValues[j + startOfModelState] =
 						modelObservedLocalization[i].getValue(j);

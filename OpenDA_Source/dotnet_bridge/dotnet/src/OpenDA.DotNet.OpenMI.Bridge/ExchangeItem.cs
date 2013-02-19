@@ -21,6 +21,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using OpenDA.DotNet.Interfaces;
 using OpenMI.Standard2;
 using OpenMI.Standard2.TimeSpace;
@@ -254,6 +255,30 @@ namespace OpenDA.DotNet.OpenMI.Bridge
         // Therefore needs to differentiate between the two by the number of axpyValues
         // being passed. This could be a cause of error if only one time step in the model
         // is run before an observation is available
+        public void AxpyOnValuesStef(double alpha, double[] axpyValues)
+        {
+            if (_openMIInputItem == null)
+            {
+                throw new Exception("\"" + Id + "SetValues: Values can not be set for output item");
+            }
+            IList timeSeriesValuesForElement = _openMIInputItem.Values.GetElementValuesForTime(0);
+            for (int index = 0; index < axpyValues.Length; index++)
+            {
+                timeSeriesValuesForElement[index] = (double)timeSeriesValuesForElement[index] + alpha * axpyValues[index];
+            }
+            _openMIInputItem.Values.SetElementValuesForTime(0, timeSeriesValuesForElement);
+
+            /* tijdelijk */
+            for (int i = 0; i < _Values.Length; i++)
+            {
+                _Values[i] += axpyValues[i] * alpha;
+            }
+        
+        
+        
+        }
+
+
         public void AxpyOnValues(double alpha, double[] axpyValues)
         {
             FillLocalValues();
