@@ -40,43 +40,9 @@ namespace MikeSheInOpenDA
         /// <returns></returns>
         public double[][] getLocalization(string exchangeItemId, OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions, double distance)
         {
-<<<<<<< .mine
           //  Console.WriteLine("\n ************** GET THE PROPER VALUES!!!!!!!!!!!!!!! ************** \n");
 
-=======
-            //Dirty hack!!
-            if (exchangeItemId.Equals("SZ horizontal conductivity (for DA-OpenMI)")){
-                return null;
-            } 
-            
-            
-            int nObs = observationDescriptions.ObservationCount;
-            double [][] retVecs = new double[nObs][];
-
-            // TODO TODO find size of the exhangeItem "exchangeItemId"
-            int nElmExchageItem=21;
-            
-            // Loop over all observations and determine mask
-            List<OpenDA.DotNet.Interfaces.IExchangeItem> exchangeItems = observationDescriptions.ExchangeItems;
-            for (int iObs = 0; iObs < nObs; iObs++)
-            {
-                // Do some stuff to get the Observation localization mask for observation iObs.
-                string ID = exchangeItems[iObs].Id;
-                // Creating mask for observation with ID....
-                retVecs[iObs] = new double[nElmExchageItem];
-                // Fill the masks
-                for (int i=0; i<nElmExchageItem; i++){
-                    retVecs[iObs][i]=0.77;  //Just some nice value to recognize :-)
-                }
-            }
-            return retVecs;
-
-
-            /*
-            Console.WriteLine("\n ************** GET THE PROPER VALUES!!!!!!!!!!!!!!! ************** \n");
->>>>>>> .r5
             IXYLayerPoint obsPoint = new XYLayerPoint(250.0, 250.0, 0);
-<<<<<<< .mine
             var msheE = base.WMEngine;
             
             if(msheE.SzGrid == null)
@@ -108,12 +74,6 @@ namespace MikeSheInOpenDA
             }
             return localized2D;
 
-=======
-            return null;
-            //return GaussianLocalization(_mshe, exchangeItemId, obsPoint, distance);
-            throw new NotImplementedException("figure out how to get the coordinates from the observation description.");
->>>>>>> .r5
-             */
         }
 
         #region PrivateMethods
