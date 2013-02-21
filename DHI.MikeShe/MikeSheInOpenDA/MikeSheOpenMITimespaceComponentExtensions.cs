@@ -40,6 +40,10 @@ namespace MikeSheInOpenDA
         /// <returns></returns>
         public double[][] getLocalization(string exchangeItemId, OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions, double distance)
         {
+<<<<<<< .mine
+          //  Console.WriteLine("\n ************** GET THE PROPER VALUES!!!!!!!!!!!!!!! ************** \n");
+
+=======
             //Dirty hack!!
             if (exchangeItemId.Equals("SZ horizontal conductivity (for DA-OpenMI)")){
                 return null;
@@ -70,10 +74,45 @@ namespace MikeSheInOpenDA
 
             /*
             Console.WriteLine("\n ************** GET THE PROPER VALUES!!!!!!!!!!!!!!! ************** \n");
+>>>>>>> .r5
             IXYLayerPoint obsPoint = new XYLayerPoint(250.0, 250.0, 0);
+<<<<<<< .mine
+            var msheE = base.WMEngine;
+            
+            if(msheE.SzGrid == null)
+            {
+                throw new NotImplementedException("Only 3d SZ for now");
+            }
+
+
+            int n = msheE.SzGrid.ElementCount;
+            //int n = base.WMEngine.UzGrid.BaseGrid.ElementCount;
+            
+            IDictionary<int, ISpatialDefine> modelCoord = ModelCoordinates(exchangeItemId);
+            double[][] localized2D = new double[observationDescriptions.ObservationCount][];
+
+            for (int obsC = 0; obsC < observationDescriptions.ObservationCount; obsC++)
+            {
+                localized2D[obsC] = new double[n];
+                if (XYZGeometryTools.IsPointInModelPlain(obsPoint, modelCoord))
+                {
+                    for (int i = 0; i < modelCoord.Count; i++)
+                    {
+                        if (Convert.ToInt32(obsPoint.Layer) == modelCoord[i].Layer)
+                        {
+                            double distanceC = XYZGeometryTools.CalculatePointToPointDistance2D(modelCoord[i].MidPoint, obsPoint);
+                            localized2D[obsC][i] = normalCooefs(distanceC, distance);
+                        }
+                    }
+                }
+            }
+            return localized2D;
+
+=======
             return null;
             //return GaussianLocalization(_mshe, exchangeItemId, obsPoint, distance);
             throw new NotImplementedException("figure out how to get the coordinates from the observation description.");
+>>>>>>> .r5
              */
         }
 
@@ -95,7 +134,7 @@ namespace MikeSheInOpenDA
 
             try
             {
-                elementIDNumber = _mshe.WMEngine.GetElementCount(elementID);
+                elementIDNumber = WMEngine.GetElementCount(elementID);
                 n = baseOut.ElementSet().ElementCount;
             }
             catch
@@ -109,7 +148,7 @@ namespace MikeSheInOpenDA
             for (int i = 0; i < n; i++)
             {
                 XYPolygon modelpolygon = ElementMapper.CreateXYPolygon(baseOut.ElementSet(), i);
-                int zLayer = Convert.ToInt32(i % _mshe.WMEngine.NumberOfSZLayers);
+                int zLayer = Convert.ToInt32(i % base.WMEngine.NumberOfSZLayers);
 
                 // Points in Polygon are defined as LL, LR, UR, UL  (l/l = lower/left, u = upper, r = right )
                 // Finds the mid x and mid y point in the polygon (assuming rectangular grid)
@@ -132,9 +171,11 @@ namespace MikeSheInOpenDA
         private IDictionary<int, ISpatialDefine> ModelCoordinates(string elementID)
         {
 
-            IBaseLinkableComponent linkableComponent = _mshe;
+            //IBaseLinkableComponent linkableComponent = _mshe;
+//            IBaseLinkableComponent linkableComponent = base.WMEngine as LinkableComponent;
 
-            IBaseOutput baseOut = linkableComponent.Outputs.First(vID => string.Compare(vID.Id, elementID) == 0);
+            IBaseOutput baseOut = base._outputExchangeItems.First(vID => string.Compare(vID.Id, elementID) == 0);
+
 
             char[] delimiterChars = { ',' };
             string[] words = baseOut.Description.Split(delimiterChars);
