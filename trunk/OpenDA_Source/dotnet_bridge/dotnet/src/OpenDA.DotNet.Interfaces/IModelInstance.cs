@@ -111,6 +111,15 @@ namespace OpenDA.DotNet.Interfaces
          */
         IVector[] GetObservedLocalization(IObservationDescriptions observationDescriptions, double distance);
 
+        /**
+         * Get the localization vector
+         * @param exchangeItemID, exchangeItemID for which we want the localization vector
+         * @param observationDescriptions observation description
+         * @param distance characteristic distance for Cohn's formula
+         * @return weight vector for each observation location.
+         */
+        IVector[] GetObservedLocalization(String exchageItemID, IObservationDescriptions observationDescriptions, double distance);
+
         /// <summary>
 		/// Get the directory where the instance runs
 		/// </summary>

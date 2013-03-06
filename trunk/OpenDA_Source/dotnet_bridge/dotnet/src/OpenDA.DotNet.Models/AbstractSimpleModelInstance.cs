@@ -458,6 +458,13 @@ namespace OpenDA.DotNet.Models
 			return result;
 		}
 
+
+        public IVector[] GetObservedLocalization(String exchageItemID, IObservationDescriptions observationDescriptions, double distance)
+        {
+            return null;
+        }
+
+
 		public IVector[] GetObservedLocalization(IObservationDescriptions observationDescriptions, double distance)
 		{
 			/* Return identity localization */

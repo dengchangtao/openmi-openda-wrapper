@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * Java wrapper around .net class for a Model Instance
  */
-public class ModelInstanceN2J implements org.openda.interfaces.IModelInstance
+public class ModelInstanceN2J implements org.openda.interfaces.IModelInstance, IModelExtensions
 	{
 		protected cli.OpenDA.DotNet.Interfaces.IModelInstance _dotNetModelInstance;
 
@@ -66,6 +66,34 @@ public class ModelInstanceN2J implements org.openda.interfaces.IModelInstance
 		public void compute(org.openda.interfaces.ITime targetTime)
 		{
 			_dotNetModelInstance.Compute(new cli.OpenDA.DotNet.Bridge.Time(targetTime.getMJD()));
+		}
+
+		public IVector[] getObservedLocalization(String exchageItemID, IObservationDescriptions observationDescriptions, double distance) {
+
+			List<IPrevExchangeItem> javaExchangeItems = observationDescriptions.getExchangeItems();
+			cli.OpenDA.DotNet.Interfaces.IExchangeItem[] dotnetExchangeItems =
+					new cli.OpenDA.DotNet.Interfaces.IExchangeItem[javaExchangeItems.size()];
+			for (int i = 0; i < javaExchangeItems.size(); i++) {
+				IPrevExchangeItem javaExchangeItem = javaExchangeItems.get(i);
+				cli.OpenDA.DotNet.Interfaces.IExchangeItem dotnetExchangeItem =
+						new DoublesExchangeItem(javaExchangeItem.getId(),
+								javaExchangeItem.getDescription(),
+								javaExchangeItem.getRole().ordinal(), 0d);
+				dotnetExchangeItem.set_Times(javaExchangeItem.getTimes());
+				System.out.println("debug1");
+				dotnetExchangeItem.set_Values(javaExchangeItem.getValuesAsDoubles());
+				System.out.println("debug2");
+				dotnetExchangeItems[i] = dotnetExchangeItem;
+			}
+			cli.OpenDA.DotNet.Interfaces.IObservationDescriptions dotNetObservationDescriptions =
+					new ObservationDescriptions(dotnetExchangeItems);
+			cli.OpenDA.DotNet.Interfaces.IVector[] dotNetVectors =
+					_dotNetModelInstance.GetObservedLocalization(exchageItemID, dotNetObservationDescriptions, distance);
+			IVector[] javaVectors = new IVector[dotNetVectors.length];
+			for (int i = 0; i < dotNetVectors.length; i++) {
+				javaVectors[i] = new Vector(dotNetVectors[i].get_Values());
+			}
+			return javaVectors;
 		}
 
         public IVector[] getObservedLocalization(IObservationDescriptions observationDescriptions, double distance) {

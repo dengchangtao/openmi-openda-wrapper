@@ -212,6 +212,7 @@ public class EnKF extends AbstractSequentialEnsembleAlgorithm {
 			// Get the localization correlation matrix for the ensemble
 		    IVector[] rho = this.ensemble[0].getObservedLocalization(obs.getObservationDescriptions(), distance);
 		    for(int i=0; i<rho.length; i++){
+			   System.out.println("Localization ="+rho[i].toString());
 			   Kvecs[i].pointwiseMultiply(rho[i]);
 			}
 			timerLocalization.stop();

@@ -152,6 +152,7 @@ public class BBStochModelInstance extends Instance implements IStochModelInstanc
 		return model.getExchangeItem(exchangeItemID);
 	}
 
+
 	public ITreeVector getState() {
 
 		if ( timerGetState == null){
@@ -615,7 +616,78 @@ public class BBStochModelInstance extends Instance implements IStochModelInstanc
 		return treeVector;
 	}
 
+
+	private IVector[] getObservedLocalizationExtended(IObservationDescriptions observationDescriptions, double distance){
+
+            int nObs=observationDescriptions.getObservationCount();
+		    TreeVector localizationVectors[] = new TreeVector[nObs];
+		    for (int iObs=0; iObs<nObs; iObs++){
+				localizationVectors[iObs] = new TreeVector("state", "State From Black Box Stoch Model Instance");
+			}
+
+
+			Collection<BBNoiseModelConfig> noiseModelConfigs =
+					this.bbStochModelVectorsConfig.getStateConfig().getNoiseModelConfigs();
+			Collection<BBUncertOrArmaNoiseConfig> uncertaintyOrArmaNoiseConfigs =
+					this.bbStochModelVectorsConfig.getStateConfig().getUncertaintyOrArmaNoiseConfigs();
+
+			stateNoiseModelsEndIndices = new int[noiseModelConfigs.size()+uncertaintyOrArmaNoiseConfigs.size()];
+
+			// add external noise model variables to state
+		    int iNoise = 0;
+			for (BBNoiseModelConfig noiseModelConfig : noiseModelConfigs) {
+				IStochModelInstance noiseModel = noiseModels.get(noiseModelConfig);
+				IVector noiseModelState = noiseModel.getState();
+				noiseModelState.setConstant(1.0);
+
+				for (int iObs=0; iObs<nObs; iObs++){
+
+					//add this part to state
+					if(noiseModelState instanceof ITreeVector){
+						localizationVectors[iObs].addChild((ITreeVector)noiseModelState.clone());
+					}else{
+						String id = "noise_part_"+iNoise;
+						ITreeVector tv = new TreeVector(id, noiseModelState);
+						localizationVectors[iObs].addChild(tv);
+					}
+				}
+				iNoise++;
+			}
+
+			// add blackbox internal noise model contributions to the state vector
+			ITime currentTime = getCurrentTime();
+			for (BBUncertOrArmaNoiseConfig noiseModelStateNoiseConfig : uncertaintyOrArmaNoiseConfigs) {
+				ArmaNoiseModel noiseModel = armaNoiseModels.get(noiseModelStateNoiseConfig);
+				if (noiseModelStateNoiseConfig.getNoiseModelType() !=
+						BBUncertOrArmaNoiseConfig.NoiseModelType.UncertainItem) {
+					double[] noiseStateVector = noiseModel.getNoiseStateVector(currentTime);
+					for (int iElt=0; iElt<noiseStateVector.length; iElt++){ noiseStateVector[iElt]=1.0;}
+					for (int iObs=0; iObs<nObs; iObs++){
+						localizationVectors[iObs].addChild(noiseModelStateNoiseConfig.getId(), noiseStateVector);
+					}
+				}
+			}
+
+			// add deterministic mode variables to state vector
+			Collection<BBStochModelVectorConfig> vectorCollection =
+					this.bbStochModelVectorsConfig.getStateConfig().getVectorCollection();
+
+			stateVectorsEndIndices = new int[vectorCollection.size()];
+			for (BBStochModelVectorConfig vectorConfig : vectorCollection) {
+				IModelExtensions modelExtended = (IModelExtensions) model;
+				IVector[] localizationVectorsModel= modelExtended.getObservedLocalization(vectorConfig.getId(),observationDescriptions,distance);
+				for (int iObs=0; iObs<nObs; iObs++){
+					localizationVectors[iObs].addChild(vectorConfig.getId(), localizationVectorsModel[iObs].getValues());
+				}
+			}
+			return localizationVectors;
+	}
+
 	public IVector[] getObservedLocalization(IObservationDescriptions observationDescriptions, double distance) {
+		if (model instanceof IModelExtensions){
+			System.out.println("I implement the extend interface!");
+            return getObservedLocalizationExtended(observationDescriptions, distance);
+		}
 		int startOfModelState = stateNoiseModelsEndIndices[stateNoiseModelsEndIndices.length - 1];
 		IVector[] modelObservedLocalization = model.getObservedLocalization(observationDescriptions, distance);
 		int modelStateSize = modelObservedLocalization[0].getSize();

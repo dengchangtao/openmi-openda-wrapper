@@ -90,6 +90,11 @@ namespace OpenDA.DotNet.SDK
 			throw new NotImplementedException();
         }
 
+        public IVector[] GetObservedLocalization(String exchageItemID, IObservationDescriptions observationDescriptions, double distance)
+        {
+            throw new NotImplementedException();
+        }
+
         public string ModelRunDirPath
 		{
 			get { throw new NotImplementedException(); }

@@ -2,7 +2,7 @@
  =================================================================================================================================
  
  
-15:59:07 : INITIALIZATION PHASE
+15:55:19 : INITIALIZATION PHASE
 ===============================
 
 Opening files...
@@ -266,14 +266,14 @@ WARNING: Floating point control word reset to "0001001101110010" from "000000100
  
  
  
-15:59:08 : Start of simulation from 1973/01/01,00:00
+15:55:20 : Start of simulation from 1973/01/01,00:00
 ====================================================
 
 - further initializations...
 - Two-Layer UZ
  
 WARNING: Floating point control word reset to "0001001101110010" from "0000001001111111" (check: GetTSValueR4Avg)
-15:59:08 => 1973/01/01,04:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 0, avg: 0.0
+15:55:20 => 1973/01/01,04:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 0, avg: 0.0
  
 WARNING: Floating point control word reset to "0001001101110010" from "0000001001111111" (check: GetTSValueR4Avg)
  
@@ -281,13 +281,5 @@ WARNING: Floating point control word reset to "0001001101110010" from "000000100
  
 WARNING: Floating point control word reset to "0001001101110010" from "0000001001111111" (check: GetTSValueR4Avg)
          (no more FP control word warnings will be printed)
-15:59:52 => 1973/02/20,02:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 2, avg: 2.2
-15:59:54 => 1973/04/16,02:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 5, avg: 3.6
-15:59:56 => 1973/06/10,02:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 5, avg: 4.2
-15:59:58 => 1973/08/09,02:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 5, avg: 4.3
-16:00:01 => 1973/10/08,02:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 4, avg: 4.2
-16:00:03 => 1973/12/07,02:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 6, avg: 4.5
-16:00:03 => 1974/01/01,00:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 4, avg: 4.5
- 
-Termination...
-16:00:03 : WM Simulation succeeded
+15:55:26 => 1973/02/20,02:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 2, avg: 2.2
+15:55:28 => 1973/03/02,02:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 3, avg: 2.3
