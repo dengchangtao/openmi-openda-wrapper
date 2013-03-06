@@ -282,8 +282,36 @@ namespace OpenDA.DotNet.OpenMI.Bridge
 			throw new NotImplementedException();
 		}
 
+        public IVector[] GetObservedLocalization(String exchangeItemID, IObservationDescriptions observationDescriptions, double distance)
+        {
+            if (_openMIComponent is ITimeSpaceComponentExtensions)
+            {
+                int nObs = observationDescriptions.ObservationCount;
+                IVector[] retVectors = new IVector[nObs];
+
+                ITimeSpaceComponentExtensions extendedComponent = (ITimeSpaceComponentExtensions)_openMIComponent;
+                double[][] mask = extendedComponent.getLocalization(exchangeItemID, observationDescriptions, distance);
+                if (mask != null)
+                {
+                    for (int iObs = 0; iObs < nObs; iObs++)
+                    {
+                        retVectors[iObs] = new OpenDA.DotNet.Bridge.Vector(mask[iObs]);
+                    }                    
+                }
+                return retVectors;
+            }
+            else
+            {
+                throw new NotImplementedException();
+                return null;
+            }
+        }
+
         public IVector[] GetObservedLocalization(IObservationDescriptions observationDescriptions, double distance)
 		{
+            throw new NotImplementedException();
+
+            //NOTE OLD STUFF
             if (_openMIComponent is ITimeSpaceComponentExtensions)
             {
                 ITimeSpaceComponentExtensions extendedComponent = (ITimeSpaceComponentExtensions)_openMIComponent;
