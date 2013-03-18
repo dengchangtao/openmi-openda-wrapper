@@ -2,7 +2,7 @@
 % NoosStochObserver[i]=TimeSeries(
 %   Location = CenterPoint
 %   Position = (250.0,250.0)
-%   Height   = NaN
+%   Height   = 123.0
 %   Quantity = Head
 %   Unit     = m
 %   Source   = 

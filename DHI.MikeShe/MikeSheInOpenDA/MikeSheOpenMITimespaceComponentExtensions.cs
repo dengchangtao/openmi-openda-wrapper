@@ -36,6 +36,7 @@ namespace MikeSheInOpenDA
             String[] quantity = observationDescriptions.GetStringProperties("quantity");
             double[] xpos = observationDescriptions.GetValueProperties("xposition").Values;
             double[] ypos = observationDescriptions.GetValueProperties("yposition").Values;
+            double[] height = observationDescriptions.GetValueProperties("height").Values;
             int nObs = quantity.Length;
 
 
@@ -83,6 +84,7 @@ namespace MikeSheInOpenDA
             String[] quantity = observationDescriptions.GetStringProperties("quantity");
             double[] xpos = observationDescriptions.GetValueProperties("xposition").Values;
             double[] ypos = observationDescriptions.GetValueProperties("yposition").Values;
+            double[] height = observationDescriptions.GetValueProperties("height").Values;
 
             var msheE = base.WMEngine;
             if (msheE.SzGrid == null) throw new NotImplementedException("Only 3d SZ for now");

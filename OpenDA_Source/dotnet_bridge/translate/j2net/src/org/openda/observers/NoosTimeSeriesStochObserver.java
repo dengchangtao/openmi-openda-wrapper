@@ -191,7 +191,7 @@ public class NoosTimeSeriesStochObserver extends TimeSeriesStochObserver {
 					keyword = "height";
 					doubleValue = Double.NaN;
 					doubleValue = seriesTrees[i].getAsDouble("@"+keyword, doubleValue);
-					if(doubleValue==Double.NaN){
+					if(Double.isNaN(doubleValue)){
 						doubleValue=tempSeries.getHeight();
 					}
 					//System.out.println(""+keyword+"="+doubleValue);

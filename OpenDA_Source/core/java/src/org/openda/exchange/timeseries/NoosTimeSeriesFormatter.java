@@ -69,6 +69,7 @@ public final class NoosTimeSeriesFormatter extends TimeSeriesFormatter {
       String location = ""; // Location : den helder
       double x = 0.0; // Position : (4.745356,52.966001)
       double y = 0.0;
+	  double heigth = Double.NaN;
       String source = ""; // Source : observed
       String quantity = ""; // Unit : waterlevel_astro !!! Note different label
       String analTime = ""; // Analyse time: most recent
@@ -101,6 +102,7 @@ public final class NoosTimeSeriesFormatter extends TimeSeriesFormatter {
                if (separatorIndex >= 0) {
                   // # Location : den helder
                   // # Position : (4.745356,52.966001)
+				  // # Height   : 10.0
                   // # Source : observed
                   // # Unit : waterlevel_astro
                   // # Analyse time: most recent
@@ -112,6 +114,14 @@ public final class NoosTimeSeriesFormatter extends TimeSeriesFormatter {
                   if (property.equalsIgnoreCase("Location")) {
                      location = value;
                   }
+				  if (property.equalsIgnoreCase("Height")){
+					  try {
+						  heigth = Double.parseDouble(value);
+					  }
+					  catch (Exception e) {
+						  heigth = Double.NaN;
+					  }
+				  }
                   if (property.equalsIgnoreCase("Position")) {
                      int posComma = value.indexOf(",");
                      try {
@@ -218,6 +228,7 @@ public final class NoosTimeSeriesFormatter extends TimeSeriesFormatter {
       }
       result.setLocation(location);
       result.setPosition(x, y);
+	  result.setHeight(heigth);
       result.setQuantity(quantity);
       result.setSource(source);
       result.setProperty(PROPERTY_ANALTIME, analTime);
