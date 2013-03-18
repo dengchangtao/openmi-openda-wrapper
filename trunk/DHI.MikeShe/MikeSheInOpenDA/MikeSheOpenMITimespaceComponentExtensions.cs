@@ -40,26 +40,23 @@ namespace MikeSheInOpenDA
         /// <returns></returns>
         public double[][] getLocalization(string exchangeItemId, OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions, double distance)
         {
-          //  Console.WriteLine("\n ************** GET THE PROPER VALUES!!!!!!!!!!!!!!! ************** \n");
+            //Get the Keys from the observer
+            String[] keys = observationDescriptions.PropertyKeys;
+            String[] quantity = observationDescriptions.GetStringProperties("quantity");
+            double[] xpos = observationDescriptions.GetValueProperties("xposition").Values;
+            double[] ypos = observationDescriptions.GetValueProperties("yposition").Values;
 
-            IXYLayerPoint obsPoint = new XYLayerPoint(250.0, 250.0, 0);
             var msheE = base.WMEngine;
-            
-            if(msheE.SzGrid == null)
-            {
-                throw new NotImplementedException("Only 3d SZ for now");
-            }
-
-
+            if (msheE.SzGrid == null) throw new NotImplementedException("Only 3d SZ for now");
             int n = msheE.SzGrid.ElementCount;
-            //int n = base.WMEngine.UzGrid.BaseGrid.ElementCount;
-            
+
             IDictionary<int, ISpatialDefine> modelCoord = ModelCoordinates(exchangeItemId);
             double[][] localized2D = new double[observationDescriptions.ObservationCount][];
 
             for (int obsC = 0; obsC < observationDescriptions.ObservationCount; obsC++)
             {
                 localized2D[obsC] = new double[n];
+                IXYLayerPoint obsPoint = new XYLayerPoint(xpos[obsC], ypos[obsC], 0);
                 if (XYZGeometryTools.IsPointInModelPlain(obsPoint, modelCoord))
                 {
                     for (int i = 0; i < modelCoord.Count; i++)
@@ -73,7 +70,6 @@ namespace MikeSheInOpenDA
                 }
             }
             return localized2D;
-
         }
 
         #region PrivateMethods

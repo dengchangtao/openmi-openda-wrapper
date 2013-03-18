@@ -28,11 +28,38 @@ namespace OpenDA.DotNet.Bridge
 	public class ObservationDescriptions : IObservationDescriptions
 	{
 		private readonly List<IExchangeItem> _exchangeItems;
+        private readonly String[] _keys;
+        private readonly IDictionary<String, String[]> _values;
+        private readonly int _nKeys=0;
+        private readonly int _nObs=0;
 
 		public ObservationDescriptions(IExchangeItem[] exchangeItems)
 		{
 			_exchangeItems = new List<IExchangeItem>(exchangeItems);
+            _nObs = _exchangeItems.Count;
 		}
+
+        public ObservationDescriptions(IExchangeItem[] exchangeItems, String [] keys, String[][] values) : this(exchangeItems)
+        {
+            // Deterimine the number of Keys and nObs
+            if (keys!=null ){_nKeys = keys.Length;}
+            if (values!=null && values[0] !=null){
+                if (_nObs > 0 && values[0].Length != _nObs)
+                {
+                    throw new Exception("Number of exchangeItems (" + _nObs + ") does not correspond to number of values (" + values[0].Length + ")");
+                }
+                _nObs = values[0].Length;
+            }
+ 
+            // Only when we have things to store
+            if (_nKeys > 0 && _nObs > 0){
+                _keys = keys;
+                _values = new Dictionary<String, String[]>();
+                for (int iKey=0; iKey<_nKeys; iKey++){
+                     _values.Add(keys[iKey],values[iKey]);
+                }
+            }
+        }
 
 		public List<IExchangeItem> ExchangeItems
 		{
@@ -41,27 +68,34 @@ namespace OpenDA.DotNet.Bridge
 
 		public IVector GetValueProperties(string key)
 		{
-			throw new NotImplementedException();
+            double[] values=new double[_nObs];
+            string[] valueAsString=_values[key];
+            for (int iObs=0; iObs<_nObs; iObs++){
+                values[iObs] = Convert.ToDouble(valueAsString[iObs], System.Globalization.CultureInfo.InvariantCulture);
+            }
+            return new Vector(values);
 		}
 
 		public string[] GetStringProperties(string key)
 		{
-			throw new NotImplementedException();
+			return _values[key];
 		}
 
 		public string[] PropertyKeys
 		{
-			get { throw new NotImplementedException(); }
+            get {
+                return _keys;
+            }
 		}
 
 		public int PropertyCount
 		{
-			get { throw new NotImplementedException(); }
+            get { return _nKeys; }
 		}
 
 		public int ObservationCount
 		{
-            get { return _exchangeItems.Count; }
+            get { return _nObs; }
 		}
 
 		public ITime[] Times
