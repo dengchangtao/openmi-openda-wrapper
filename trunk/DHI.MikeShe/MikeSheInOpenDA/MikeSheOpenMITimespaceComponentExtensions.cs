@@ -30,6 +30,44 @@ namespace MikeSheInOpenDA
             return additional;
         }
 
+        public double[] getObservedValues(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions)
+        {
+            String[] keys = observationDescriptions.PropertyKeys;
+            String[] quantity = observationDescriptions.GetStringProperties("quantity");
+            double[] xpos = observationDescriptions.GetValueProperties("xposition").Values;
+            double[] ypos = observationDescriptions.GetValueProperties("yposition").Values;
+            int nObs = quantity.Length;
+
+
+            var msheE = base.WMEngine;
+            if (msheE.SzGrid == null) throw new NotImplementedException("Only 3d SZ for now");
+            int n = msheE.SzGrid.ElementCount;
+
+            double[] Hx = new double[nObs];
+            for (int obsC = 0; obsC < nObs; obsC++)
+            {
+                // Set exchangeItem that corresponds to EntityID (no conversion yet)
+                String exchangeItemId;
+                if (quantity[obsC].Equals("Head", StringComparison.OrdinalIgnoreCase))
+                {
+                    exchangeItemId = "head elevation in saturated zone";
+                }
+                else
+                {
+                    throw new Exception("Cannot (yet) handle obversvations of quantity (" + quantity[obsC] + ")");
+                }
+
+                IDictionary<int, ISpatialDefine> modelCoord = ModelCoordinates(exchangeItemId);
+                IXYLayerPoint obsPoint = new XYLayerPoint(xpos[obsC], ypos[obsC], 0);
+                if (XYZGeometryTools.IsPointInModelPlain(obsPoint, modelCoord))
+                {
+                    //TODO FOR MARC
+                    //Hx[iObs]=........
+                }
+            }
+            return Hx;
+        }
+
 
         /// <summary>
         /// OpenMI does not know about localization. In this method, the user can implement localization for OpenMI models in this method

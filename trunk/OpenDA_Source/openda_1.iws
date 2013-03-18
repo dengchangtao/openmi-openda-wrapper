@@ -4,22 +4,21 @@
     <list default="true" readonly="true" id="b54af18e-8bdf-4886-ae42-f6950e6c33fc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/java/resources/OpenDA.DotNet.Bridge.jar" afterPath="$PROJECT_DIR$/dotnet_bridge/java/resources/OpenDA.DotNet.Bridge.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/java/resources/OpenDA.DotNet.Interfaces.jar" afterPath="$PROJECT_DIR$/dotnet_bridge/java/resources/OpenDA.DotNet.Interfaces.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/dotnet/OpenDA.DotNet_OpenMI_vs2010.suo" afterPath="$PROJECT_DIR$/dotnet_bridge/dotnet/OpenDA.DotNet_OpenMI_vs2010.suo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/native/vs2010/OpenDANativeAll.suo" afterPath="$PROJECT_DIR$/core/native/vs2010/OpenDANativeAll.suo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/java/src/org/openda/blackbox/wrapper/BBStochModelInstance.java" afterPath="$PROJECT_DIR$/core/java/src/org/openda/blackbox/wrapper/BBStochModelInstance.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/java/src/org/openda/interfaces/IModelExtensions.java" afterPath="$PROJECT_DIR$/core/java/src/org/openda/interfaces/IModelExtensions.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/java/src/org/openda/dotnet/ModelInstanceN2J.java" afterPath="$PROJECT_DIR$/dotnet_bridge/java/src/org/openda/dotnet/ModelInstanceN2J.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dotnet_bridge/dotnet/src/OpenDA.DotNet.Bridge/ObservationDescriptions.cs" afterPath="$PROJECT_DIR$/dotnet_bridge/dotnet/src/OpenDA.DotNet.Bridge/ObservationDescriptions.cs" />
     </list>
     <ignored path="openda_1.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/EnKF_test1.oda" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1358508724603" ignored="false" />
-    <file path="/ModelInstanceN2J.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1363609657211" ignored="false" />
-    <file path="/BBStochModelInstance.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1362577618488" ignored="false" />
+    <file path="/ModelInstanceN2J.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1363615217095" ignored="false" />
+    <file path="/BBStochModelInstance.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1363618958465" ignored="false" />
     <file path="/IModelInstance.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1362569328809" ignored="false" />
     <file path="/BBModelInstance.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1362568763556" ignored="false" />
     <file path="/ParameterDrawer.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1362569094536" ignored="false" />
     <file path="/IStochModelInstance.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1362571383222" ignored="false" />
     <file path="/fragment.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1362571626977" ignored="false" />
-    <file path="/IModelExtensions.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1362573313052" ignored="false" />
+    <file path="/IModelExtensions.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1363615036855" ignored="false" />
     <file path="/EnKF.java" changelist="b54af18e-8bdf-4886-ae42-f6950e6c33fc" time="1362581017346" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +34,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -70,6 +68,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -88,24 +87,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModelInstanceN2J.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ModelInstanceN2J.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dotnet_bridge/java/src/org/openda/dotnet/ModelInstanceN2J.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="26" selection-start="3721" selection-end="3721" vertical-scroll-proportion="1.0167464">
-              <folding />
+            <state line="139" column="40" selection-start="5517" selection-end="5534" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#9412#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <marker date="1363616212043" expanded="true" signature="5585:7273" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BBStochModelInstance.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="BBStochModelInstance.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/blackbox/wrapper/BBStochModelInstance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="691" column="99" selection-start="28835" selection-end="28858" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#50075#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-                <element signature="e#46022#46030#0" expanded="true" />
-              </folding>
+            <state line="563" column="26" selection-start="22896" selection-end="22896" vertical-scroll-proportion="0.9039409">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -122,7 +121,7 @@
       <file leaf-file-name="IModelExtensions.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/interfaces/IModelExtensions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="35" selection-start="1012" selection-end="1012" vertical-scroll-proportion="0.0">
+            <state line="45" column="53" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -167,7 +166,7 @@
       <file leaf-file-name="IStochModelInstance.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/interfaces/IStochModelInstance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="42" selection-start="1162" selection-end="1162" vertical-scroll-proportion="0.0">
+            <state line="148" column="101" selection-start="5110" selection-end="5110" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -188,10 +187,10 @@
         <option value="$PROJECT_DIR$/core/java/src/org/openda/interfaces/IStochModelInstance.java" />
         <option value="$PROJECT_DIR$/core/java/src/org/openda/interfaces/IModelInstance.java" />
         <option value="$PROJECT_DIR$/core/java/src/org/openda/blackbox/wrapper/BBModelInstance.java" />
-        <option value="$PROJECT_DIR$/core/java/src/org/openda/interfaces/IModelExtensions.java" />
         <option value="$PROJECT_DIR$/algorithms/java/src/org/openda/algorithms/kalmanFilter/EnKF.java" />
-        <option value="$PROJECT_DIR$/core/java/src/org/openda/blackbox/wrapper/BBStochModelInstance.java" />
+        <option value="$PROJECT_DIR$/core/java/src/org/openda/interfaces/IModelExtensions.java" />
         <option value="$PROJECT_DIR$/dotnet_bridge/java/src/org/openda/dotnet/ModelInstanceN2J.java" />
+        <option value="$PROJECT_DIR$/core/java/src/org/openda/blackbox/wrapper/BBStochModelInstance.java" />
       </list>
     </option>
   </component>
@@ -227,6 +226,10 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane />
+      </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -237,69 +240,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openda_1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openda_1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openda_1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dotnet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openda_1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="openda_1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -324,19 +264,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -364,6 +291,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -475,7 +415,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27854857" sideWeight="0.53170186" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27854857" sideWeight="0.53170186" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -683,20 +623,6 @@
         <state line="327" column="0" selection-start="14445" selection-end="14445" vertical-scroll-proportion="0.3514151" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/interfaces/IStochModelInstance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="42" selection-start="1162" selection-end="1162" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/interfaces/IModelExtensions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="35" selection-start="1012" selection-end="1012" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/algorithms/java/src/org/openda/algorithms/kalmanFilter/EnKF.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="212" column="35" selection-start="7883" selection-end="7883" vertical-scroll-proportion="0.0">
@@ -704,20 +630,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/blackbox/wrapper/BBStochModelInstance.java">
+    <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/interfaces/IModelExtensions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="691" column="99" selection-start="28835" selection-end="28858" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#50075#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#46022#46030#0" expanded="true" />
-          </folding>
+        <state line="45" column="53" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/interfaces/IStochModelInstance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="148" column="101" selection-start="5110" selection-end="5110" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dotnet_bridge/java/src/org/openda/dotnet/ModelInstanceN2J.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="26" selection-start="3721" selection-end="3721" vertical-scroll-proportion="1.0167464">
+        <state line="139" column="40" selection-start="5517" selection-end="5534" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#9412#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <marker date="1363616212043" expanded="true" signature="5585:7273" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/java/src/org/openda/blackbox/wrapper/BBStochModelInstance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="563" column="26" selection-start="22896" selection-end="22896" vertical-scroll-proportion="0.9039409">
           <folding />
         </state>
       </provider>

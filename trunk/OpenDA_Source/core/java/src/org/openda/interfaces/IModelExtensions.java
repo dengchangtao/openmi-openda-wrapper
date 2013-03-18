@@ -35,4 +35,11 @@ public interface IModelExtensions {
 	 * @return weight vector for each observation location.
 	 */
 	public IVector[] getObservedLocalization(String exchangeItemID, IObservationDescriptions observationDescriptions, double distance);
+
+	/**
+	 * Get the observed values of the Model.
+	 * @param observationDescriptions observation description
+	 * @return Model prediction interpolated to each observation (location).
+	 */
+	public IVector getObservedValues(IObservationDescriptions observationDescriptions);
 }
