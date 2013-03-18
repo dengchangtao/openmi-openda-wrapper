@@ -2,7 +2,7 @@
  =================================================================================================================================
  
  
-16:21:02 : INITIALIZATION PHASE
+17:10:55 : INITIALIZATION PHASE
 ===============================
 
 Opening files...
@@ -266,14 +266,14 @@ WARNING: Floating point control word reset to "0001001101110010" from "000000100
  
  
  
-16:21:03 : Start of simulation from 1973/01/01,00:00
+17:10:56 : Start of simulation from 1973/01/01,00:00
 ====================================================
 
 - further initializations...
 - Two-Layer UZ
  
 WARNING: Floating point control word reset to "0001001101110010" from "0000001001111111" (check: GetTSValueR4Avg)
-16:21:03 => 1973/01/01,04:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 0, avg: 0.0
+17:10:56 => 1973/01/01,04:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 0, avg: 0.0
  
 WARNING: Floating point control word reset to "0001001101110010" from "0000001001111111" (check: GetTSValueR4Avg)
  
