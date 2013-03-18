@@ -282,6 +282,18 @@ namespace OpenDA.DotNet.OpenMI.Bridge
 			throw new NotImplementedException();
 		}
 
+
+        public IVector GetObservedValues(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions)
+        {
+            if (_openMIComponent is ITimeSpaceComponentExtensions)
+            {
+                ITimeSpaceComponentExtensions extendedComponent = (ITimeSpaceComponentExtensions)_openMIComponent;
+                double[] obs = extendedComponent.getObservedValues(observationDescriptions);
+            }
+            return null;
+        }
+
+
         public IVector[] GetObservedLocalization(String exchangeItemID, IObservationDescriptions observationDescriptions, double distance)
         {
             if (_openMIComponent is ITimeSpaceComponentExtensions)

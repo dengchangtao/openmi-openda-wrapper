@@ -122,9 +122,7 @@ public class ModelInstanceN2J implements org.openda.interfaces.IModelInstance, I
 								javaExchangeItem.getDescription(),
 								javaExchangeItem.getRole().ordinal(), 0d);
 				dotnetExchangeItem.set_Times(javaExchangeItem.getTimes());
-				System.out.println("debug1");
 				dotnetExchangeItem.set_Values(javaExchangeItem.getValuesAsDoubles());
-				System.out.println("debug2");
 				dotnetExchangeItems[i] = dotnetExchangeItem;
 			}
 			cli.OpenDA.DotNet.Interfaces.IObservationDescriptions dotNetObservationDescriptions =
@@ -137,6 +135,45 @@ public class ModelInstanceN2J implements org.openda.interfaces.IModelInstance, I
 			}
 			return javaVectors;
         }
+
+
+		public IVector getObservedValues(IObservationDescriptions observationDescriptions) {
+
+			List<IPrevExchangeItem> javaExchangeItems = observationDescriptions.getExchangeItems();
+			String [] keys =observationDescriptions.getPropertyKeys();
+			int nKeys=observationDescriptions.getPropertyCount();
+			int nObs =observationDescriptions.getObservationCount();
+
+
+			cli.OpenDA.DotNet.Interfaces.IExchangeItem[] dotnetExchangeItems =
+					new cli.OpenDA.DotNet.Interfaces.IExchangeItem[javaExchangeItems.size()];
+			for (int i = 0; i < javaExchangeItems.size(); i++) {
+				IPrevExchangeItem javaExchangeItem = javaExchangeItems.get(i);
+				cli.OpenDA.DotNet.Interfaces.IExchangeItem dotnetExchangeItem =
+						new DoublesExchangeItem(javaExchangeItem.getId(),
+								javaExchangeItem.getDescription(),
+								javaExchangeItem.getRole().ordinal(), 0d);
+				dotnetExchangeItem.set_Times(javaExchangeItem.getTimes());
+				dotnetExchangeItem.set_Values(javaExchangeItem.getValuesAsDoubles());
+				dotnetExchangeItems[i] = dotnetExchangeItem;
+			}
+			cli.OpenDA.DotNet.Interfaces.IObservationDescriptions dotNetObservationDescriptions;
+			if (nKeys>0 && nObs>0){
+				String[][] values = new String[nKeys][];
+				for (int iKey=0; iKey<keys.length; iKey++){
+					values[iKey] = observationDescriptions.getStringProperties(keys[iKey]);
+				}
+				dotNetObservationDescriptions = new ObservationDescriptions(dotnetExchangeItems,keys,values);
+			}
+			else {
+				dotNetObservationDescriptions = new ObservationDescriptions(dotnetExchangeItems);
+			}
+			// Call method
+			cli.OpenDA.DotNet.Interfaces.IVector dotNetVector =
+					_dotNetModelInstance.GetObservedValues(dotNetObservationDescriptions);
+			IVector javaVector = new Vector(dotNetVector.get_Values());
+			return javaVector;
+		}
 
         public String[] getExchangeItemIDs()
 		{

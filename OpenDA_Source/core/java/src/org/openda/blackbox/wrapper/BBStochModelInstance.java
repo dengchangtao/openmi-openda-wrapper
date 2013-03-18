@@ -551,7 +551,25 @@ public class BBStochModelInstance extends Instance implements IStochModelInstanc
 		}
 	}
 
-	public IVector getObservedValues(IObservationDescriptions observationDescriptions) {
+
+	public IVector getObservedValues(IObservationDescriptions observationDescriptions){
+
+		if (model instanceof IModelExtensions){
+			IModelExtensions modelExtended = (IModelExtensions) model;
+			IVector retvals=modelExtended.getObservedValues(observationDescriptions);
+			if (retvals!=null){
+	           return retvals;
+			}
+			else {
+				return getObservedValuesBB(observationDescriptions);
+			}
+		}
+		else {
+			return getObservedValuesBB(observationDescriptions);
+		}
+	}
+
+	private IVector getObservedValuesBB(IObservationDescriptions observationDescriptions) {
 		if ( timerGetObs == null){
 			timerGetObs = new OdaTiming(ModelID);
 		}
@@ -685,7 +703,6 @@ public class BBStochModelInstance extends Instance implements IStochModelInstanc
 
 	public IVector[] getObservedLocalization(IObservationDescriptions observationDescriptions, double distance) {
 		if (model instanceof IModelExtensions){
-			System.out.println("I implement the extend interface!");
             return getObservedLocalizationExtended(observationDescriptions, distance);
 		}
 		int startOfModelState = stateNoiseModelsEndIndices[stateNoiseModelsEndIndices.length - 1];

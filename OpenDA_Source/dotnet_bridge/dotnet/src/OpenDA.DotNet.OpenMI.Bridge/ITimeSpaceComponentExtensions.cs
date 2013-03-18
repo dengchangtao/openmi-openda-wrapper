@@ -52,5 +52,12 @@ namespace OpenDA.DotNet.OpenMI.Bridge
         /// <param name="distance"></param>
         /// <returns></returns>
         double [][] getLocalization(string ExchangeItemID, OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions, double distance);
+
+        /// <summary>
+        /// OpenMI does not know about observations but the model does
+        /// </summary>
+        /// <param name="observationDescriptions"></param>
+        /// <returns>Model state interpolated to the observations</returns>
+        double[] getObservedValues(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions);    
     }
 }

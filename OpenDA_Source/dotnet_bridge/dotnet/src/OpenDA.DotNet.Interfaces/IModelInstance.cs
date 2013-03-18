@@ -112,6 +112,12 @@ namespace OpenDA.DotNet.Interfaces
         IVector[] GetObservedLocalization(IObservationDescriptions observationDescriptions, double distance);
 
         /**
+         * Interpolate model state to observations
+         * @param observationDescriptions observation description
+         * @return interpolated model state
+         */
+        IVector GetObservedValues(IObservationDescriptions observationDescriptions);
+        /**
          * Get the localization vector
          * @param exchangeItemID, exchangeItemID for which we want the localization vector
          * @param observationDescriptions observation description
