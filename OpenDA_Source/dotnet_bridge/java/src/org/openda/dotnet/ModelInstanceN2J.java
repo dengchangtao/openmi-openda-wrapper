@@ -71,6 +71,11 @@ public class ModelInstanceN2J implements org.openda.interfaces.IModelInstance, I
 		public IVector[] getObservedLocalization(String exchageItemID, IObservationDescriptions observationDescriptions, double distance) {
 
 			List<IPrevExchangeItem> javaExchangeItems = observationDescriptions.getExchangeItems();
+			String [] keys =observationDescriptions.getPropertyKeys();
+            int nKeys=observationDescriptions.getPropertyCount();
+			int nObs =observationDescriptions.getObservationCount();
+
+
 			cli.OpenDA.DotNet.Interfaces.IExchangeItem[] dotnetExchangeItems =
 					new cli.OpenDA.DotNet.Interfaces.IExchangeItem[javaExchangeItems.size()];
 			for (int i = 0; i < javaExchangeItems.size(); i++) {
@@ -85,8 +90,18 @@ public class ModelInstanceN2J implements org.openda.interfaces.IModelInstance, I
 				System.out.println("debug2");
 				dotnetExchangeItems[i] = dotnetExchangeItem;
 			}
-			cli.OpenDA.DotNet.Interfaces.IObservationDescriptions dotNetObservationDescriptions =
-					new ObservationDescriptions(dotnetExchangeItems);
+			cli.OpenDA.DotNet.Interfaces.IObservationDescriptions dotNetObservationDescriptions;
+			if (nKeys>0 && nObs>0){
+				String[][] values = new String[nKeys][];
+				for (int iKey=0; iKey<keys.length; iKey++){
+					values[iKey] = observationDescriptions.getStringProperties(keys[iKey]);
+				}
+				dotNetObservationDescriptions = new ObservationDescriptions(dotnetExchangeItems,keys,values);
+			}
+			else {
+				dotNetObservationDescriptions = new ObservationDescriptions(dotnetExchangeItems);
+			}
+            // Call method
 			cli.OpenDA.DotNet.Interfaces.IVector[] dotNetVectors =
 					_dotNetModelInstance.GetObservedLocalization(exchageItemID, dotNetObservationDescriptions, distance);
 			IVector[] javaVectors = new IVector[dotNetVectors.length];
