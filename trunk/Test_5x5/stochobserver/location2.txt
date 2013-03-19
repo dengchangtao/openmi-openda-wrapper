@@ -4,7 +4,7 @@
 # id          : CenterPoint.Head
 # Unit        : Head
 # Timezone    : GMT
-# Height      : 123.0
+# Height      : 0.0
 # Position    : (250.0,250.0)
 #------------------------------------------------------	
 197302200000	6.12545
