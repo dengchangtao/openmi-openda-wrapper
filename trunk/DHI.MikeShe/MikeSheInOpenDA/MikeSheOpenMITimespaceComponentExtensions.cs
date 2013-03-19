@@ -37,33 +37,60 @@ namespace MikeSheInOpenDA
             double[] xpos = observationDescriptions.GetValueProperties("xposition").Values;
             double[] ypos = observationDescriptions.GetValueProperties("yposition").Values;
             double[] height = observationDescriptions.GetValueProperties("height").Values;
-            int nObs = quantity.Length;
+            
+            int observationCount = observationDescriptions.ObservationCount;
+            int nObs = quantity.Length; // same as observationCount?
 
 
-            var msheE = base.WMEngine;
-            if (msheE.SzGrid == null) throw new NotImplementedException("Only 3d SZ for now");
-            int n = msheE.SzGrid.ElementCount;
+            // The heights should be specified in an array of integers representing the layer. Check if the values are indeed integers or close to integers before converting
+            // the array of doubles to an array of integers.
+            const double tolerance = 1e-5;
+            int[] layer = new int[observationCount];
+            for (int i = 0; i < observationCount; i++)
+            {
+                layer[i] = Convert.ToInt32(height[i]);
+                if (Math.Abs(layer[i] - height[i]) > tolerance)
+                {
+                    throw new Exception("The height specified in the observation was not an integer. Observation \n");
+                }
+            }
 
+            // An array of model values corresponding to the observation points.
             double[] Hx = new double[nObs];
+
             for (int obsC = 0; obsC < nObs; obsC++)
             {
                 // Set exchangeItem that corresponds to EntityID (no conversion yet)
                 String exchangeItemId;
                 if (quantity[obsC].Equals("Head", StringComparison.OrdinalIgnoreCase))
                 {
-                    exchangeItemId = "head elevation in saturated zone";
+                    exchangeItemId = "head elevation in saturated zone,SZ3DGrid";
+                }
+                else if (quantity[obsC].Equals("SoilMoisture", StringComparison.OrdinalIgnoreCase))
+                {
+                    exchangeItemId = "water content in unsaturated zone,WMUZ3DGrid";
+                }
+                else if (quantity[obsC].Equals("SurfaceTemperature", StringComparison.OrdinalIgnoreCase))
+                {
+                    exchangeItemId = "Surface temperature (effective),BaseGrid";
                 }
                 else
                 {
                     throw new Exception("Cannot (yet) handle obversvations of quantity (" + quantity[obsC] + ")");
                 }
 
-                IDictionary<int, ISpatialDefine> modelCoord = ModelCoordinates(exchangeItemId);
-                IXYLayerPoint obsPoint = new XYLayerPoint(xpos[obsC], ypos[obsC], 0);
-                if (XYZGeometryTools.IsPointInModelPlain(obsPoint, modelCoord))
+                IDictionary<int, ISpatialDefine> modelCoord = GetModelCoordinates(exchangeItemId);
+                IXYLayerPoint obsPoint = new XYLayerPoint(xpos[obsC], ypos[obsC], layer[obsC]);
+
+
+                int modelVariableIndex = XYZGeometryTools.ModelIndexForPoint(obsPoint, modelCoord);
+                if(modelVariableIndex >= 0)
                 {
-                    //TODO FOR MARC
-                    //Hx[iObs]=........
+                    Hx[obsC] = GetModelValue(exchangeItemId, modelVariableIndex);
+                }
+                else
+                {
+                    throw new Exception("The observation point was NOT in the model grid! For Point: (" + xpos[obsC].ToString() + "," + ypos[obsC].ToString()+ "," + layer[obsC].ToString() + ") \n" );
                 }
             }
             return Hx;
@@ -73,11 +100,11 @@ namespace MikeSheInOpenDA
         /// <summary>
         /// OpenMI does not know about localization. In this method, the user can implement localization for OpenMI models in this method
         /// </summary>
-        /// <param name="ExchangeItemID"></param>
-        /// <param name="observationDescriptions"></param>
-        /// <param name="distance"></param>
+        /// <param name="exchangeItemId">the exchange ID string</param>
+        /// <param name="observationDescriptions">OpenDA type of observation description</param>
+        /// <param name="locDistance">the distance for gaussian localization</param>
         /// <returns></returns>
-        public double[][] getLocalization(string exchangeItemId, OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions, double distance)
+        public double[][] getLocalization(string exchangeItemId, OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions, double locDistance)
         {
             //Get the Keys from the observer
             String[] keys = observationDescriptions.PropertyKeys;
@@ -85,15 +112,93 @@ namespace MikeSheInOpenDA
             double[] xpos = observationDescriptions.GetValueProperties("xposition").Values;
             double[] ypos = observationDescriptions.GetValueProperties("yposition").Values;
             double[] height = observationDescriptions.GetValueProperties("height").Values;
+            int observationCount = observationDescriptions.ObservationCount;
 
-            var msheE = base.WMEngine;
-            if (msheE.SzGrid == null) throw new NotImplementedException("Only 3d SZ for now");
-            int n = msheE.SzGrid.ElementCount;
+            // The heights should be specified in an array of integers representing the layer. Check if the values are indeed integers or close to integers before converting
+            // the array of doubles to an array of integers.
+            const double tolerance = 1e-5;
+            int[] layer = new int[observationCount];
+            for (int i = 0; i < observationCount; i++)
+            {
+                layer[i] = Convert.ToInt32(height[i]);
+                if ( Math.Abs(layer[i] -  height[i] ) > tolerance )
+                {
+                    throw new Exception("The height specified in the observation was not an integer. Observation \n");
+                }
+            }
+            
 
-            IDictionary<int, ISpatialDefine> modelCoord = ModelCoordinates(exchangeItemId);
-            double[][] localized2D = new double[observationDescriptions.ObservationCount][];
+            // Gets the Grid type for the model. Can be a number of possibilities depending on the variable.
+            GeometryTypes geometrytype = GetGridType(exchangeItemId);
+    
 
-            for (int obsC = 0; obsC < observationDescriptions.ObservationCount; obsC++)
+            //BaseGrid
+            if (geometrytype == GeometryTypes.Geometry2D)
+            {
+                return GetLocalized2D(exchangeItemId, observationCount, locDistance, xpos, ypos);
+            }
+            if (geometrytype == GeometryTypes.Geometry3D)
+            {
+                return GetLocalized3D(exchangeItemId, observationCount, locDistance, xpos, ypos, layer);
+            }
+            else
+            {
+                throw new NotImplementedException("Only 3D SZ and 2D BaseGrid supported so far.");
+            }
+        }
+
+
+
+        #region PrivateMethods
+
+
+        private double GetModelValue(string exchangeItemId, int modelVariableIndex)
+        {
+            char[] delimiterChars = { ',' };
+            string[] words = exchangeItemId.Split(delimiterChars);
+            string openMIVariableID = words[0].Trim();
+
+
+            ITimeSpaceOutput output = FindOutputItem(openMIVariableID);
+            return output.Values.Values2D[0].Cast<double>().ToArray()[modelVariableIndex]; 
+        }
+
+        private ITimeSpaceOutput FindOutputItem(string outputItemId)
+        {
+            foreach (ITimeSpaceOutput outputItem in base.Outputs)
+            {
+                if (outputItem.Id.Equals(outputItemId))
+                {
+                    return outputItem;
+                }
+            }
+            throw new Exception("Output item \"" + outputItemId + "not found.");
+        }
+
+        /// <summary>
+        /// BASEGRID
+        /// Returns a localization hash table.
+        /// For each observation point, calculate the gaussian distance to all other points in the model grid.
+        /// </summary>
+        /// <param name="exchangeItemId">The exchange ID string</param>
+        /// <param name="observationCount">The number of observation points</param>
+        /// <param name="locDistance">The localization distance (for Gaussian distance)</param>
+        /// <param name="xpos">array of observation X coordinates</param>
+        /// <param name="ypos">array of observation Y coordinates</param>
+        /// <param name="layer">array of observation Z heights (layer in the model)</param>
+        /// <returns></returns>
+        private double[][] GetLocalized3D(string exchangeItemId, int observationCount, double locDistance, double[] xpos, double[] ypos, int[] layer)
+        {
+            double[][] localized2D = new double[observationCount][];
+
+            var mshe = base.WMEngine;
+
+            // SZGrid
+            int n = mshe.Grid.ElementCount;
+
+            IDictionary<int, ISpatialDefine> modelCoord = GetModelCoordinates(exchangeItemId);
+
+            for (int obsC = 0; obsC < observationCount; obsC++)
             {
                 localized2D[obsC] = new double[n];
                 IXYLayerPoint obsPoint = new XYLayerPoint(xpos[obsC], ypos[obsC], 0);
@@ -104,7 +209,7 @@ namespace MikeSheInOpenDA
                         if (Convert.ToInt32(obsPoint.Layer) == modelCoord[i].Layer)
                         {
                             double distanceC = XYZGeometryTools.CalculatePointToPointDistance2D(modelCoord[i].MidPoint, obsPoint);
-                            localized2D[obsC][i] = normalCooefs(distanceC, distance);
+                            localized2D[obsC][i] = normalCooefs(distanceC, locDistance);
                         }
                     }
                 }
@@ -112,17 +217,131 @@ namespace MikeSheInOpenDA
             return localized2D;
         }
 
-        #region PrivateMethods
-        private readonly DHI.OpenMI2.MikeShe.WMEngineAccess _mshe;
+        /// <summary>
+        /// BASEGRID
+        /// Returns a localization hash table.
+        /// For each observation point, calculate the gaussian distance to all other points in the model grid.
+        /// </summary>
+        /// <param name="exchangeItemId">The exchange ID string</param>
+        /// <param name="observationCount">The number of observation points</param>
+        /// <param name="locDistance">The localization distance (for Gaussian distance)</param>
+        /// <param name="xpos">array of observation X coordinates</param>
+        /// <param name="ypos">array of observation Y coordinates</param>
+        /// <returns></returns>
+        private double[][] GetLocalized2D(string exchangeItemId, int observationCount, double locDistance, double[] xpos, double[] ypos)
+        {
+            double[][] localized2D = new double[observationCount][];
+
+            var mshe = base.WMEngine;
+            // BASEGRID
+            int n = mshe.Grid.ElementCount;
+           
+            IDictionary<int, ISpatialDefine> modelCoord = GetModelCoordinates(exchangeItemId);
+
+            for (int obsC = 0; obsC < observationCount; obsC++)
+            {
+                localized2D[obsC] = new double[n];
+                IXYLayerPoint obsPoint = new XYLayerPoint(xpos[obsC], ypos[obsC], 0);
+                if (XYZGeometryTools.IsPointInModelPlain(obsPoint, modelCoord))
+                {
+                    for (int i = 0; i < modelCoord.Count; i++)
+                    {
+                        if (Convert.ToInt32(obsPoint.Layer) == modelCoord[i].Layer)
+                        {
+                            double distanceC = XYZGeometryTools.CalculatePointToPointDistance2D(modelCoord[i].MidPoint, obsPoint);
+                            localized2D[obsC][i] = normalCooefs(distanceC, locDistance);
+                        }
+                    }
+                }
+            }
+            return localized2D;
+        }
 
         /// <summary>
+        /// Returns the grid type based on the exchangeID. The exchange ID is a string delimiated by a comma.
+        /// The second string after the comma contains the information of the Grid.
+        /// Options include:
+        /// 1) SZ3DGrid used for hydraulic head
+        /// 2) BaseGrid used for land surface variabels (surface temperature, evapotranspiration, ...)
+        /// 3) WMUZ3DGrid used for soil moisture content (in the UZ)
+        /// </summary>
+        /// <param name="exchangeItemId">string deliminated by a comma where the string after the comma contains the grid information.</param>
+        /// <returns>The geometry type of the variable. This is MikeSHE specific</returns>
+        GeometryTypes GetGridType(string exchangeItemId)
+        {
+            IBaseOutput baseOut = base._outputExchangeItems.First(vID => string.Compare(vID.Id, exchangeItemId) == 0);
+
+            char[] delimiterChars = { ',' };
+            string[] words = baseOut.Description.Split(delimiterChars);
+            string gridTypewords = words[1].Trim();
+
+            if (string.Compare(gridTypewords, "SZ3DGrid", 0) == 0)
+            {
+                return GeometryTypes.Geometry3D;
+            }
+            else if (string.Compare(gridTypewords, "BaseGrid", 0) == 0)
+            {
+                return GeometryTypes.Geometry2D;
+            }
+            else if (string.Compare(gridTypewords, "WMUZ3DGrid", 0) == 0)
+            {
+                return GeometryTypes.Geometry3DUZ;
+            }
+            else
+            {
+                throw new Exception("Other types do exisit (UZ...)");
+            }
+        }
+
+        /// <summary>
+        /// The passed string is parced into two (deliminated by a comma). The First part (before the comma) contains the variable
+        /// of interest.
+        /// Returns the variable OpenMI exchange item ID. Converts from Short form variable ID string to the ID string recognized by
+        /// OpenMI.
+        /// The Variables possible: 
+        /// 1) SoilMoisture --> 
+        /// 2) BaseGrid used for land surface variabels (surface temperature, evapotranspiration, ...)
+        /// 3) WMUZ3DGrid used for soil moisture content (in the UZ)
+        /// </summary>
+        /// <param name="exchangeItemId">string deliminated by a comma where the string after the comma contains the grid information.</param>
+        /// <returns>The geometry type of the variable. This is MikeSHE specific</returns>
+        private string GetVariableID(string exchangeItemId)
+        {
+            char[] delimiterChars = { ',' };
+            string[] words = exchangeItemId.Split(delimiterChars);
+            string gridTypewords = words[0].Trim();
+
+            if (string.Compare(gridTypewords, "Head", 0) == 0)
+            {
+                return "head elevation in saturated zone";
+            }
+            else if (string.Compare(gridTypewords, "SoilMoisture", 0) == 0)
+            {
+                return "water content in unsaturated zone";
+            }
+            else if (string.Compare(gridTypewords, "SurfaceTemperature", 0) == 0)
+            {
+                return "Surface temperature (effective)";
+            }
+
+            else
+            {
+                throw new Exception("Variable not supported yet. Now only support Head, SoilMoisture & SurfaceTemperature \n");
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// 2D BaseGrid !!
         /// Creates a dictionary with key equal to the model state index and the value the spatial information of that state index.
         /// </summary>
         /// <param name="gType">The geometric type of the exchange itme (2d or 3d)</param>
         /// <param name="baseOut">The exchange item base output</param>
         /// <param name="elementID">the string id of the exchange item.</param>
         /// <returns></returns>
-        private IDictionary<int, ISpatialDefine> ModelCoordinates3D(GeometryTypes gType, IBaseOutput baseOut, string elementID)
+        private IDictionary<int, ISpatialDefine> GetModelCoordinates2D(GeometryTypes gType, IBaseOutput baseOut, string elementID)
         {
             IDictionary<int, ISpatialDefine> modelEntities = new Dictionary<int, ISpatialDefine>();
             int elementIDNumber;
@@ -131,6 +350,89 @@ namespace MikeSheInOpenDA
             try
             {
                 elementIDNumber = WMEngine.GetElementCount(elementID);
+                n = baseOut.ElementSet().ElementCount;
+            }
+            catch
+            {
+                Console.WriteLine("\nElement {0} does not found in the model\n", elementID);
+                throw new Exception("\nProblem in Model Instance - unable to find exchange item\n");
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                XYPolygon modelpolygon = ElementMapper.CreateXYPolygon(baseOut.ElementSet(), i);
+                //int zLayer = Convert.ToInt32(i % base.WMEngine.NumberOfSZLayers);
+
+                // Points in Polygon are defined as LL, LR, UR, UL  (l/l = lower/left, u = upper, r = right )
+                // Finds the mid x and mid y point in the polygon (assuming rectangular grid)
+                IXYLayerPoint min = new XYLayerPoint(modelpolygon.GetX(0), modelpolygon.GetY(0), 0);
+                IXYLayerPoint max = new XYLayerPoint(modelpolygon.GetX(1), modelpolygon.GetY(3), 0);
+
+                modelEntities.Add(i, new SpatialDefine(min, max, GeometryTypes.Geometry2D));
+            }
+
+            return modelEntities;
+        }
+
+        /// <summary>
+        /// 3D UZ !!!!
+        /// Creates a dictionary with key equal to the model state index and the value the spatial information of that state index.
+        /// </summary>
+        /// <param name="gType">The geometric type of the exchange itme (2d or 3d)</param>
+        /// <param name="baseOut">The exchange item base output</param>
+        /// <param name="elementID">the string id of the exchange item.</param>
+        /// <returns></returns>
+        private IDictionary<int, ISpatialDefine> GetModelCoordinates3DUZ(GeometryTypes gType, IBaseOutput baseOut, string elementID)
+        {
+            IDictionary<int, ISpatialDefine> modelEntities = new Dictionary<int, ISpatialDefine>();
+            int n;
+
+            try
+            {
+                WMEngine.GetElementCount(elementID);
+                n = baseOut.ElementSet().ElementCount;
+            }
+            catch
+            {
+                Console.WriteLine("\nElement {0} does not found in the model\n", elementID);
+                throw new Exception("\nProblem in Model Instance - unable to find exchange item\n");
+            }
+
+            // Determines the number of layers in the UZ Grid.
+            int numLayersInGrid = Convert.ToInt32( Math.Round( (double)base.WMEngine.UzGrid.ElementCount/(double)base.WMEngine.UzGrid.BaseGrid.ElementCount ) );
+
+            for (int i = 0; i < n; i++)
+            {
+                XYPolygon modelpolygon = ElementMapper.CreateXYPolygon(baseOut.ElementSet(), i);
+                int zLayer = Convert.ToInt32(i % numLayersInGrid);
+
+                // Points in Polygon are defined as LL, LR, UR, UL  (l/l = lower/left, u = upper, r = right )
+                // Finds the mid x and mid y point in the polygon (assuming rectangular grid)
+                IXYLayerPoint min = new XYLayerPoint(modelpolygon.GetX(0), modelpolygon.GetY(0), zLayer);
+                IXYLayerPoint max = new XYLayerPoint(modelpolygon.GetX(1), modelpolygon.GetY(3), zLayer);
+
+                modelEntities.Add(i, new SpatialDefine(min, max, GeometryTypes.Geometry3D));
+            }
+
+            return modelEntities;
+        }
+
+        /// <summary>
+        /// 3D SZ !!!!
+        /// Creates a dictionary with key equal to the model state index and the value the spatial information of that state index.
+        /// </summary>
+        /// <param name="gType">The geometric type of the exchange itme (2d or 3d)</param>
+        /// <param name="baseOut">The exchange item base output</param>
+        /// <param name="elementID">the string id of the exchange item.</param>
+        /// <returns></returns>
+        private IDictionary<int, ISpatialDefine> GetModelCoordinates3DSZ(GeometryTypes gType, IBaseOutput baseOut, string elementID)
+        {
+            IDictionary<int, ISpatialDefine> modelEntities = new Dictionary<int, ISpatialDefine>();
+            int n;
+
+            try
+            {
+                WMEngine.GetElementCount(elementID);
                 n = baseOut.ElementSet().ElementCount;
             }
             catch
@@ -164,38 +466,28 @@ namespace MikeSheInOpenDA
         /// </summary>
         /// <param name="elementID"></param>
         /// <returns></returns>
-        private IDictionary<int, ISpatialDefine> ModelCoordinates(string elementID)
+        private IDictionary<int, ISpatialDefine> GetModelCoordinates(string elementIDAndGrid)
         {
-
-            //IBaseLinkableComponent linkableComponent = _mshe;
-//            IBaseLinkableComponent linkableComponent = base.WMEngine as LinkableComponent;
+            char[] delimiterChars = { ',' };
+            string[] words = elementIDAndGrid.Split(delimiterChars);
+            string elementID = words[0].Trim();
 
             IBaseOutput baseOut = base._outputExchangeItems.First(vID => string.Compare(vID.Id, elementID) == 0);
 
-
-            char[] delimiterChars = { ',' };
-            string[] words = baseOut.Description.Split(delimiterChars);
-            string gridTypewords = words[1].Trim();
-
-            // Default;
-            GeometryTypes gType = GeometryTypes.GeometryPoint;
-
-            if (string.Compare(gridTypewords, "SZ3DGrid", 0) == 0)
-            {
-                gType = GeometryTypes.Geometry3D;
-            }
-            else if (string.Compare(gridTypewords, "BaseGrid", 0) == 0)
-            {
-                gType = GeometryTypes.Geometry2D;
-            }
-            else
-            {
-                throw new Exception("Other types do exisit (UZ...)");
-            }
+            // Get the Grid Type from the elementID (delimiated by a ',');
+            GeometryTypes gType = GetGridType(elementID);
 
             if (gType == GeometryTypes.Geometry3D)
             {
-                return ModelCoordinates3D(gType, baseOut, elementID);
+                return GetModelCoordinates3DSZ(gType, baseOut, elementID);
+            }
+            if (gType == GeometryTypes.Geometry3DUZ)
+            {
+                return GetModelCoordinates3DUZ(gType, baseOut, elementID);
+            }
+            if (gType == GeometryTypes.Geometry2D)
+            {
+                return GetModelCoordinates2D(gType, baseOut, elementID);
             }
             else
             {
@@ -203,37 +495,6 @@ namespace MikeSheInOpenDA
             }
 
         }
-
-        /// <summary>
-        ///  Calculates Gaussian Localization Mask.
-        /// Given a point on a grid, return an array of doubles (of the same size as the grid) with localization values between 0 and 1.
-        /// </summary>
-        /// <param name="_modelInstance">A model instance from WMengine</param>
-        /// <param name="_elementSetID">Exchange item string id</param>
-        /// <param name="_point">point around which to calcualte the licalization mask</param>
-        /// <param name="_locDistance">the distance radius of the Gaussian mask</param>
-        /// <returns></returns>
-        private double[] GaussianLocalization(DHI.OpenMI2.MikeShe.WMEngineAccess _modelInstance, string _elementSetID, IXYLayerPoint _point, double _locDistance)
-        {
-            IDictionary<int, ISpatialDefine> modelCoord = ModelCoordinates(_elementSetID);
-
-            double[] localized2D = new double[modelCoord.Count];
-
-            if (XYZGeometryTools.IsPointInModelPlain(_point, modelCoord))
-            {
-                for (int i = 0; i < modelCoord.Count; i++)
-                {
-                    if (Convert.ToInt32(_point.Layer) == modelCoord[i].Layer)
-                    {
-                        double distance = XYZGeometryTools.CalculatePointToPointDistance2D(modelCoord[i].MidPoint, _point);
-                        localized2D[i] = normalCooefs(distance, _locDistance);
-                    }
-                }
-            }
-            return localized2D;
-        }
-
-
 
         /// <summary>
         /// Distance to Normal calculator.
@@ -253,3 +514,39 @@ namespace MikeSheInOpenDA
 
     }
 }
+
+
+
+/*
+
+        /// <summary>
+        ///  Calculates Gaussian Localization Mask.
+        /// Given a point on a grid, return an array of doubles (of the same size as the grid) with localization values between 0 and 1.
+        /// </summary>
+        /// <param name="modelInstance">A model instance from WMengine</param>
+        /// <param name="elementSetID">Exchange item string id</param>
+        /// <param name="point">point around which to calcualte the licalization mask</param>
+        /// <param name="locDistance">the distance radius of the Gaussian mask</param>
+        /// <returns></returns>
+        private double[] GaussianLocalization(DHI.OpenMI2.MikeShe.WMEngineAccess modelInstance, string elementSetID, IXYLayerPoint point, double locDistance)
+        {
+            IDictionary<int, ISpatialDefine> modelCoord = GetModelCoordinates(elementSetID);
+
+            double[] localized2D = new double[modelCoord.Count];
+
+            if (XYZGeometryTools.IsPointInModelPlain(point, modelCoord))
+            {
+                for (int i = 0; i < modelCoord.Count; i++)
+                {
+                    if (Convert.ToInt32(point.Layer) == modelCoord[i].Layer)
+                    {
+                        double distance = XYZGeometryTools.CalculatePointToPointDistance2D(modelCoord[i].MidPoint, point);
+                        localized2D[i] = normalCooefs(distance, locDistance);
+                    }
+                }
+            }
+            return localized2D;
+        }
+
+
+*/

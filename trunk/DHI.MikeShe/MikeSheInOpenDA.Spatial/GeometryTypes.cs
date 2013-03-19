@@ -15,6 +15,11 @@
         /// <summary>
         /// For dfs0 - Point based Time series
         /// </summary>
-        GeometryPoint   
+        GeometryPoint,
+
+        /// <summary>
+        /// For 3D UZ grid (such as used for soil moisture content)
+        /// </summary>
+        Geometry3DUZ
     }
 }
