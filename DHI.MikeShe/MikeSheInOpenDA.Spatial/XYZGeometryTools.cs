@@ -70,11 +70,29 @@ namespace MikeSheInOpenDA.Spatial
         /// Cycles through every grid rectangle.
         /// </summary>
         /// <param name="pt">point to check if it's within the grid.</param>
-        /// <param name="_grid">the model grid.</param>
+        /// <param name="modelCoordinates">the model grid.</param>
         /// <returns></returns>
         public static bool IsPointInModelPlain(IXYLayerPoint pt, IDictionary<int, ISpatialDefine> modelCoordinates)
         {
-            return modelCoordinates.Values.Any(rec => rec.PointInObject(new XYLayerPoint(pt.X, pt.Y, 0)));
+            return modelCoordinates.Values.Any(rec => rec.PointInObject(new XYLayerPoint(pt.X, pt.Y, pt.Layer)));
+        }
+
+        /// <summary>
+        /// Model Index for given point
+        /// </summary>
+        /// <param name="pt">point to check if it's within the grid.</param>
+        /// <param name="modelCoordinates">the model grid.</param>
+        /// <returns></returns>
+        public static int ModelIndexForPoint(IXYLayerPoint pt, IDictionary<int, ISpatialDefine> modelCoordinates)
+        {
+            foreach(KeyValuePair<int,ISpatialDefine> modelGrid in modelCoordinates)
+            {
+                if ( modelGrid.Value.PointInObject( pt ) )
+                {
+                    return modelGrid.Key;
+                }
+            }
+            return -999;
         }
 
     }

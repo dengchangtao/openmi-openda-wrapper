@@ -23,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using OpenDA.DotNet.Bridge;
 using OpenDA.DotNet.Interfaces;
 using OpenMI.Standard2;
 using OpenMI.Standard2.TimeSpace;
@@ -288,7 +289,8 @@ namespace OpenDA.DotNet.OpenMI.Bridge
             if (_openMIComponent is ITimeSpaceComponentExtensions)
             {
                 ITimeSpaceComponentExtensions extendedComponent = (ITimeSpaceComponentExtensions)_openMIComponent;
-                double[] obs = extendedComponent.getObservedValues(observationDescriptions);
+//                double[] obs = extendedComponent.getObservedValues(observationDescriptions);
+                return new Vector(extendedComponent.getObservedValues(observationDescriptions));
             }
             return null;
         }
