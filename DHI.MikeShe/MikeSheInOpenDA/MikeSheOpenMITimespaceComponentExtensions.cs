@@ -44,6 +44,7 @@ namespace MikeSheInOpenDA
 
             // The heights should be specified in an array of integers representing the layer. Check if the values are indeed integers or close to integers before converting
             // the array of doubles to an array of integers.
+            for (int i = 0; i < height.Length; i++) { if (double.IsNaN(height[i])) height[i] = 0.0; }
             const double tolerance = 1e-5;
             int[] layer = new int[observationCount];
             for (int i = 0; i < observationCount; i++)
@@ -116,6 +117,8 @@ namespace MikeSheInOpenDA
 
             // The heights should be specified in an array of integers representing the layer. Check if the values are indeed integers or close to integers before converting
             // the array of doubles to an array of integers.
+            for (int i = 0; i < height.Length; i++) { if (double.IsNaN(height[i])) height[i] = 0.0;}
+
             const double tolerance = 1e-5;
             int[] layer = new int[observationCount];
             for (int i = 0; i < observationCount; i++)
