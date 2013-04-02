@@ -16,9 +16,16 @@ namespace startRun
         static void Main(string[] args)
         {
 
-            const string mikeSheConfigFile = @"c:\OpenDA_MI\Test_5x5\MikeSheConfig.txt";
-            const string odaDirectoryPath = @"c:\OpenDA_MI\Test_5x5";
-            const string odaFileName = "EnKF_test1.oda";
+            //const string mikeSheConfigFile = @"c:\OpenDA_MI\Test_5x5\MikeSheConfig.txt";
+            const string mikeSheConfigFile = @"C:\work\SOLProjects\11810549_HydroCast\TestModels\Karup\XML\MikeSheConfig.txt";
+
+//            const string odaDirectoryPath = @"c:\OpenDA_MI\Test_5x5";
+            const string odaDirectoryPath = @"C:\work\SOLProjects\11810549_HydroCast\TestModels\Karup\XML";
+
+
+            const string odaFileName = "EnSR_test1.oda";
+            //            const string odaFileName = "EnKF_test1.oda";
+
             
             if(!System.IO.File.Exists(mikeSheConfigFile))
             {

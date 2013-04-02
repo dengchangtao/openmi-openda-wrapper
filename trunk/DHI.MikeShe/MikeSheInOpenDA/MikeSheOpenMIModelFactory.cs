@@ -124,6 +124,7 @@ namespace MikeSheInOpenDA
             string newSheFileName = "";
             if(_copyModels)
             {
+                throw new NotImplementedException("Copy model's not implemented yet. Check the MikeSheConfig txt file. ");
                 // Copy Entire 'base' directory to a new one in the same root directory with instancenumber name   
                 DirectoryInfo sourceDirectory = Directory.GetParent(_msheFileName);
                 DirectoryInfo targetDirectory = Directory.GetParent(Directory.GetParent(sourceDirectory.ToString()) + "\\" + _instanceCounter + "\\" + _instanceCounter);
@@ -133,10 +134,29 @@ namespace MikeSheInOpenDA
             }
             else if (!_copyModels)
             {
+
+                string parentPath = new DirectoryInfo(_msheFileName).Parent.Parent.FullName.ToString();
+                string filename = Path.GetFileName(_msheFileName);
+                newSheFileName = Path.Combine(parentPath, "Ensembles", _instanceCounter.ToString(), filename);
+
+                if (!File.Exists(newSheFileName))
+                {
+                    Console.WriteLine(" ****************\n ");
+                    Console.WriteLine("In ModelAccess.cs at InitializeModel \n");
+                    Console.WriteLine("\n  Error in Model Instance --> {0}\n", _instanceCounter);
+                    Console.WriteLine("\n  File Not Found --> {0}\n", _instanceCounter);
+                    throw new Exception("Could not find the model .she file in ModelOpenMI2");
+                }
+
+                /*
                 // Not Copying models
                 DirectoryInfo sourceDirectory = Directory.GetParent(_msheFileName);
                 DirectoryInfo targetDirectory = Directory.GetParent(Directory.GetParent(sourceDirectory.ToString()) + "\\" + _instanceCounter + "\\" + _instanceCounter);
                 newSheFileName = targetDirectory.ToString() + "\\" + Path.GetFileName(_msheFileName);
+                */
+
+
+
             }
             else
             {
@@ -239,10 +259,18 @@ namespace MikeSheInOpenDA
             }
 
             _mshe.Update();
+
+            //int startin = 60 - DateTime.Now.Second;
+            //System.Threading.TimerCallback c;
+            //ThreadCallBack = new System.Threading.Timer(o => Console.WriteLine("  ------> working: i=" + _instanceCounter.ToString() + " time: " + _mshe.CurrentTime.ToDateTime()), null, startin * 1000, 30000);
+
             return _mshe;
 
 
         }
+
+        // CALL BACK
+        private System.Threading.Timer ThreadCallBack { get; set; }
 
         public void SaveInstance(ITimeSpaceComponent timeSpaceComponent)
         {

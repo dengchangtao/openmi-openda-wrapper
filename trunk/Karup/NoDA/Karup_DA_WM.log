@@ -1,0 +1,147 @@
+ ERRORS AND MESSAGES FROM 64-bit version of MIKE SHE Water Movement. Input file : C:\work\SOLProjects\11810549_HydroCast\TestModels\Karup\NoDA\Karup_DA.SHE
+ ==========================================================================================================================================================
+ 
+ 
+14:25:19 : INITIALIZATION PHASE
+===============================
+
+Opening files...
+Print file : C:\work\SOLProjects\11810549_HydroCast\TestModels\Karup\NoDA\Karup_DA.SHE - Result Files\Karup_DA_WM_Print.log
+Fif   file : C:\work\SOLProjects\11810549_HydroCast\TestModels\Karup\NoDA\Karup_DA.SHE - Result Files\Karup_DA.fif
+ 
+Group:
+Frame Data
+Size and Specifications
+Checks
+
+ WARNING: The specified maximum UZ water balance error in
+          one node (fraction) =0.0100 can be expected
+          to result in a large number of warnings
+          from the UZ solver during the simulation.
+          The recommended error limit is 0.02 (2 %).
+          NOTE: Using the specified value anyway !
+Initializing Hotstart...
+ 
+WARNING: Specified hotstart date changed from 1972 12 25  0  0
+         to 1972 12 28  0  0 corresp. to 1 hotstart storing time steps
+         after start of hotstart files (1970  1  1  0  0
+ 
+INFO   : Simulation start date adjusted from 1972 12 25  0  0
+         to hotstart date : 1972 12 28  0  0
+ 
+INFO: Using NEW TS module
+Copying to frf file
+Vegetation module initialisation
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+Initializing Met. data...
+Memory allocation
+Initializations and reference systems
+Reading Hotstart data...
+ 
+INFO   : Using specified start time step        :2.00000000000000 hrs
+         - less than time step on hotstart file :3.00000000000000 hrs
+Initializing components...
+ET
+Overland
+River
+MIKE 11 loading...
+Processing...
+SZ
+
+INFO   : The specific yield of the top SZ layer has been taken from the initial hotstart input
+         to maintain a consistent UZ-SZ coupling.
+UZ Module
+SZ fif-output
+ 
+INFO   : Disabling storing of data type(s) which are not relevant for this simulation:
+         - SZ flow to general head boundary
+Storing initial conditions...
+done
+
+
+
+Parallelization info
+--------------------
+Number of processors  : 4
+Max. number of threads: 4
+Number of threads allowed by actual license: Unlimited
+Setting number of threads for actual application to 4
+ 
+ 
+ 
+ 
+14:25:24 : Start of simulation from 1972/12/28,00:00
+====================================================
+
+- further initializations...
+- UZ
+- Overland
+- River
+14:25:24 => 1972/12/28,04:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 0, avg: 0.0
+14:25:26 => 1973/02/02,08:00 : Time step: 3.89 hrs, avg: 3.88 hrs; SZ Iter/step: 2, avg: 2.1
+14:25:28 => 1973/03/13,12:00 : Time step: 2.24 hrs, avg: 2.80 hrs; SZ Iter/step: 2, avg: 2.0
+14:25:30 => 1973/04/26,12:00 : Time step: 3.47 hrs, avg: 3.02 hrs; SZ Iter/step: 2, avg: 2.1
+14:25:32 => 1973/06/01,15:47 : Time step: 3.29 hrs, avg: 3.08 hrs; SZ Iter/step: 2, avg: 2.1
+14:25:34 => 1973/07/06,16:00 : Time step: 2.63 hrs, avg: 2.98 hrs; SZ Iter/step: 2, avg: 2.1
+ 
+WARNING: Ignoring call to MTimestep_SetReducedTimeStep
+         with max time step = 3.84981631722016 hrs
+         - not smaller than actual max time step : 3.72439494449645 hrs
+14:25:36 => 1973/08/16,16:00 : Time step: 2.57 hrs, avg: 2.90 hrs; SZ Iter/step: 2, avg: 2.1
+14:25:38 => 1973/09/28,23:49 : Time step: 2.52 hrs, avg: 2.83 hrs; SZ Iter/step: 2, avg: 2.1
+14:25:40 => 1973/11/08,05:37 : Time step: 2.64 hrs, avg: 2.80 hrs; SZ Iter/step: 2, avg: 2.1
+14:25:42 => 1973/12/05,22:00 : Time step: 1.76 hrs, avg: 2.67 hrs; SZ Iter/step: 2, avg: 2.0
+14:25:44 => 1974/01/10,06:00 : Time step: 1.94 hrs, avg: 2.58 hrs; SZ Iter/step: 2, avg: 2.0
+14:25:46 => 1974/02/11,21:56 : Time step: 1.79 hrs, avg: 2.50 hrs; SZ Iter/step: 2, avg: 2.0
+14:25:48 => 1974/03/28,02:00 : Time step: 3.93 hrs, avg: 2.59 hrs; SZ Iter/step: 2, avg: 2.0
+14:25:50 => 1974/05/19,06:00 : Time step: 4.89 hrs, avg: 2.72 hrs; SZ Iter/step: 2, avg: 2.0
+14:25:52 => 1974/07/03,02:00 : Time step: 3.43 hrs, avg: 2.76 hrs; SZ Iter/step: 2, avg: 2.0
+14:25:54 => 1974/08/03,18:00 : Time step: 1.51 hrs, avg: 2.65 hrs; SZ Iter/step: 2, avg: 2.0
+14:25:56 => 1974/09/16,02:00 : Time step: 2.68 hrs, avg: 2.65 hrs; SZ Iter/step: 2, avg: 2.0
+14:25:58 => 1974/10/25,16:00 : Time step: 2.07 hrs, avg: 2.60 hrs; SZ Iter/step: 2, avg: 2.0
+14:26:00 => 1974/12/02,10:00 : Time step: 1.83 hrs, avg: 2.55 hrs; SZ Iter/step: 2, avg: 2.0
+14:26:02 => 1974/12/29,04:00 : Time step: 1.62 hrs, avg: 2.49 hrs; SZ Iter/step: 2, avg: 2.0
+14:26:04 => 1975/01/16,00:00 : Time step: 2.21 hrs, avg: 2.49 hrs; SZ Iter/step: 2, avg: 2.0
+14:26:06 => 1975/01/28,23:35 : Time step:57.00 min, avg: 2.42 hrs; SZ Iter/step: 2, avg: 2.0
+14:26:08 => 1975/03/15,00:00 : Time step: 2.67 hrs, avg: 2.43 hrs; SZ Iter/step: 2, avg: 2.0
+14:26:10 => 1975/04/28,00:00 : Time step: 2.69 hrs, avg: 2.44 hrs; SZ Iter/step: 2, avg: 2.0
+14:26:12 => 1975/06/10,12:00 : Time step: 2.61 hrs, avg: 2.45 hrs; SZ Iter/step: 2, avg: 2.0
+14:26:14 => 1975/07/29,12:00 : Time step: 3.25 hrs, avg: 2.48 hrs; SZ Iter/step: 2, avg: 2.0
+14:26:16 => 1975/09/12,01:30 : Time step: 2.70 hrs, avg: 2.49 hrs; SZ Iter/step: 2, avg: 2.0
+14:26:18 => 1975/10/16,16:00 : Time step: 1.58 hrs, avg: 2.44 hrs; SZ Iter/step: 2, avg: 2.0
+14:26:20 => 1975/11/30,10:00 : Time step: 2.66 hrs, avg: 2.45 hrs; SZ Iter/step: 2, avg: 2.0
+14:26:22 => 1976/01/01,00:00 : Time step: 3.09 hrs, avg: 2.47 hrs; SZ Iter/step: 2, avg: 2.0
+ 
+Termination...
+
+ WARNING: Max. no. UZ flow iterations exceeded in      1 time steps.
+
+ WARNING: Reduction of UZ time step length in   20 time steps
+          because of water balance errors.
+
+ WARNING: Evaporation from ponded water on ground surface has been reduced
+          in UZ class(es) with less ponded water in transfer point(s)
+          than in the corresponding computational point(s).
+          Total apriori :  0.5809201     [ catchment mm ]
+          Total used    :  0.5728201     [ - - ]  ( 98.61 % of apriori ).
+          Please check the applied UZ classification.
+
+          See warnings in the print log file.
+14:26:22 : WM Simulation succeeded

@@ -58,6 +58,12 @@ namespace OpenDA.DotNet.OpenMI.Bridge
         /// </summary>
         /// <param name="observationDescriptions"></param>
         /// <returns>Model state interpolated to the observations</returns>
-        double[] getObservedValues(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions);    
+        double[] getObservedValues(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions);
+
+        // TEMPORARY - NEED A BETTER WAY!
+        IList<int> ModelIndicesForSZHACK(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions);
+
+        double[] getObservedSZValuesHACK(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions,
+                                         IList<int> indices);
     }
 }

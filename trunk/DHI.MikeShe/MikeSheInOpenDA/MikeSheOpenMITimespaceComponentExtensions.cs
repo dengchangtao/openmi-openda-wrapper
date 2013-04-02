@@ -30,6 +30,102 @@ namespace MikeSheInOpenDA
             return additional;
         }
 
+        public IList<int> ModelIndicesForSZHACK(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions)
+        {
+            IList<int> modelIndices = new List<int>();
+
+            String[] keys = observationDescriptions.PropertyKeys;
+            String[] quantity = observationDescriptions.GetStringProperties("quantity");
+            double[] xpos = observationDescriptions.GetValueProperties("xposition").Values;
+            double[] ypos = observationDescriptions.GetValueProperties("yposition").Values;
+            double[] height = observationDescriptions.GetValueProperties("height").Values;
+
+            int observationCount = observationDescriptions.ObservationCount;
+            int nObs = quantity.Length; // same as observationCount?
+
+
+            // The heights should be specified in an array of integers representing the layer. Check if the values are indeed integers or close to integers before converting
+            // the array of doubles to an array of integers.
+            const double tolerance = 1e-5;
+            int[] layer = new int[observationCount];
+            for (int i = 0; i < observationCount; i++)
+            {
+                layer[i] = Convert.ToInt32(height[i]);
+                if (Math.Abs(layer[i] - height[i]) > tolerance)
+                {
+                    throw new Exception("The height specified in the observation was not an integer. Observation \n");
+                }
+            }
+
+            // An array of model values corresponding to the observation points.
+            double[] Hx = new double[nObs];
+
+            for (int obsC = 0; obsC < nObs; obsC++)
+            {
+                // Set exchangeItem that corresponds to EntityID (no conversion yet)
+                String exchangeItemId;
+                if (quantity[obsC].Equals("Head", StringComparison.OrdinalIgnoreCase))
+                {
+                    exchangeItemId = "head elevation in saturated zone,SZ3DGrid";
+                }
+                else if (quantity[obsC].Equals("SoilMoisture", StringComparison.OrdinalIgnoreCase))
+                {
+                    exchangeItemId = "water content in unsaturated zone,WMUZ3DGrid";
+                }
+                else if (quantity[obsC].Equals("SurfaceTemperature", StringComparison.OrdinalIgnoreCase))
+                {
+                    exchangeItemId = "Surface temperature (effective),BaseGrid";
+                }
+                else
+                {
+                    throw new Exception("Cannot (yet) handle obversvations of quantity (" + quantity[obsC] + ")");
+                }
+
+                IDictionary<int, ISpatialDefine> modelCoord = GetModelCoordinates(exchangeItemId);
+                IXYLayerPoint obsPoint = new XYLayerPoint(xpos[obsC], ypos[obsC], layer[obsC]);
+
+
+                int modelVariableIndex = XYZGeometryTools.ModelIndexForPoint(obsPoint, modelCoord);
+                modelIndices.Add(modelVariableIndex);
+
+                if (modelVariableIndex < 0)
+                {
+                    throw new Exception("The observation point was NOT in the model grid! For Point: (" + xpos[obsC].ToString() + "," + ypos[obsC].ToString() + "," + layer[obsC].ToString() + ") \n");
+                }
+            }
+            return modelIndices;
+        }
+
+        public double[] getObservedSZValuesHACK(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions, IList<int> indices )
+        {
+            String[] keys = observationDescriptions.PropertyKeys;
+            String[] quantity = observationDescriptions.GetStringProperties("quantity");
+            double[] xpos = observationDescriptions.GetValueProperties("xposition").Values;
+            double[] ypos = observationDescriptions.GetValueProperties("yposition").Values;
+            double[] height = observationDescriptions.GetValueProperties("height").Values;
+
+            int observationCount = observationDescriptions.ObservationCount;
+            int nObs = quantity.Length; // same as observationCount?
+
+
+            // The heights should be specified in an array of integers representing the layer. Check if the values are indeed integers or close to integers before converting
+            // the array of doubles to an array of integers.
+            const double tolerance = 1e-5;
+            int[] layer = new int[observationCount];
+            for (int i = 0; i < observationCount; i++)
+            {
+                layer[i] = Convert.ToInt32(height[i]);
+                if (Math.Abs(layer[i] - height[i]) > tolerance)
+                {
+                    throw new Exception("The height specified in the observation was not an integer. Observation \n");
+                }
+            }
+
+            // An array of model values corresponding to the observation points.
+            double[] Hx = GetModelValues("head elevation in saturated zone,SZ3DGrid", indices);
+            return Hx;
+        }
+
         public double[] getObservedValues(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions)
         {
             String[] keys = observationDescriptions.PropertyKeys;
@@ -85,6 +181,8 @@ namespace MikeSheInOpenDA
 
 
                 int modelVariableIndex = XYZGeometryTools.ModelIndexForPoint(obsPoint, modelCoord);
+
+
                 if(modelVariableIndex >= 0)
                 {
                     Hx[obsC] = GetModelValue(exchangeItemId, modelVariableIndex);
@@ -154,6 +252,31 @@ namespace MikeSheInOpenDA
 
         #region PrivateMethods
 
+        /// <summary>
+        /// Get the values from the model at the given indices
+        /// //NOT TESTED
+        /// </summary>
+        /// <param name="exchangeItemId"></param>
+        /// <param name="modelVariableIndices"></param>
+        /// <returns></returns>
+        private double[] GetModelValues(string exchangeItemId, IList<int> modelVariableIndices)
+        {
+            char[] delimiterChars = { ',' };
+            string[] words = exchangeItemId.Split(delimiterChars);
+            string openMIVariableID = words[0].Trim();
+
+            double[] modelValues = new double[modelVariableIndices.Count];
+
+            //Get values from model
+            ITimeSpaceOutput output = FindOutputItem(openMIVariableID);
+            var modVars = output.Values.Values2D[0].Cast<double>().ToArray();
+
+            for (int i = 0; i < modelVariableIndices.Count; i++)
+            {
+                modelValues[i] = modVars[modelVariableIndices[i]];
+            }
+            return modelValues;
+        }
 
         private double GetModelValue(string exchangeItemId, int modelVariableIndex)
         {
@@ -420,6 +543,8 @@ namespace MikeSheInOpenDA
             return modelEntities;
         }
 
+        private IDictionary<int, ISpatialDefine> _modelEntities;
+
         /// <summary>
         /// 3D SZ !!!!
         /// Creates a dictionary with key equal to the model state index and the value the spatial information of that state index.
@@ -430,36 +555,41 @@ namespace MikeSheInOpenDA
         /// <returns></returns>
         private IDictionary<int, ISpatialDefine> GetModelCoordinates3DSZ(GeometryTypes gType, IBaseOutput baseOut, string elementID)
         {
-            IDictionary<int, ISpatialDefine> modelEntities = new Dictionary<int, ISpatialDefine>();
-            int n;
-
-            try
+            //Run Only once - because it's slow
+            if(_modelEntities == null)
             {
-                WMEngine.GetElementCount(elementID);
-                n = baseOut.ElementSet().ElementCount;
+
+                _modelEntities = new Dictionary<int, ISpatialDefine>();
+                int n;
+
+                try
+                {
+                    WMEngine.GetElementCount(elementID);
+                    n = baseOut.ElementSet().ElementCount;
+                }
+                catch
+                {
+                    Console.WriteLine("\nElement {0} does not found in the model\n", elementID);
+                    throw new Exception("\nProblem in Model Instance - unable to find exchange item\n");
+                }
+
+                //int numBaseGrid = Convert.ToInt32(Math.Floor((double)n / (double)_mshe.WMEngine.NumberOfSZLayers));
+
+                for (int i = 0; i < n; i++)
+                {
+                    XYPolygon modelpolygon = ElementMapper.CreateXYPolygon(baseOut.ElementSet(), i);
+                    int zLayer = Convert.ToInt32(i % base.WMEngine.NumberOfSZLayers);
+
+                    // Points in Polygon are defined as LL, LR, UR, UL  (l/l = lower/left, u = upper, r = right )
+                    // Finds the mid x and mid y point in the polygon (assuming rectangular grid)
+                    IXYLayerPoint min = new XYLayerPoint(modelpolygon.GetX(0), modelpolygon.GetY(0), zLayer);
+                    IXYLayerPoint max = new XYLayerPoint(modelpolygon.GetX(1), modelpolygon.GetY(3), zLayer);
+
+                    _modelEntities.Add(i, new SpatialDefine(min, max, GeometryTypes.Geometry3D));
+                }
+
             }
-            catch
-            {
-                Console.WriteLine("\nElement {0} does not found in the model\n", elementID);
-                throw new Exception("\nProblem in Model Instance - unable to find exchange item\n");
-            }
-
-            //int numBaseGrid = Convert.ToInt32(Math.Floor((double)n / (double)_mshe.WMEngine.NumberOfSZLayers));
-
-            for (int i = 0; i < n; i++)
-            {
-                XYPolygon modelpolygon = ElementMapper.CreateXYPolygon(baseOut.ElementSet(), i);
-                int zLayer = Convert.ToInt32(i % base.WMEngine.NumberOfSZLayers);
-
-                // Points in Polygon are defined as LL, LR, UR, UL  (l/l = lower/left, u = upper, r = right )
-                // Finds the mid x and mid y point in the polygon (assuming rectangular grid)
-                IXYLayerPoint min = new XYLayerPoint(modelpolygon.GetX(0), modelpolygon.GetY(0), zLayer);
-                IXYLayerPoint max = new XYLayerPoint(modelpolygon.GetX(1), modelpolygon.GetY(3), zLayer);
-
-                modelEntities.Add(i, new SpatialDefine(min, max, GeometryTypes.Geometry3D));
-            }
-
-            return modelEntities;
+            return _modelEntities;
         }
 
         /// <summary>
