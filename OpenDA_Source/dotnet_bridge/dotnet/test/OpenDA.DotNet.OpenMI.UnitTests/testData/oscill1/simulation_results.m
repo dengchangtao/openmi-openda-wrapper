@@ -5,7 +5,7 @@
 %	dir.: ..\..\testData\oscill1\.\algorithm
 %	config.: simulationAlgorithm.xml
 % configstring = simulationAlgorithm.xml
-% opening :C:\work\SOLProjects\11810549_HydroCast\OpenDAMI\OpenDA_Source\dotnet_bridge\dotnet\test\OpenDA.DotNet.OpenMI.UnitTests\bin\Debug\..\..\testData\oscill1\.\algorithm\simulationAlgorithm.xml
+% opening :C:\OpenDA_MI\OpenDA_Source\dotnet_bridge\dotnet\test\OpenDA.DotNet.OpenMI.UnitTests\bin\Debug\..\..\testData\oscill1\.\algorithm\simulationAlgorithm.xml
 % instance@repeat=2
 % instance@stochParameter=false
 % instance@stochForcing=true
@@ -18,7 +18,7 @@
 % Algorithm starting next step
 % starting model :0
 % configstring = OscillatorStochModel.xml
-% opening :C:\work\SOLProjects\11810549_HydroCast\OpenDAMI\OpenDA_Source\dotnet_bridge\dotnet\test\OpenDA.DotNet.OpenMI.UnitTests\bin\Debug\..\..\testData\oscill1\.\model\OscillatorStochModel.xml
+% opening :C:\OpenDA_MI\OpenDA_Source\dotnet_bridge\dotnet\test\OpenDA.DotNet.OpenMI.UnitTests\bin\Debug\..\..\testData\oscill1\.\model\OscillatorStochModel.xml
 % simulationTimespan =[0.0,0.05,40.0]
 % parameters@names =t_damp,omega parameters=[8.0,1.5708]
 % parameterUncertainty@names =t_damp,omega parameterUncertainty=[1.0,0.1257]
@@ -1641,7 +1641,7 @@ x{801}	=[0.3855379308021792,0.05504417221382786];
 % Algorithm starting next step
 % starting model :1
 % configstring = OscillatorStochModel.xml
-% opening :C:\work\SOLProjects\11810549_HydroCast\OpenDAMI\OpenDA_Source\dotnet_bridge\dotnet\test\OpenDA.DotNet.OpenMI.UnitTests\bin\Debug\..\..\testData\oscill1\.\model\OscillatorStochModel.xml
+% opening :C:\OpenDA_MI\OpenDA_Source\dotnet_bridge\dotnet\test\OpenDA.DotNet.OpenMI.UnitTests\bin\Debug\..\..\testData\oscill1\.\model\OscillatorStochModel.xml
 % simulationTimespan =[0.0,0.05,40.0]
 % parameters@names =t_damp,omega parameters=[8.0,1.5708]
 % parameterUncertainty@names =t_damp,omega parameterUncertainty=[1.0,0.1257]

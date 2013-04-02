@@ -1,0 +1,128 @@
+ ERRORS AND MESSAGES FROM 32-bit version of MIKE SHE Water Movement. Input file : C:\work\SOLProjects\11810549_HydroCast\TestModels\Karup\Ensembles\74\Karup.she
+ ===============================================================================================================================================================
+ 
+ 
+20:45:46 : INITIALIZATION PHASE
+===============================
+
+Opening files...
+Print file : C:\work\SOLProjects\11810549_HydroCast\TestModels\Karup\Ensembles\74\Karup.she - Result Files\Karup_WM_Print.log
+Fif   file : C:\work\SOLProjects\11810549_HydroCast\TestModels\Karup\Ensembles\74\Karup.she - Result Files\Karup.fif
+ 
+Group:
+Frame Data
+Size and Specifications
+Checks
+
+ WARNING: The specified maximum UZ water balance error in
+          one node (fraction) =0.0100 can be expected
+          to result in a large number of warnings
+          from the UZ solver during the simulation.
+          The recommended error limit is 0.02 (2 %).
+          NOTE: Using the specified value anyway !
+ 
+INFO: Using NEW TS module
+Copying to frf file
+Vegetation module initialisation
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+ 
+ Warning: Crop development of crop Wetland not over when changing crop to Wetland for scheme code 2
+Initializing Met. data...
+Memory allocation
+Initializations and reference systems
+Initializing components...
+ET
+Overland
+River
+MIKE 11 loading...
+Processing...
+SZ
+UZ Module
+SZ fif-output
+ 
+INFO   : Disabling storing of data type(s) which are not relevant for this simulation:
+         - SZ flow to general head boundary
+Storing initial conditions...
+done
+
+
+
+Parallelization info
+--------------------
+Number of processors  : 4
+Max. number of threads: 4
+Number of threads allowed by actual license: Unlimited
+Setting number of threads for actual application to 4
+ 
+ 
+ 
+ 
+20:45:50 : Start of simulation from 1969/12/01,00:00
+====================================================
+
+- further initializations...
+- UZ
+- Overland
+- River
+20:45:50 => 1969/12/01,04:00 : Time step: 2.00 hrs, avg: 2.00 hrs; SZ Iter/step: 0, avg: 0.0
+20:45:52 => 1970/01/20,06:00 : Time step: 5.54 hrs, avg: 5.50 hrs; SZ Iter/step: 3, avg: 2.5
+20:45:54 => 1970/03/07,06:00 : Time step: 4.45 hrs, avg: 4.95 hrs; SZ Iter/step: 2, avg: 2.3
+20:45:56 => 1970/04/21,02:00 : Time step: 3.74 hrs, avg: 4.49 hrs; SZ Iter/step: 2, avg: 2.2
+20:45:58 => 1970/06/05,06:00 : Time step: 4.34 hrs, avg: 4.45 hrs; SZ Iter/step: 2, avg: 2.2
+20:46:00 => 1970/07/20,22:00 : Time step: 4.14 hrs, avg: 4.38 hrs; SZ Iter/step: 2, avg: 2.2
+20:46:02 => 1970/08/24,06:00 : Time step: 3.58 hrs, avg: 4.26 hrs; SZ Iter/step: 2, avg: 2.2
+20:46:04 => 1970/10/04,08:00 : Time step: 2.95 hrs, avg: 4.02 hrs; SZ Iter/step: 2, avg: 2.2
+ 
+WARNING: Ignoring call to MTimestep_SetReducedTimeStep
+         with max time step = 1.97998360428867 hrs
+         - not smaller than actual max time step : 1.92699995745716 hrs
+20:46:06 => 1970/11/12,13:42 : Time step: 2.74 hrs, avg: 3.82 hrs; SZ Iter/step: 2, avg: 2.2
+20:46:08 => 1970/12/24,12:00 : Time step: 3.11 hrs, avg: 3.72 hrs; SZ Iter/step: 2, avg: 2.2
+20:46:10 => 1971/02/11,18:00 : Time step: 4.69 hrs, avg: 3.81 hrs; SZ Iter/step: 2, avg: 2.2
+20:46:12 => 1971/03/23,18:00 : Time step: 4.21 hrs, avg: 3.84 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:14 => 1971/05/08,18:00 : Time step: 5.06 hrs, avg: 3.93 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:16 => 1971/06/19,06:00 : Time step: 2.98 hrs, avg: 3.84 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:18 => 1971/07/30,07:14 : Time step: 2.95 hrs, avg: 3.76 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:20 => 1971/08/31,02:00 : Time step: 1.63 hrs, avg: 3.53 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:22 => 1971/10/17,12:00 : Time step: 4.34 hrs, avg: 3.58 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:24 => 1971/11/23,04:00 : Time step: 2.16 hrs, avg: 3.46 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:26 => 1972/01/09,06:00 : Time step: 4.12 hrs, avg: 3.50 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:28 => 1972/02/29,18:00 : Time step: 5.28 hrs, avg: 3.57 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:30 => 1972/04/13,10:00 : Time step: 3.42 hrs, avg: 3.56 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:32 => 1972/05/27,20:00 : Time step: 3.51 hrs, avg: 3.56 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:34 => 1972/07/04,12:00 : Time step: 2.38 hrs, avg: 3.49 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:36 => 1972/08/07,02:00 : Time step: 1.88 hrs, avg: 3.39 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:38 => 1972/09/22,06:00 : Time step: 3.99 hrs, avg: 3.42 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:40 => 1972/11/11,07:11 : Time step: 4.88 hrs, avg: 3.46 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:42 => 1972/12/16,04:00 : Time step: 1.96 hrs, avg: 3.38 hrs; SZ Iter/step: 2, avg: 2.1
+20:46:43 => 1973/01/01,00:00 : Time step: 5.85 hrs, avg: 3.40 hrs; SZ Iter/step: 2, avg: 2.1
+ 
+Termination...
+
+ WARNING: Reduction of UZ time step length in    4 time steps
+          because of water balance errors.
+
+ WARNING: Evaporation from ponded water on ground surface has been reduced
+          in UZ class(es) with less ponded water in transfer point(s)
+          than in the corresponding computational point(s).
+          Total apriori :   1.391769     [ catchment mm ]
+          Total used    :   1.371224     [ - - ]  ( 98.52 % of apriori ).
+          Please check the applied UZ classification.
+
+          See warnings in the print log file.
+20:46:43 : WM Simulation succeeded

@@ -46,6 +46,9 @@ namespace OpenDA.DotNet.OpenMI.Bridge
 
         private int _MSheTstep;
         private double _FinalTimeOfSimulation;  //needed for a hack ZZZ
+	    private IList<int> modelSZIndincesHACK; 
+
+	    private ITimeSpaceComponentExtensions _extendedComponent;
 
 
         public ModelInstance(ModelFactory myModelFactory, ITimeSpaceComponent openMIComponent)
@@ -284,12 +287,34 @@ namespace OpenDA.DotNet.OpenMI.Bridge
 		}
 
 
+
         public IVector GetObservedValues(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions)
+        {
+            
+            if (_extendedComponent == null && _openMIComponent is ITimeSpaceComponentExtensions)
+            {
+                    _extendedComponent = (ITimeSpaceComponentExtensions) _openMIComponent;
+                    modelSZIndincesHACK = _extendedComponent.ModelIndicesForSZHACK(observationDescriptions);
+                    return new Vector(_extendedComponent.getObservedValues(observationDescriptions));
+            }
+            else if (modelSZIndincesHACK != null)
+            {
+                double[] modelValuesAtIndices = _extendedComponent.getObservedSZValuesHACK(observationDescriptions,
+                                                                                         modelSZIndincesHACK);
+
+                return new Vector(modelValuesAtIndices);
+            }
+            return null;
+
+
+        }
+
+
+        public IVector GetObservedValuesBACKUP(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions)
         {
             if (_openMIComponent is ITimeSpaceComponentExtensions)
             {
                 ITimeSpaceComponentExtensions extendedComponent = (ITimeSpaceComponentExtensions)_openMIComponent;
-//                double[] obs = extendedComponent.getObservedValues(observationDescriptions);
                 return new Vector(extendedComponent.getObservedValues(observationDescriptions));
             }
             return null;
