@@ -1,4 +1,4 @@
-// Created     : 2013-03-19 13:53:49
+// Created     : 2013-03-18 14:8:44
 // DLL id      : C:\Program Files (x86)\DHI\2013\bin\pfs2004.dll
 // PFS version : Feb 16 2013 19:43:47
 
@@ -268,13 +268,13 @@
       [SimulationPeriod]
          Touched = 1
          IsDataUsedInSetup = 1
-         HotStart = 1
-         HotStartResultFile = |.\Karup.she - Result Files\Karup.Sheres|
-         HotStartDate = 1972, 12, 25, 0, 0
+         HotStart = 0
+         HotStartResultFile = ||
+         HotStartDate = -1, -1, -1, -1, -1
          HotStartDateIndex = 0
-         SimStartFromHotStartDate = 1
-         SIMSTART = 1972, 12, 25, 0, 0
-         SIMEND = 1976, 1, 1, 0, 0
+         SimStartFromHotStartDate = 0
+         SIMSTART = 1970, 1, 1, 0, 0
+         SIMEND = 1973, 1, 1, 0, 0
       EndSect  // SimulationPeriod
 
       [STRESSPERIODS]
@@ -2624,7 +2624,7 @@
          Touched = 1
          IsDataUsedInSetup = 1
          Type = 0
-         FixedValue = 5.3144
+         FixedValue = 5
          InterpMethod = 0
          SearchRadius = 1000
          ShowGridData = 1
@@ -2767,7 +2767,7 @@
          Type = 1
          ShapeAxisUnit = 1000
          [DFS_2D_DATA_FILE]
-            Touched = 0
+            Touched = 1
             IsDataUsedInSetup = 0
             FILE_NAME = ||
             ITEM_COUNT = 1
@@ -2775,7 +2775,7 @@
          EndSect  // DFS_2D_DATA_FILE
 
          [SHAPE_FILE]
-            Touched = 0
+            Touched = 1
             IsDataUsedInSetup = 0
             FILE_NAME = ||
             ITEM_COUNT = 1
@@ -3772,8 +3772,8 @@
             IsDataUsedInSetup = 1
             SoilName = 'Meltwater sand'
             SoilCode = 1
-            HorConduc = 0.00050999
-            VerConduc = 5.0999e-005
+            HorConduc = 0.0005
+            VerConduc = 5e-005
             SpecYield = 0.25
             StorageCoef = 5e-005
             Porosity = 0.6
@@ -3791,8 +3791,8 @@
             IsDataUsedInSetup = 1
             SoilName = 'Clay'
             SoilCode = 2
-            HorConduc = 7.8591e-007
-            VerConduc = 7.8591e-008
+            HorConduc = 8e-007
+            VerConduc = 8e-008
             SpecYield = 0.05
             StorageCoef = 5e-005
             Porosity = 0.6
@@ -3810,8 +3810,8 @@
             IsDataUsedInSetup = 1
             SoilName = 'Quartz sand'
             SoilCode = 3
-            HorConduc = 0.00089881
-            VerConduc = 8.9881e-005
+            HorConduc = 0.000899
+            VerConduc = 9e-005
             SpecYield = 0.25
             StorageCoef = 5e-005
             Porosity = 0.6
@@ -3829,8 +3829,8 @@
             IsDataUsedInSetup = 1
             SoilName = 'Mica sand'
             SoilCode = 4
-            HorConduc = 4.8609e-005
-            VerConduc = 4.8609e-006
+            HorConduc = 5e-005
+            VerConduc = 5e-006
             SpecYield = 0.2
             StorageCoef = 5e-005
             Porosity = 0.6
@@ -3848,8 +3848,8 @@
             IsDataUsedInSetup = 1
             SoilName = 'Mica clay/silt'
             SoilCode = 5
-            HorConduc = 1.0127e-008
-            VerConduc = 1.0127e-009
+            HorConduc = 1e-008
+            VerConduc = 1e-009
             SpecYield = 0.05
             StorageCoef = 0.0001
             Porosity = 0.6
@@ -3867,8 +3867,8 @@
             IsDataUsedInSetup = 1
             SoilName = 'Limestone'
             SoilCode = 6
-            HorConduc = 7.4934e-005
-            VerConduc = 7.4934e-006
+            HorConduc = 7.4e-005
+            VerConduc = 7.4e-006
             SpecYield = 0.05
             StorageCoef = 0.0001
             Porosity = 0.6
