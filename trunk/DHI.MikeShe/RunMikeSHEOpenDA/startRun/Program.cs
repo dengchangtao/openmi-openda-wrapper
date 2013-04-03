@@ -23,8 +23,8 @@ namespace startRun
             const string odaDirectoryPath = @"C:\OpenDA_MI\Karup\XML";
 
 
-            const string odaFileName = "EnSR_test1.oda";
-            //const string odaFileName = "EnKF_test1.oda";
+            //const string odaFileName = "EnSR_test1.oda";
+            const string odaFileName = "EnKF_test1.oda";
 
             
             if(!System.IO.File.Exists(mikeSheConfigFile))
