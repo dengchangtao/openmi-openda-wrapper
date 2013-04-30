@@ -61,9 +61,9 @@ namespace OpenDA.DotNet.OpenMI.Bridge
         double[] getObservedValues(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions);
 
         // TEMPORARY - NEED A BETTER WAY!
-        IList<int> ModelIndicesForSZHACK(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions);
+        IList<int> CreateModelIndicesHashTable(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions);
 
-        double[] getObservedSZValuesHACK(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions,
+        double[] ModelValuesAtProvidedIndices(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions,
                                          IList<int> indices);
     }
 }

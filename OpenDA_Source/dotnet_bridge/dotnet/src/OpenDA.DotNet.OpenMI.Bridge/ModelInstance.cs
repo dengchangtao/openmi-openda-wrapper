@@ -44,16 +44,16 @@ namespace OpenDA.DotNet.OpenMI.Bridge
    private readonly IDictionary<String, ExchangeItem> _outputs = new Dictionary<string, ExchangeItem>();
         private readonly IDictionary<String, ExchangeItem> _inout = new Dictionary<string, ExchangeItem>();
 
-        private int _MSheTstep;
-        private double _FinalTimeOfSimulation;  //needed for a hack ZZZ
-	    private IList<int> modelSZIndincesHACK; 
+        private int _mSheTstep;
+        private double _finalTimeOfSimulation; 
+	    private IList<int> _listModelIndicesAtObservations; 
 
 	    private ITimeSpaceComponentExtensions _extendedComponent;
 
 
         public ModelInstance(ModelFactory myModelFactory, ITimeSpaceComponent openMIComponent)
 		{
-            _MSheTstep = 0;
+            _mSheTstep = 0;
 			_openDaModelFactory = myModelFactory;
 			_openMIComponent = openMIComponent;
             GetExchangeItemsFromOpenMIComponent();
@@ -149,7 +149,7 @@ namespace OpenDA.DotNet.OpenMI.Bridge
                     input.Value.UpdatetstepCount();
                 }
                 lastTime = DetermineCurrentTime(null);
-                _MSheTstep++;
+                _mSheTstep++;
 			}
 		}
 
@@ -287,20 +287,24 @@ namespace OpenDA.DotNet.OpenMI.Bridge
 		}
 
 
-
+        /// <summary>
+        /// Get the values from the model corresponding to the observations.
+        /// The first this is called, _listModelIndicesAtObservations will be null so a list must be created.
+        /// </summary>
+        /// <param name="observationDescriptions">The observations.</param>
+        /// <returns>Model values corresponding to observation points.</returns>
         public IVector GetObservedValues(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions)
         {
-            
             if (_extendedComponent == null && _openMIComponent is ITimeSpaceComponentExtensions)
             {
                     _extendedComponent = (ITimeSpaceComponentExtensions) _openMIComponent;
-                    modelSZIndincesHACK = _extendedComponent.ModelIndicesForSZHACK(observationDescriptions);
+                    _listModelIndicesAtObservations = _extendedComponent.CreateModelIndicesHashTable(observationDescriptions);
                     return new Vector(_extendedComponent.getObservedValues(observationDescriptions));
             }
-            else if (modelSZIndincesHACK != null)
+            else if (_listModelIndicesAtObservations != null)
             {
-                double[] modelValuesAtIndices = _extendedComponent.getObservedSZValuesHACK(observationDescriptions,
-                                                                                         modelSZIndincesHACK);
+                double[] modelValuesAtIndices = _extendedComponent.ModelValuesAtProvidedIndices(observationDescriptions,
+                                                                                         _listModelIndicesAtObservations);
 
                 return new Vector(modelValuesAtIndices);
             }
@@ -308,18 +312,6 @@ namespace OpenDA.DotNet.OpenMI.Bridge
 
 
         }
-
-
-        public IVector GetObservedValuesBACKUP(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions)
-        {
-            if (_openMIComponent is ITimeSpaceComponentExtensions)
-            {
-                ITimeSpaceComponentExtensions extendedComponent = (ITimeSpaceComponentExtensions)_openMIComponent;
-                return new Vector(extendedComponent.getObservedValues(observationDescriptions));
-            }
-            return null;
-        }
-
 
         public IVector[] GetObservedLocalization(String exchangeItemID, IObservationDescriptions observationDescriptions, double distance)
         {
