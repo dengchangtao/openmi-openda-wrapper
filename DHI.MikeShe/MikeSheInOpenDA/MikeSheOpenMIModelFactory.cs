@@ -29,13 +29,16 @@ namespace MikeSheInOpenDA
         private MikeSheOpenMITimespaceComponentExtensions _mshe;
 
         /// <summary>
-        /// The path should point to where the OMI-file is located.
+        /// The path should point to where the oda file is.
         /// The first args is the omi file name without path.
         /// </summary>
         /// <param name="workingDirPath"></param>
         /// <param name="args"></param>
         public void Initialize(string workingDirPath, params string[] args)
         {
+            // START AT -1 and that will be the Main model.
+            // Then from 0 to n-1 the number of ensembles.
+            _instanceCounter = -1;
 
             /* Read OpenMI MikeShe specific configuration
                * name and directory of the Mike-She inputfile 
@@ -51,7 +54,6 @@ namespace MikeSheInOpenDA
                </MikeSheCongig>
              */
 
-
             if (args[0] != null && string.Compare("", workingDirPath) != 0 )
             {
                 _mikeSheConfigDa = Path.Combine(workingDirPath, args[0]);
@@ -66,10 +68,7 @@ namespace MikeSheInOpenDA
                 throw new FileNotFoundException(_mikeSheConfigDa);
             }
 
-            
-
-            
-            //Get the she file name
+           //Get the she file name
             Hashtable properties = new Hashtable();
             XmlTextReader reader = new XmlTextReader(_mikeSheConfigDa);
             while (reader.Read())
@@ -135,18 +134,37 @@ namespace MikeSheInOpenDA
             else if (!_copyModels)
             {
 
+                if (_instanceCounter != -1)
+                {
                 string parentPath = new DirectoryInfo(_msheFileName).Parent.Parent.FullName.ToString();
                 string filename = Path.GetFileName(_msheFileName);
                 newSheFileName = Path.Combine(parentPath, "Ensembles", _instanceCounter.ToString(), filename);
-
-                if (!File.Exists(newSheFileName))
-                {
-                    Console.WriteLine(" ****************\n ");
-                    Console.WriteLine("In ModelAccess.cs at InitializeModel \n");
-                    Console.WriteLine("\n  Error in Model Instance --> {0}\n", _instanceCounter);
-                    Console.WriteLine("\n  File Not Found --> {0}\n", _instanceCounter);
-                    throw new Exception("Could not find the model .she file in ModelOpenMI2");
+                    if (!File.Exists(newSheFileName))
+                    {
+                        Console.WriteLine(" ****************\n ");
+                        Console.WriteLine("In  ModelAccess.cs at InitializeModel \n");
+                        Console.WriteLine("\n  Error in Model Instance --> {0}\n", _instanceCounter);
+                        Console.WriteLine("\n  File Not Found --> {0}\n", _instanceCounter);
+                        throw new Exception("Could not find the model .she file in ModelOpenMI2");
+                    }
                 }
+                // Else If (_instanceCounter == _numEnsembles)
+                // NOW initialize the MainModel
+                else 
+                {
+                    string parentPath = new DirectoryInfo(_msheFileName).Parent.Parent.FullName.ToString();
+                    string filename = Path.GetFileName(_msheFileName);
+                    newSheFileName = Path.Combine(parentPath, "MainModel",filename);
+                    if (!File.Exists(newSheFileName))
+                    {
+                        Console.WriteLine(" ****************\n ");
+                        Console.WriteLine("In  ModelAccess.cs at InitializeModel \n");
+                        Console.WriteLine("\n  Error in Model Instance --> {0}\n", _instanceCounter);
+                        Console.WriteLine("\n  File Not Found --> {0}\n", _instanceCounter);
+                        throw new Exception("Could not find the model .she file in ModelOpenMI2");
+                    }
+                }
+
 
                 /*
                 // Not Copying models
@@ -154,8 +172,6 @@ namespace MikeSheInOpenDA
                 DirectoryInfo targetDirectory = Directory.GetParent(Directory.GetParent(sourceDirectory.ToString()) + "\\" + _instanceCounter + "\\" + _instanceCounter);
                 newSheFileName = targetDirectory.ToString() + "\\" + Path.GetFileName(_msheFileName);
                 */
-
-
 
             }
             else
@@ -168,14 +184,14 @@ namespace MikeSheInOpenDA
                 throw new FileNotFoundException("Mike She file not found: ", newSheFileName);
             }
 
-            //Preprocess mshe before initializing. Should have put this in the engine years ago
+            // Preprocess mshe before initializing.
             string path;
             DHIRegistry key = new DHIRegistry(DHIProductAreas.COMMON_COMPONNETS, false);
             key.GetHomeDirectory(out path);
             Process runner = new Process();
             runner.StartInfo.FileName = System.IO.Path.Combine(path, "Mshe_preprocessor.exe");
             runner.StartInfo.Arguments = newSheFileName;
-            //ZZZ Change the Working Directory necessary for the SVAT
+            // Change the Working Directory necessary for the SVAT module in MikeSHE
             runner.StartInfo.WorkingDirectory = System.IO.Path.GetDirectoryName(newSheFileName);
             runner.StartInfo.UseShellExecute = false;
             runner.Start();
