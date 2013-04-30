@@ -30,7 +30,8 @@ namespace MikeSheInOpenDA
             return additional;
         }
 
-        public IList<int> ModelIndicesForSZHACK(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions)
+
+        public IList<int> CreateModelIndicesHashTable(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions)
         {
             IList<int> modelIndices = new List<int>();
 
@@ -60,30 +61,12 @@ namespace MikeSheInOpenDA
             // An array of model values corresponding to the observation points.
             double[] Hx = new double[nObs];
 
+            List<string> listExchangeIds = ObsIDtoExchangeId(observationDescriptions);
+
             for (int obsC = 0; obsC < nObs; obsC++)
             {
-                // Set exchangeItem that corresponds to EntityID (no conversion yet)
-                String exchangeItemId;
-                if (quantity[obsC].Equals("Head", StringComparison.OrdinalIgnoreCase))
-                {
-                    exchangeItemId = "head elevation in saturated zone,SZ3DGrid";
-                }
-                else if (quantity[obsC].Equals("SoilMoisture", StringComparison.OrdinalIgnoreCase))
-                {
-                    exchangeItemId = "water content in unsaturated zone,WMUZ3DGrid";
-                }
-                else if (quantity[obsC].Equals("SurfaceTemperature", StringComparison.OrdinalIgnoreCase))
-                {
-                    exchangeItemId = "Surface temperature (effective),BaseGrid";
-                }
-                else
-                {
-                    throw new Exception("Cannot (yet) handle obversvations of quantity (" + quantity[obsC] + ")");
-                }
-
-                IDictionary<int, ISpatialDefine> modelCoord = GetModelCoordinates(exchangeItemId);
+                IDictionary<int, ISpatialDefine> modelCoord = GetModelCoordinates(listExchangeIds[obsC]);
                 IXYLayerPoint obsPoint = new XYLayerPoint(xpos[obsC], ypos[obsC], layer[obsC]);
-
 
                 int modelVariableIndex = XYZGeometryTools.ModelIndexForPoint(obsPoint, modelCoord);
                 modelIndices.Add(modelVariableIndex);
@@ -96,7 +79,49 @@ namespace MikeSheInOpenDA
             return modelIndices;
         }
 
-        public double[] getObservedSZValuesHACK(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions, IList<int> indices )
+
+        private List<string> ObsIDtoExchangeId(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions)
+        {
+            String[] keys = observationDescriptions.PropertyKeys;
+            String[] quantity = observationDescriptions.GetStringProperties("quantity");
+            double[] xpos = observationDescriptions.GetValueProperties("xposition").Values;
+            double[] ypos = observationDescriptions.GetValueProperties("yposition").Values;
+            double[] height = observationDescriptions.GetValueProperties("height").Values;
+
+            int observationCount = observationDescriptions.ObservationCount;
+            int nObs = quantity.Length; // same as observationCount?
+
+            List<string> exchangeItemId = new List<string>();
+
+            for (int obsC = 0; obsC < nObs; obsC++)
+            {
+                if (quantity[obsC].Equals("Head", StringComparison.OrdinalIgnoreCase))
+                {
+                    exchangeItemId.Add("head elevation in saturated zone,SZ3DGrid");
+                }
+                else if (quantity[obsC].Equals("SoilMoisture", StringComparison.OrdinalIgnoreCase))
+                {
+                    exchangeItemId.Add("water content in unsaturated zone,WMUZ3DGrid");
+                }
+                else if (quantity[obsC].Equals("SurfaceTemperature", StringComparison.OrdinalIgnoreCase))
+                {
+                    exchangeItemId.Add("Surface temperature (effective),BaseGrid");
+                }
+                else
+                {
+                    throw new Exception("Cannot (yet) handle obversvations of quantity (" + quantity[obsC] + ")");
+                }
+            }
+            return exchangeItemId;
+        }
+
+        /// <summary>
+        /// Hx = Gets the model values at the indices that are passed in the list.
+        /// </summary>
+        /// <param name="observationDescriptions">The description of the observations.</param>
+        /// <param name="indices">List of indices to be retrieved from the model.</param>
+        /// <returns>Array of model values at the given indices.</returns>
+        public double[] ModelValuesAtProvidedIndices(OpenDA.DotNet.Interfaces.IObservationDescriptions observationDescriptions, IList<int> indices )
         {
             String[] keys = observationDescriptions.PropertyKeys;
             String[] quantity = observationDescriptions.GetStringProperties("quantity");
@@ -121,8 +146,11 @@ namespace MikeSheInOpenDA
                 }
             }
 
+            List<string> obsIds = ObsIDtoExchangeId(observationDescriptions);
+
             // An array of model values corresponding to the observation points.
-            double[] Hx = GetModelValues("head elevation in saturated zone,SZ3DGrid", indices);
+            double[] Hx = GetModelValuesDifferentVariables(obsIds, indices);
+
             return Hx;
         }
 
@@ -252,14 +280,30 @@ namespace MikeSheInOpenDA
 
         #region PrivateMethods
 
+        private double[] GetModelValuesDifferentVariables(List<string> exchangeItemId, IList<int> modelVariableIndices)
+        {
+            double[] modelValues = new double[modelVariableIndices.Count];
+            for (int i = 0; i < modelVariableIndices.Count; i++)
+            {
+                char[] delimiterChars = { ',' };
+                string[] words = exchangeItemId[i].Split(delimiterChars);
+                string openMIVariableID = words[0].Trim();
+
+
+                ITimeSpaceOutput output = FindOutputItem(openMIVariableID);
+                var modVars = output.Values.Values2D[0].Cast<double>().ToArray();
+                modelValues[i] = modVars[modelVariableIndices[i]];
+            }
+            return modelValues;
+        }
+
         /// <summary>
         /// Get the values from the model at the given indices
-        /// //NOT TESTED
         /// </summary>
-        /// <param name="exchangeItemId"></param>
-        /// <param name="modelVariableIndices"></param>
-        /// <returns></returns>
-        private double[] GetModelValues(string exchangeItemId, IList<int> modelVariableIndices)
+        /// <param name="exchangeItemId">The exchange id of the variable to retrived</param>
+        /// <param name="modelVariableIndices">List of indices in the model to retrive values from.</param>
+        /// <returns>Corresponding model values.</returns>
+        private double[] GetModelValuesSameVariable(string exchangeItemId, IList<int> modelVariableIndices)
         {
             char[] delimiterChars = { ',' };
             string[] words = exchangeItemId.Split(delimiterChars);
@@ -278,6 +322,7 @@ namespace MikeSheInOpenDA
             return modelValues;
         }
 
+        
         private double GetModelValue(string exchangeItemId, int modelVariableIndex)
         {
             char[] delimiterChars = { ',' };
@@ -418,45 +463,6 @@ namespace MikeSheInOpenDA
                 throw new Exception("Other types do exisit (UZ...)");
             }
         }
-
-        /// <summary>
-        /// The passed string is parced into two (deliminated by a comma). The First part (before the comma) contains the variable
-        /// of interest.
-        /// Returns the variable OpenMI exchange item ID. Converts from Short form variable ID string to the ID string recognized by
-        /// OpenMI.
-        /// The Variables possible: 
-        /// 1) SoilMoisture --> 
-        /// 2) BaseGrid used for land surface variabels (surface temperature, evapotranspiration, ...)
-        /// 3) WMUZ3DGrid used for soil moisture content (in the UZ)
-        /// </summary>
-        /// <param name="exchangeItemId">string deliminated by a comma where the string after the comma contains the grid information.</param>
-        /// <returns>The geometry type of the variable. This is MikeSHE specific</returns>
-        private string GetVariableID(string exchangeItemId)
-        {
-            char[] delimiterChars = { ',' };
-            string[] words = exchangeItemId.Split(delimiterChars);
-            string gridTypewords = words[0].Trim();
-
-            if (string.Compare(gridTypewords, "Head", 0) == 0)
-            {
-                return "head elevation in saturated zone";
-            }
-            else if (string.Compare(gridTypewords, "SoilMoisture", 0) == 0)
-            {
-                return "water content in unsaturated zone";
-            }
-            else if (string.Compare(gridTypewords, "SurfaceTemperature", 0) == 0)
-            {
-                return "Surface temperature (effective)";
-            }
-
-            else
-            {
-                throw new Exception("Variable not supported yet. Now only support Head, SoilMoisture & SurfaceTemperature \n");
-            }
-        }
-
-
 
 
         /// <summary>

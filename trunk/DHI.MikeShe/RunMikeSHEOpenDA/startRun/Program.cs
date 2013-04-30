@@ -15,23 +15,50 @@ namespace startRun
     {
         static void Main(string[] args)
         {
+            string mikeSheConfigFile = "";
+            string odaDirectoryPath = "";
+            string odaFileName = "";
+            // Args Requires 2 fields:
+            // 1) the MikeSHEConfig.txt
+            // 2) the .oda file
+            if (args[0] != null && args[1] != null)
+            {
+
+                if( System.IO.File.Exists( args[0] ) && System.IO.File.Exists( args[1] ) )
+                {
+                    mikeSheConfigFile = args[0];
+
+                    odaFileName = System.IO.Path.GetFileName(args[1]);
+                    odaDirectoryPath = System.IO.Path.GetDirectoryName(args[1]);
+                }
+                else
+                {
+                    throw new System.IO.FileNotFoundException(" One or more of the files were not found \n" + args[0] +
+                                                              "\n" + args[1]);
+                }
+            }
+            else
+            {
+                // Args Requires 2 fields:
+                // 1) the MikeSHEConfig.txt
+                // 2) the .oda file
+                System.Console.WriteLine("Takes two args 1) the mikeSHEConfig.txt   and   2) the OpenDA  .oda file.\n"  );
+            }
+
+
+
 
             //const string mikeSheConfigFile = @"c:\OpenDA_MI\Test_5x5\MikeSheConfig.txt";
-            const string mikeSheConfigFile = @"C:\OpenDA_MI\Karup\XML\MikeSheConfig.txt";
+            // const string mikeSheConfigFile = @"C:\work\SOLProjects\11810549_HydroCast\Karup\XML\MikeSheConfig.txt";
 
             //const string odaDirectoryPath = @"c:\OpenDA_MI\Test_5x5";
-            const string odaDirectoryPath = @"C:\OpenDA_MI\Karup\XML";
+            // const string odaDirectoryPath = @"C:\work\SOLProjects\11810549_HydroCast\Karup\XML";
 
 
             //const string odaFileName = "EnSR_test1.oda";
-            const string odaFileName = "EnKF_test1.oda";
+            // const string odaFileName = "EnKF_test1.oda";
 
             
-            if(!System.IO.File.Exists(mikeSheConfigFile))
-            {
-                
-                throw new System.IO.FileNotFoundException(mikeSheConfigFile);
-            }
 
            
 
@@ -42,8 +69,6 @@ namespace startRun
 
             ModelFactory openDaModelFactory = new ModelFactory();
             openDaModelFactory.Initialize(null, null);
-
-            //IModelInstance modelInstance = openDaModelFactory.GetInstance(new string[] { }, outputLevel: 0);
 
             ApplicationRunnerSingleThreaded applicationRunner = new ApplicationRunnerSingleThreaded();
 
