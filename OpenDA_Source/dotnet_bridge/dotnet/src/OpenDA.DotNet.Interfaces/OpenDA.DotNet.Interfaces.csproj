@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IStochObserver.cs" />
     <Compile Include="IConfigurable.cs" />
     <Compile Include="IDimensionIndex.cs" />
     <Compile Include="IExchangeItem.cs" />
